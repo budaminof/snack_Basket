@@ -1,5 +1,25 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li role="presentation"><a href="/users/signup">Sign Up</a></li>
+      <li role="presentation"><a href="/users/login">Log In</a></li>
+    </ul>
+  </div>
+</nav>
 
-<a href='/users/signup'>Sign Up</a>
-<a href='/users/login'>Log In</a>
+<table>
+  <tr>
+    <th>Image</th>
+    <th class='text-center'>Name</th>
+    <th class='text-center'>Price</th>
+    <th class='text-center'g>Description</th>
+  </tr>
+  {{#items}}
+  <tr class='listing-row'>
+    <td><img class='item-pic' src='{{this.image_url}}'></td>
+    <td class='text-center'>{{this.name}}</td>
+    <td class='text-center'>${{this.price}}</td>
+    <td class='text-center'>{{this.description}}</td>
+  </tr>
+  {{/items}}
+</table>
