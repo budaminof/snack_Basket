@@ -1,10 +1,8 @@
 
 exports.seed = function(knex, Promise) {
   return Promise.join(
-    // Deletes ALL existing entries
     knex('items').del(),
 
-    // Inserts seed entries
     knex('items').insert([
         {
         name: 'Cured meat',description:"it's the cure for your meat needs",
@@ -121,8 +119,6 @@ exports.seed = function(knex, Promise) {
         price:9.00,
         image_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCNuEePhTze-39I2rsYw3CKAdIJg9bDyxMasWuKsAeZzfdmi-U"
         }
-
-
 
     ])
  );
