@@ -4,7 +4,7 @@ var bcrypt = require('bcrypt');
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
 
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+
 });
 
 router.get('/signup', function(req, res, next) {
@@ -76,6 +76,11 @@ router.post('/login', function(req,res,next){
       res.render('login', {errors: 'Invalid username or password'});
     }
   });
+});
+
+router.get('/logout', function(req, res, next) {
+    req.session = null;
+    res.redirect('/');
 });
 
 module.exports = router;
