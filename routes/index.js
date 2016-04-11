@@ -7,13 +7,5 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-//
-// router.get('/signup', function(req, res, next) {
-//   res.render('signup', { title: 'gnosh' });
-// });
-//
-// router.get('/login', function(req, res, next) {
-//   res.render('login', { title: 'gnosh' })
-// });
 
 module.exports = router;
