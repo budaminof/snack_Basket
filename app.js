@@ -71,16 +71,20 @@ app.get('/auth/google/callback',
 
 
 app.use(function (req, res, next) {
-    // console.log('----------------------------- ');
-    // console.log(req.user); // is allowing a quicker approach for req.seesion.passport
-    // console.log(req.session);
+    console.log('res local: _____________________________',res.local);
+    console.log('req session:+++++++++++++++++++++++++', req.session);
     if(req.session.passport) {
         res.locals.user = req.session.passport.user;
     }
   next();
   });
 
+// function userAdmin(req, res, next){
+//     if()
+// }
+
 app.use('/', routes);
+// app.user(userAdmin)
 app.use('/users', users);
 app.use('/admin', admin);
 
