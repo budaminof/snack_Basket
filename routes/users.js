@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var bcrypt = require('bcrypt');
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
 
 /* GET users listing. */
@@ -58,7 +59,8 @@ router.post('/signup', (req, res) => {
                           password: hash
                         })
                         .then(function() {
-                            res.redirect('/');
+                          console.log('Success!');
+                          res.redirect('/');
                         })
                 }
             })
