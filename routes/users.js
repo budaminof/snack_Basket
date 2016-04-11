@@ -3,13 +3,11 @@ var router = express.Router();
 var bcrypt = require('bcrypt');
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
 router.get('/signup', function(req, res, next) {
-  console.log('Sign up');
   res.render('signup');
 });
 
@@ -17,10 +15,7 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'gnosh' })
 });
 
-// New user
-
-router.post('/signup', (req, res) => {
-
+router.post('/signup', function (req, res, next){
     var errorArray = [];
 
     if (!req.body.email) {
@@ -59,7 +54,6 @@ router.post('/signup', (req, res) => {
                           password: hash
                         })
                         .then(function() {
-                          console.log('Success!');
                           res.redirect('/');
                         })
                 }
@@ -67,8 +61,6 @@ router.post('/signup', (req, res) => {
     }
 });
 
-
-// User login
 router.post('/login', function(req,res,next){
   knex('users')
   .where('email', '=', req.body.email)
