@@ -1,5 +1,19 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
+{{#if user}}
+    {{#if photo}}
+    <img src="{{photo}}"/>
+    {{/if}}
+
+    <h2>hey {{name}}</h2>
+    <br>
+    <h3><a href="/users/logout">log out</a></h3>
+
+    {{else}}
+    <h2><a href='/auth/google'>log in with google</a></h2>
+
+{{/if}}
+
 <a href='/users/signup'>Sign Up</a>
 <a href='/users/login'>Log In</a>

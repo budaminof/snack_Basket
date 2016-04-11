@@ -5,6 +5,8 @@ var logger = require('morgan');
 var bcrypt = require('bcrypt');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var cookieSession = require('cookie-session');
 
 var routes = require('./routes/index');
@@ -12,6 +14,7 @@ var users = require('./routes/users');
 var admin = require('./routes/admin');
 
 var app = express();
+require('dotenv').load();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +27,58 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieSession({
+    name: 'cookie time',
+    keys: [
+        process.env.SECRET,
+        process.env.SECRET2
+    ]
+}
+));
+
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.HOST+"/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(null, {id: profile.id, displayName: profile.displayName, photo: profile.photos[0].value});
+    // });
+  }
+));
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+
+passport.deserializeUser(function(obj, done) {
+    done(null, obj);
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email']}));
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+
+app.use(function (req, res, next) {
+    // console.log('----------------------------- ');
+    // console.log(req.user); // is allowing a quicker approach for req.seesion.passport
+    // console.log(req.session);
+    if(req.session.passport) {
+        res.locals.user = req.session.passport.user;
+    }
+  next();
+  });
 
 app.use('/', routes);
 app.use('/users', users);
