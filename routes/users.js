@@ -75,11 +75,11 @@ router.post('/login', function(req,res,next){
   .first()
   .then(function(response){
     if(response && bcrypt.compareSync(req.body.password, response.password)){
-     req.session.user = (response.email);
-     req.session.id = response.id;
+    //  req.session.user = response.email;
+    //  req.session.id = response.id;
     //  req.session.email= response.email;
 
-     res.redirect('/products');
+     res.redirect('/');
     } else {
       res.render('login', {errors: 'Invalid username or password'});
     }
