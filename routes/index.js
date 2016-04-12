@@ -5,7 +5,8 @@ var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-  knex.select('name','description','price','image_url').from('items')
+  knex('items')
+  .select('name','description','price','image_url')
   .then(function(items) {
     if (!req.session.passport) return res.render('index', { items });
     res.render('index', {

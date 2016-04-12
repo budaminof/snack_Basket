@@ -1,0 +1,20 @@
+<h1>Prodocuts</h1>
+
+<table>
+  <tr>
+    <th>Image</th>
+    <th class='text-center'>Name</th>
+    <th class='text-center'>Price</th>
+    <th class='text-center'>Description</th>
+    <th class='text-center'>Edit</th>
+  </tr>
+  {{#items}}
+  <tr class='listing-row'>
+    <td><img class='item-pic' src='{{this.image_url}}'></td>
+    <td class='text-center'>{{this.name}}</td>
+    <td class='text-center'>${{this.price}}</td>
+    <td class='text-center'>{{this.description}}</td>
+    <td><a href="/admin/products/{{this.id}}/edit">Edit</td>
+  </tr>
+  {{/items}}
+</table>
