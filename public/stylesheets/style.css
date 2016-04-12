@@ -3,6 +3,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Top Navbar */
 
 .navbar-default {
@@ -25,9 +29,13 @@ ul.dropdown-menu > li {
   text-align: right;
 }
 
+.dropdown-menu > tbody > tr > td.hide-in-cart {
+  display: none;
+}
+
 .dropdown-menu > tbody > tr > td > img {
-  width: 75px;
   height: 75px;
+  width: 75px;
 }
 
 td.cart {
