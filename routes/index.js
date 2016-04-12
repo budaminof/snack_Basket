@@ -6,6 +6,10 @@ var Handlebars = require("handlebars");
 
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')('MatieuB', 'tenbusch7');
+//get file
+var regEmail = fs.readFileSync('./views/email.hbs','utf-8');
+//compile template
+var compiledTemplate = Handlebars.compile(regEmail);
 
 /* GET home page. */
 
@@ -22,15 +26,9 @@ router.get('/', function(req, res, next) {
   })
 });
 
-//get file
-var regEmail = fs.readFileSync('./views/email.hbs','utf-8');
-
-//compile template
-var compiledTemplate = Handlebars.compile(regEmail);
 
 //sendgrid email test
 router.get('/email', function(req, res) {
-    console.log(compiledTemplate);
     sendgrid.send({
         to: ['bouchard.matthewj@gmail.com'],
         from: 'noreply@gnosh.com',
@@ -47,5 +45,7 @@ router.get('/preview', function(req,res){
     res.render('email',{firstName:'Bud'})
 
 })
+
+
 
 module.exports = router;
