@@ -85,6 +85,7 @@ app.use(function (req, res, next) {
   });
 
 function userAdmin(req, res, next){
+    console.log(req.session);
     knex('users')
     .where({email: req.session.passport.user.email})
     .then(function(user){
