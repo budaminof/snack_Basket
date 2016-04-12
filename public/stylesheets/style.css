@@ -13,6 +13,21 @@ div.container {
   margin-left: 2%;
 }
 
+
+/* Cart Dropdown */
+
+div.cart {
+  text-align: left;
+  margin-top: 5px;
+}
+
+ul.dropdown-menu > li {
+  text-align: right;
+}
+
+td.cart {
+  padding: 2% 0;
+}
 a {
   color: #00B7FF;
 }

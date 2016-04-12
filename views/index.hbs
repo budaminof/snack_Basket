@@ -1,5 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container nav-container">
+
     <ul class="nav nav-pills">
       {{#if user}}
       {{#if photo}}
@@ -13,6 +14,26 @@
       <li role="presentation"><a href="/users/login">Log In</a></li>
       <li role="presentation"><a href="/users/logout">Log out</a></li>
     </ul>
+
+    <div class="dropdown cart">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Cart
+        <span class="caret"></span>
+      </button>
+      <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+        </tr>
+        {{#items}}
+        <tr>
+          <td class='cart'>{{this.name}}</td>
+          <td class='cart'>{{this.price}}</td>
+        </tr>
+        {{/items}}
+      </table>
+    </div>
+
   </div>
 </nav>
 
