@@ -6,4 +6,13 @@ router.get('/', function (req, res, next){
     res.render('admin');
 })
 
+router.get('/new', function (req, res, next){
+    res.render('admin_new');
+})
+
+router.post('/new', function (req, res, next){
+    knex('users')
+    .insert(req.body)
+})
+
 module.exports = router;
