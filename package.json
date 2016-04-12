@@ -16,10 +16,12 @@
     "hbs": "~3.1.0",
     "knex": "^0.10.0",
     "morgan": "~1.6.1",
+    "nodemailer": "^2.3.2",
     "passport": "^0.3.2",
     "passport-google-oauth20": "^1.0.0",
     "pg": "^4.5.3",
     "sendgrid": "^2.0.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "smtpapi": "^1.2.0"
   }
 }
