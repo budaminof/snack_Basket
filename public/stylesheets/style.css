@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+.item-pic {
+  height: 200px;
+  width: 200px;
+  border-radius: 8px;
+}
+
+.listing-row {
+  margin: 2%;
+}
+
+td, th {
+  padding: 1%;
+}
