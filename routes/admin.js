@@ -68,4 +68,27 @@ router.get('/products/:id/edit', function (req, res, next){
         res.redirect('/admin/products');
     })
 })
+
+router.get('/products/:id/delete', function (req, res, next){
+    knex('items')
+    .where({id: req.params.id})
+    .first()
+    .del()
+    .then(function (info){
+        res.redirect('/admin/products');
+    })
+})
+
+router.get('/products/add', function (req, res, next){
+    res.render('products_add');
+})
+
+router.post('/products/add', function (req, res, next){
+    knex('items')
+    .insert(req.body)
+    .returning('id')
+    .then(function(id){
+        res.redirect('/admin/products');
+    })
+})
 module.exports = router;
