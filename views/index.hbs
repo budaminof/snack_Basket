@@ -1,38 +1,58 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
+  <div class="container nav-container">
+
     <ul class="nav nav-pills">
+      {{#if user}}
+      {{#if photo}}
+      <li role='presentation'><img src="{{photo}}"/></li>
+      {{/if}}
+      <li role='presentation'><h5>Welcome, {{name}}!</h5></li>
+      {{else}}
+      <h2><a href='/auth/google'>log in with google</a></h2>
+      {{/if}}
       <li role="presentation"><a href="/users/signup">Sign Up</a></li>
       <li role="presentation"><a href="/users/login">Log In</a></li>
       <li role="presentation"><a href="/users/logout">Log out</a></li>
     </ul>
+
+    <div class="dropdown cart">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Cart
+        <span class="caret"></span>
+      </button>
+      <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+        </tr>
+        {{#items}}
+        <tr>
+          <td class='cart'>{{this.name}}</td>
+          <td class='cart'>{{this.price}}</td>
+        </tr>
+        {{/items}}
+      </table>
+    </div>
+
   </div>
 </nav>
 
-{{#if user}}
-  {{#if photo}}
-    <img src="{{photo}}"/>
-  {{/if}}
-
-  <h2>hey {{name}}</h2>
-  <br>
-
-  {{else}}
-  <h2><a href='/auth/google'>log in with google</a></h2>
-{{/if}}
 
 <table>
   <tr>
     <th>Image</th>
     <th class='text-center'>Name</th>
     <th class='text-center'>Price</th>
-    <th class='text-center'g>Description</th>
+    <th class='text-center'>Description</th>
+    <th class='text-center'>Add to Cart</th>
   </tr>
   {{#items}}
   <tr class='listing-row'>
     <td><img class='item-pic' src='{{this.image_url}}'></td>
     <td class='text-center'>{{this.name}}</td>
     <td class='text-center'>${{this.price}}</td>
-    <td class='text-center'>{{this.description}}</td>
+    <td class='description'>{{this.description}}</td>
+    <td><a href='#'>Add to Cart</a></td>
   </tr>
   {{/items}}
 </table>
