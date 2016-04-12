@@ -4,7 +4,6 @@ var bcrypt = require('bcrypt');
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
 
 router.get('/', function(req, res, next) {
-
 });
 
 router.get('/signup', function(req, res, next) {
@@ -67,10 +66,11 @@ router.post('/login', function(req,res,next){
   .first()
   .then(function(response){
     if(response && bcrypt.compareSync(req.body.password, response.password)){
-    //  req.session.user = response.email;
-    //  req.session.id = response.id;
-    //  req.session.email= response.email;
+     req.session.id = response.id;
+     req.session.email= response.email;
+     req.session.admin = response.admin;
 
+     if(req.session.admin) return res.redirect('/admin');
      res.redirect('/');
     } else {
       res.render('login', {errors: 'Invalid username or password'});
