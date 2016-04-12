@@ -2,7 +2,12 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
+var fs = require('fs');
+var Handlebars = require("handlebars");
+
 var dotenv = require('dotenv');
+var sendgrid = require('sendgrid')('MatieuB', 'tenbusch7');
+
 
 dotenv.load();
 
@@ -61,13 +66,33 @@ router.post('/signup', function(req, res, next) {
                                     last_name: req.body.last_name,
                                     password: hash
                                 })
-                                .then(function() {
-                                    res.redirect('/');
+                            }
+                        }).then(function() {
+                                    //get file
+                                    var regEmail = fs.readFileSync('./views/email.hbs','utf-8');
+                                    //compile template
+                                    var compiledTemplate = Handlebars.compile(regEmail);
+
+                                    sendgrid.send({
+                                        to: req.body.email,
+                                        from: 'noreply@gnosh.com',
+                                        subject: 'Welcome from GNOSH.com',
+                                        html: compiledTemplate({firstName:req.body.first_name})
+                                    }, function(err, json) {
+                                        if(err) {
+                                          console.log('oh no!');
+                                      } console.log('success!!!',json);
                                 })
-                        }
-                })
-            }
+
+                        }).then(function() {
+                            res.redirect('/');
+                        })
+
+
+    };
 });
+
+
 
 
 router.post('/login', function(req, res, next) {
