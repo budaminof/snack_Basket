@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
         table.string('email').unique();
         table.string('password');
         table.boolean('admin').defaultTo(false);
-
     })
 
 };
