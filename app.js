@@ -44,7 +44,14 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(null, {id: profile.id, displayName: profile.displayName, photo: profile.photos[0].value});
+      return cb(null, {
+          id: profile.id,
+          displayName: profile.displayName,
+          first_name: profile.name.givenName,
+          last_name: profile.name.familyName,
+          photo: profile.photos[0].value,
+          email: JSON.parse(profile._raw).emails[0].value
+      });
     // });
   }
 ));
@@ -71,17 +78,20 @@ app.get('/auth/google/callback',
 
 
 app.use(function (req, res, next) {
-    // console.log('----------------------------- ');
-    // console.log(req.user); // is allowing a quicker approach for req.seesion.passport
-    // console.log(req.session);
     if(req.session.passport) {
         res.locals.user = req.session.passport.user;
     }
   next();
   });
 
+function userAdmin(req, res, next){
+    if(!req.session.admin) return res.redirect('/users/login');
+    next();
+ }
+
 app.use('/', routes);
 app.use('/users', users);
+app.use(userAdmin)
 app.use('/admin', admin);
 
 // catch 404 and forward to error handler
