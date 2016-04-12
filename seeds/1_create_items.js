@@ -5,22 +5,22 @@ exports.seed = function(knex, Promise) {
 
     knex('items').insert([
         {
-        name: 'Cured meat',description:"it's the cure for your meat needs",
+        name: 'Cured Meat',description:"It's the cure for your meat needs",
         price:10.00,
         image_url:"http://thewinebar.com/sites/default/files/styles/main_image/public/cured-meat.png?itok=7NlNPLw5"
         },
 
         {
         name: 'Pickles',
-        description:"sweet and spicey tastes so nicey",
+        description:"Sweet and spicy tastes so nicey",
         price:7.00, image_url:"http://static1.squarespace.com/static/563ace9be4b0f155c92ec39c/5647a58de4b0389db0961861/5647a5bfe4b0a1999a71a4ad/1447536066617/picklesopt.jpg"
         },
 
         {
         name: 'Fancy Mustard',
-        description:"you might not want to wear yor fancy pants.",
+        description:"You might not want to wear your fancy pants.",
         price:4.50,
-        image_url:"http://greenpointers.com/wp-content/uploads/2012/04/JGALATIOTO_GREENPOINTERS_MYFRIENDSMUSTARD_MG_9976-300x200.jpg"
+        image_url:"http://img1.sunset.timeinc.net/sites/default/files/image/2011/03/rosemary-mustard-su2-x.jpg"
         },
 
         {
@@ -46,28 +46,28 @@ exports.seed = function(knex, Promise) {
 
         {
         name: 'Pesto',
-        description:"Its the BESTO!",
+        description:"It's the BESTO!",
         price:8.50,
         image_url:"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQdEnZZ4MhoKhnH_7pTKomAaCZyo07hojcC9LV26WTI6MBIObRNrw"
         },
 
         {
-        name: 'Mixed nuts',
-        description:"hand picked and shelled by our fair trade cooperative of indigenous squirrels ",
+        name: 'Mixed Nuts',
+        description:"Hand picked and shelled by our fair trade cooperative of indigenous squirrels.",
         price:8.50,
         image_url:"http://s-ak.buzzfed.com/static/enhanced/terminal01/2010/11/10/16/enhanced-buzz-16108-1289424850-3.jpg"
         },
 
         {
         name: 'Stanky Cheese',
-        description:"all this shit is so cheesy",
+        description:"All this shit is so cheesy!",
         price:7.25,
         image_url:"http://culturecheesemag.com/wp-content/uploads/2015/01/shutterstock-stinky-cheese-plate-750x368.jpg"
         },
 
         {
-        name: 'GF basket',
-        description:"If you're glutarded like me, you'll really appreciate this compendium of snacks",
+        name: 'GF Basket',
+        description:"If you're glutarded like me, you'll really appreciate this compendium of snacks.",
         price:40.00,
         image_url:"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRNky-M8i3IYI_5TD8QfQLV1xBaFfTZdgrGIRlTlgl5kipXHZemHw"
         },
@@ -81,7 +81,7 @@ exports.seed = function(knex, Promise) {
 
         {
         name: 'Autoimmune Paleo Basket',
-        description:"Endocrine disrupters, glyphosate ",
+        description:"Endocrine disrupters, glyphosate.",
         price:40.00,
         image_url:"http://s3.amazonaws.com/weighttraining.com/data/1303/content.jpg?1339031847"
         },
@@ -94,28 +94,29 @@ exports.seed = function(knex, Promise) {
         },
 
         {
-        name: 'Dairy Free Basket',description:"Because cows are people too",
+        name: 'Dairy Free Basket',
+        description:"Because cows are people too.",
         price:40.00,
         image_url:"http://vignette4.wikia.nocookie.net/my-family-my-culture/images/d/d9/Free-posters-and-signs-no-cow-1200x880.jpg/revision/latest?cb=20140424023800"
         },
 
         {
         name: 'Sweety Basket',
-        description:"Because dentists are people too and need jobs",
+        description:"Because dentists are people too and need jobs.",
         price:28.00,
         image_url:"http://www.great-birthday-gift-ideas.com/images/sweets-basket.jpg"
         },
 
         {
         name: 'Savory Basket',
-        description:"sometimes you just neeed to slow down and savor the juiciness of life",
+        description:"Sometimes you just neeed to slow down and savor the juiciness of life.",
         price:28.00,
         image_url:"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQZhFbi9j1--fx3JOV0NTDsFa-_sTDY2Ho7Kz9Li_OInyRIkPI-gA"
         },
 
         {
         name: 'Chocolate Covered Espresso Beans',
-        description:"yes yes yes",
+        description:"Yes yes yes!",
         price:9.00,
         image_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCNuEePhTze-39I2rsYw3CKAdIJg9bDyxMasWuKsAeZzfdmi-U"
         }

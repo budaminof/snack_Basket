@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 100%;
 }
 
 .hidden {
@@ -15,9 +16,6 @@ body {
 
 div.container {
   margin-left: 2%;
-}
-div.container2 {
-display:flex;
 }
 
 
@@ -49,25 +47,6 @@ a {
   color: #00B7FF;
 }
 
-/* Header */
-
-header {
-  position: fixed;
-  display: relative;
-}
-
-div.main-pic {
-  position: absolute;
-  display: flex;
-  flex-basis: 100%;
-}
-
-img.landing {
-  position: fixed;
-  left: 0;
-  padding: 0;
-}
-
 /* LISTINGS */
 
 /* Side blurring for carousel */
@@ -93,12 +72,30 @@ img.landing {
   right: 0;
 }
 
+/* Landing */
+
+#container {
+  height: 100%;
+    postition: relative;
+    width: 100%;
+}
+
+div.main-pic {
+  position: absolute;
+  left: 0;
+  padding: 0;
+}
+
+div.table-div {
+  position: absolute;
+  overflow: scroll;
+}
+
 table {
-  position: relative;
-  display: block;
+  /*position: relative;*/
+  /*display: block;*/
   margin: auto;
-  margin-top: 10%;
-  flex-basis: 100%;
+  margin-top: 12%;
 }
 
 td, th {
@@ -115,7 +112,6 @@ td, th {
   padding: 0 0.5%;
   text-align: center;
 }
-
 
 td.description {
   text-align: left;
