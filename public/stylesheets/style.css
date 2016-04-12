@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
 }
 
 .hidden {
@@ -15,7 +16,10 @@ body {
 
 div.container {
   margin-left: 2%;
+
+
 }
+
 
 
 /* Cart Dropdown */
@@ -61,6 +65,11 @@ a {
 table {
   margin: auto;
   margin-top: 3%;
+
+}
+.container1 {
+    height:50vh;
+    overflow-y: scroll;
 }
 
 td, th {

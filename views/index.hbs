@@ -35,23 +35,26 @@
 </nav>
 
 
-<table>
-  <tr>
-    <th>Image</th>
-    <th class='hidden'>ID</th>
-    <th class='text-center'>Name</th>
-    <th class='text-center'>Price</th>
-    <th class='text-center'>Description</th>
-    <th class='text-center'>Add to Cart</th>
-  </tr>
-  {{#items}}
-  <tr class='listing-row'>
-    <td><img class='item-pic' src='{{this.image_url}}'></td>
-    <td class='hidden'>{{this.id}}</td>
-    <td class='text-center'>{{this.name}}</td>
-    <td class='text-center'>${{this.price}}</td>
-    <td class='description hide-in-cart'>{{this.description}}</td>
-    <td class='hide-in-cart'><form method='POST' action='/cart/add/{{this.id}}'><input type='submit' value='Add to Cart'></form></td>
-  </tr>
-  {{/items}}
-</table>
+<div class="conainer1">
+
+    <table>
+      <tr>
+        <th>Image</th>
+        <th class='hidden'>ID</th>
+        <th class='text-center'>Name</th>
+        <th class='text-center'>Price</th>
+        <th class='text-center'>Description</th>
+        <th class='text-center'>Add to Cart</th>
+      </tr>
+      {{#items}}
+      <tr class='listing-row'>
+        <td><img class='item-pic' src='{{this.image_url}}'></td>
+        <td class='hidden'>{{this.id}}</td>
+        <td class='text-center'>{{this.name}}</td>
+        <td class='text-center'>${{this.price}}</td>
+        <td class='description hide-in-cart'>{{this.description}}</td>
+        <td class='hide-in-cart'><form method='POST' action='/cart/add/{{this.id}}'><input type='submit' value='Add to Cart'></form></td>
+      </tr>
+      {{/items}}
+    </table>
+</div>
