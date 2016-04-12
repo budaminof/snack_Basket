@@ -25,6 +25,11 @@ ul.dropdown-menu > li {
   text-align: right;
 }
 
+.dropdown-menu > tbody > tr > td > img {
+  width: 75px;
+  height: 75px;
+}
+
 td.cart {
   padding: 2% 0;
 }
