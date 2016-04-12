@@ -3,9 +3,22 @@
     <ul class="nav nav-pills">
       <li role="presentation"><a href="/users/signup">Sign Up</a></li>
       <li role="presentation"><a href="/users/login">Log In</a></li>
+      <li role="presentation"><a href="/users/logout">Log out</a></li>
     </ul>
   </div>
 </nav>
+
+{{#if user}}
+  {{#if photo}}
+    <img src="{{photo}}"/>
+  {{/if}}
+
+  <h2>hey {{name}}</h2>
+  <br>
+
+  {{else}}
+  <h2><a href='/auth/google'>log in with google</a></h2>
+{{/if}}
 
 <table>
   <tr>

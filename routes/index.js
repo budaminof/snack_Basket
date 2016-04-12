@@ -7,8 +7,12 @@ var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
 router.get('/', function(req, res, next) {
   knex.select('name','description','price','image_url').from('items')
   .then(function(items) {
-    console.log(items)
-    res.render('index', {items });
+    if (!req.session.passport) return res.render('index', { items });
+    res.render('index', {
+      name: (req.session.passport.user.displayName).split(' ').splice(0, 1).join(' '),
+      photo: req.session.passport.user.photo,
+      items: items
+    });
   })
 });
 
