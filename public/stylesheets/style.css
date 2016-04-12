@@ -3,6 +3,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+/* Top Navbar */
+
+.navbar-default {
+  padding: 0.5%;
+}
+
+div.container {
+  margin-left: 2%;
+}
+
 a {
   color: #00B7FF;
 }
@@ -17,6 +27,19 @@ a {
   margin: 2%;
 }
 
+
+/* Listings Table */
+
+table {
+  margin: auto;
+  margin-top: 3%;
+}
+
 td, th {
   padding: 1%;
+}
+
+td.description {
+  text-align: left;
+  padding-left: 15%;
 }
