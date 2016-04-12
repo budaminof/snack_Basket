@@ -2,6 +2,25 @@
   <div class="container nav-container">
 
     <ul class="nav nav-pills">
+
+      <li>
+        <div class="dropdown cart">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Cart
+            <span class="caret"></span>
+          </button>
+          <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+            <tr>
+              <td>--------------------</td>
+            </tr>
+            <tr id='total'>
+              <td><b>Total:</b></td>
+              <td>$total</td>
+            </tr>
+          </table>
+        </div>
+      </li>
+
       {{#if user}}
       {{#if photo}}
       <li role='presentation'><img src="{{photo}}"/></li>
@@ -15,21 +34,6 @@
       <li role="presentation"><a href="/users/logout">Log out</a></li>
     </ul>
 
-    <div class="dropdown cart">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Cart
-        <span class="caret"></span>
-      </button>
-      <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-        <tr>
-          <td>--------------------</td>
-        </tr>
-        <tr id='total'>
-          <td><b>Total:</b></td>
-          <td>$total</td>
-        </tr>
-      </table>
-    </div>
 
   </div>
 </nav>
@@ -51,7 +55,7 @@
     <td class='text-center'>{{this.name}}</td>
     <td class='text-center'>${{this.price}}</td>
     <td class='description hide-in-cart'>{{this.description}}</td>
-    <td class='hide-in-cart'><form method='POST' action='/cart/add/{{this.id}}'><input type='submit' value='Add to Cart'></form></td>
+    <td class='hide-in-cart'><input class='add-to-cart' type='submit' value='Add to Cart'></td>
   </tr>
   {{/items}}
 </table>
