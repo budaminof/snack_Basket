@@ -1,0 +1,14 @@
+<h1>Edit user {{data.first_name}} {{data.last_name}}</h1>
+
+<form action="/admin/users/{{data.id}}/edit" method="post">
+    <label>First Name</label>
+    <input type="text" name="first_name" value="{{data.first_name}}">
+    <label>Last Name</label>
+    <input type="text" name="last_name" value="{{data.last_name}}">
+    <label>Email</label>
+    <input type="text" name="email" value="{{data.email}}">
+    <label>Admin</label>
+    <input type="checkbox" name="admin" value="">
+    <input type="submit" value="Edit this user">
+
+</form>
