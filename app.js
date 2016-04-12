@@ -9,6 +9,7 @@ var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var cookieSession = require('cookie-session');
 var User = require('./routes/oauth/oauth_init')
+var knex = require('knex')(require('./knexfile')[process.env.DB_ENV]);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -84,7 +85,11 @@ app.use(function (req, res, next) {
   });
 
 function userAdmin(req, res, next){
-    if(!req.session.admin) return res.redirect('/users/login');
+    knex('users')
+    .where({email: req.session.passport.user.email})
+    .then(function(user){
+        if(!user[0].admin) return res.redirect('/users/login');
+    })
     next();
  }
 
