@@ -22,19 +22,9 @@
       </button>
       <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
         <tr>
-          <th>Item</th>
-          <th>Price</th>
-        </tr>
-        <!-- {{#items}}
-        <tr>
-          <td class='cart'>{{this.name}}</td>
-          <td class='cart'>{{this.price}}</td>
-        </tr>
-        {{/items}} -->
-        <tr>
           <td>--------------------</td>
         </tr>
-        <tr>
+        <tr id='total'>
           <td><b>Total:</b></td>
           <td>$total</td>
         </tr>
@@ -48,6 +38,7 @@
 <table>
   <tr>
     <th>Image</th>
+    <th class='hidden'>ID</th>
     <th class='text-center'>Name</th>
     <th class='text-center'>Price</th>
     <th class='text-center'>Description</th>
@@ -55,11 +46,12 @@
   </tr>
   {{#items}}
   <tr class='listing-row'>
-    <td><img class='item-pic cart-info' src='{{this.image_url}}'></td>
-    <td class='text-center cart-info'>{{this.name}}</td>
-    <td class='text-center cart-info'>${{this.price}}</td>
-    <td class='description'>{{this.description}}</td>
-    <td><a class='add-to-cart' href='#'>Add to Cart</a></td>
+    <td><img class='item-pic' src='{{this.image_url}}'></td>
+    <td class='hidden'>{{this.id}}</td>
+    <td class='text-center'>{{this.name}}</td>
+    <td class='text-center'>${{this.price}}</td>
+    <td class='description hide-in-cart'>{{this.description}}</td>
+    <td class='hide-in-cart'><form method='POST' action='/cart/add/{{this.id}}'><input type='submit' value='Add to Cart'></form></td>
   </tr>
   {{/items}}
 </table>
