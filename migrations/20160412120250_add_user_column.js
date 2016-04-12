@@ -7,6 +7,6 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropCulumn('oauth_type');
+    return knex.schema.dropColumn('oauth_type');
 
 };
