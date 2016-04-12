@@ -20,3 +20,6 @@ a {
 td, th {
   padding: 1%;
 }
+.thumbnail {
+    width:25%;
+}
