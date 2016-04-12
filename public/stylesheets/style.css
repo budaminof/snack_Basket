@@ -16,6 +16,9 @@ body {
 div.container {
   margin-left: 2%;
 }
+div.container2 {
+display:flex;
+}
 
 
 /* Cart Dropdown */
@@ -53,24 +56,21 @@ header {
   display: relative;
 }
 
-.item-pic {
-  height: 300px;
-  width: 300px;
-  border-radius: 50%;
+div.main-pic {
+  position: absolute;
+  display: flex;
+  flex-basis: 100%;
 }
 
-.listing-row {
-  margin: 2%;
+img.landing {
+  position: fixed;
+  left: 0;
+  padding: 0;
 }
 
-.listing {
-  padding: 0 0.5%;
-  text-align: center;
-}
+/* LISTINGS */
 
-
-/* Listings Table */
-
+/* Side blurring for carousel */
 .mask-left {
   z-index: 100;
   background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
@@ -94,13 +94,28 @@ header {
 }
 
 table {
+  position: relative;
+  display: block;
   margin: auto;
   margin-top: 10%;
+  flex-basis: 100%;
 }
 
 td, th {
   padding: 1%;
 }
+
+.item-pic {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+
+.listing {
+  padding: 0 0.5%;
+  text-align: center;
+}
+
 
 td.description {
   text-align: left;

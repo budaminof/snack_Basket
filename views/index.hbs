@@ -38,30 +38,39 @@
   </div>
 </nav>
 
-<header>
-  <h1 class='text-center'>gnosh.</h1>
-  <h4 class='text-center'>All the snacks you need. Right to your door.</h4>
-</header>
 
-<div class='mask mask-left'>
+<div class='row main-pic col-md-12'>
+  <div>
+    <img class='landing' src='/images/spread.jpg'>
+    <header>
+      <h1 class='text-center'>gnosh.</h1>
+      <h4 class='text-center'>All the snacks you need. Right to your door.</h4>
+    </header>
+  </div>
 </div>
-  <table class='col-md-10'>
-    <tr class='listing-row'>
-      {{#items}}
-      <td class='listing'>
-        <img class='item-pic' src='{{this.image_url}}'>
-        <h2>{{this.name}}</h2>
-        <p>${{this.price}}</p>
-        <p>{{this.description}}</p>
-        <input class='add-to-cart' type='submit' value='Add to Cart'>
-      </td>
-      {{/items}}
-      <!-- <td class='hidden'>{{this.id}}</td> -->
-      <!-- <td class='text-center'>{{this.name}}</td>
-      <td class='text-center'>${{this.price}}</td>
-      <td class='description hide-in-cart'>{{this.description}}</td>
-      <td class='hide-in-cart'><input class='add-to-cart' type='submit' value='Add to Cart'></td> -->
-    </tr>
-  </table>
-<div class='mask mask-right'>
+
+
+<div class='container2 row col-md-12'>
+  <div class='mask mask-left'>
+  </div>
+    <table >
+      <tr class='listing-row'>
+        {{#items}}
+        <td class='listing'>
+          <img class='item-pic' src='{{this.image_url}}'>
+          <h2>{{this.name}}</h2>
+          <p>${{this.price}}</p>
+          <p>{{this.description}}</p>
+          <input class='add-to-cart' type='submit' value='Add to Cart'>
+        </td>
+        {{/items}}
+        <!-- <td class='hidden'>{{this.id}}</td> -->
+        <!-- <td class='text-center'>{{this.name}}</td>
+        <td class='text-center'>${{this.price}}</td>
+        <td class='description hide-in-cart'>{{this.description}}</td>
+        <td class='hide-in-cart'><input class='add-to-cart' type='submit' value='Add to Cart'></td> -->
+      </tr>
+    </table>
+  <div class='mask mask-right'>
+  </div>
 </div>
