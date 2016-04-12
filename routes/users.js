@@ -64,10 +64,10 @@ router.post('/signup', function(req, res, next) {
                                     email: req.body.email,
                                     first_name: req.body.first_name,
                                     last_name: req.body.last_name,
-                                    password: hash
+                                    password: hash,
+                                    oauth_type: 'bcrypt'
                                 })
-                            }
-                        }).then(function() {
+                                .then(function() {
                                     //get file
                                     var regEmail = fs.readFileSync('./views/email.hbs','utf-8');
                                     //compile template
@@ -80,14 +80,15 @@ router.post('/signup', function(req, res, next) {
                                         html: compiledTemplate({firstName:req.body.first_name})
                                     }, function(err, json) {
                                         if(err) {
-                                          console.log('oh no!');
-                                      } console.log('success!!!',json);
+                                            console.log('oh no!');
+                                        } console.log('success!!!',json);
+                                    })
+
+                                }).then(function() {
+                                    res.redirect('/');
                                 })
-
-                        }).then(function() {
-                            res.redirect('/');
-                        })
-
+                            }
+                })
 
     };
 });
