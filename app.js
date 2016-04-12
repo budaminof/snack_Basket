@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var cookieSession = require('cookie-session');
+var User = require('./routes/oauth/oauth_init')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -43,16 +44,14 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.HOST+"/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate( profile, function (err, user) {
       return cb(null, {
-          id: profile.id,
+          oauth_id: profile.id,
           displayName: profile.displayName,
-          first_name: profile.name.givenName,
-          last_name: profile.name.familyName,
           photo: profile.photos[0].value,
           email: JSON.parse(profile._raw).emails[0].value
       });
-    // });
+    });
   }
 ));
 
