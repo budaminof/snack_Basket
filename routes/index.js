@@ -46,6 +46,9 @@ router.get('/preview', function(req,res){
 
 })
 
-
+router.post('/cart/add/:itemId', function (req, res ,next){
+    console.log(req.session);
+    res.redirect('/');
+})
 
 module.exports = router;

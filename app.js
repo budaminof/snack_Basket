@@ -85,12 +85,22 @@ app.use(function (req, res, next) {
   });
 
 function userAdmin(req, res, next){
-    knex('users')
-    .where({email: req.session.passport.user.email})
-    .then(function(user){
-        if(!user[0].admin) return res.redirect('/users/login');
-    })
-    next();
+    if(!req.session.passport){
+        knex('users')
+        .where({email: req.session.email})
+        .then(function(data){
+            if(!data[0].admin) return res.redirect('/users/login');
+        })
+        next();
+    }
+    else {
+        knex('users')
+        .where({email: req.session.passport.user.email})
+        .then(function(user){
+            if(!user[0].admin) return res.redirect('/users/login');
+        })
+        next();
+    }
  }
 
 app.use('/', routes);
