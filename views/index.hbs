@@ -19,7 +19,7 @@
         </div>
       </li>
 
-      {{#if user}}
+      <!-- {{#if user}}
       {{#if photo}}
       <li role='presentation'><img src="{{photo}}"/></li>
       {{/if}}
@@ -29,7 +29,20 @@
       {{/if}}
       <li role="presentation"><a href="/users/signup">Sign Up</a></li>
       <li role="presentation"><a href="/users/login">Log In</a></li>
-      <li role="presentation"><a href="/users/logout">Log out</a></li>
+      <li role="presentation"><a href="/users/logout">Log out</a></li> -->
+
+      {{#if user}}
+       {{#if photo}}
+       <li><img src="{{photo}}"/></li>
+       {{/if}}
+       <li><h5>Welcome, {{name}}!</h5></li>
+       <li><a class="logout" href="/users/logout">Log out</a></li>
+       {{/if}}
+       {{#unless user}}
+       <li><a href='/auth/google'><img class="google" src="http://i.stack.imgur.com/XzoRm.png" alt="google oauth"/></a></li>
+       <li><a class="signup" href="/users/signup">Sign Up</a></li>
+       <li><a class="login" href="/users/login">Log In</a></li>
+      {{/unless}}
     </ul>
 
   </div>
@@ -77,6 +90,11 @@
       <div class='text-center'>
         <h3>{{this.name}}</h3>
         <p>{{this.description}}</p>
+        <div>
+          <form class="" action="/cart/add/{{this.id}}" method="post">
+            <input class='add-to-cart' type='submit' value='Add to Cart'>
+          </form>
+        </div>
       </div>
     </div>
     {{/items}}
