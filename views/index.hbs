@@ -1,52 +1,4 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Our Logo</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        {{#if user}}
-        {{#if photo}}
-        <li><img src="{{photo}}"/></li>
-        {{/if}}
-        <li><h5>Welcome, {{name}}!</h5></li>
-        <li><a class="logout" href="/users/logout">Log out</a></li>
-        {{else}}
-        {{/if}}
-        {{#unless user}}
-        <li><a href='/auth/google'><img class="google" src="http://i.stack.imgur.com/XzoRm.png" alt="google oauth"/></a></li>
-        <li><a class="signup" href="/users/signup">Sign Up</a></li>
-        <li><a class="login" href="/users/login">Log In</a></li>
-        {{/unless}}
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cart</span></a>
-          <ul class="dropdown-menu">
-            <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-              <tr>
-                <td>--------------------</td>
-              </tr>
-              <tr id='total'>
-                <td><b>Total:</b></td>
-                <td>$total</td>
-              </tr>
-            </table>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<!-- ////////////////////////////////////////////////////////////////////// -->
-<!-- <nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container nav-container">
 
     <ul class="nav nav-pills">
@@ -82,7 +34,7 @@
     </div>
 
   </div>
-</nav> -->
+</nav>
 
 
 <table>
