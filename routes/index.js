@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
     knex('items')
         .select('name', 'description', 'price', 'image_url', 'id')
         .then(function(items) {
-            if (!req.session.passport) return res.render('index');
+            if (!req.session.passport) return res.render('index',{items});
 
             res.render('index', {
                 items: items,
