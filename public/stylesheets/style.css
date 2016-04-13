@@ -135,9 +135,6 @@ main.signup > form {
   color: black;
 }
 
-main.login > form > label {
-  font-size: 28px;
-}
 
 h1.login, h1.signup {
   color: white;
