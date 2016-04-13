@@ -1,23 +1,77 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container nav-container">
-    <ul class="nav nav-pills">
-      <li>
-        <div class="dropdown cart">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Cart
-            <span class="caret"></span>
-          </button>
-          <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-            <tr>
-              <td></td>
-            </tr>
-            <tr id='total'>
-              <td><b>Total:</b></td>
-              <td>$total</td>
-            </tr>
-          </table>
+    <div class="container nav-container">
+        <ul class="nav nav-pills">
+            <li>
+                <div class="dropdown cart">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Cart
+                        <span class="caret"></span>
+                    </button>
+                    <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr id='total'>
+                            <td><b>Total:</b></td>
+                            <td>$total</td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
+
+            {{#if user}}
+                {{#if photo}}
+                    <li role='presentation'><img src="{{photo}}" /></li>
+                {{/if}}
+                <li role='presentation'>
+                    <h5>Welcome, {{name}}!</h5></li>
+            {{else}}
+                <h2><a href='/auth/google'>log in with google</a></h2>
+            {{/if}}
+            <li role="presentation"><a href="/users/signup">Sign Up</a></li>
+            <li role="presentation"><a href="/all_products">All Products</a></li>
+            <li role="presentation"><a href="/users/login">Log In</a></li>
+            <li role="presentation"><a href="/users/logout">Log out</a></li>
+        </ul>
+
+    </div>
+    <!-- Large modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Loginl</button>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content login-background">
+                <main class='login'>
+                    <!-- <img class='' src='http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg'> -->
+                    <!-- <h1 class='login'>Log In</h1> -->
+                    <!-- <div class="center-block form-group"> -->
+<form class="form-group" action="/users/login" method='post'>
+    <!-- <ul class='errors'>
+        {{#errors}}
+        <li><b>{{this}}</b></li>
+        {{/errors}}
+    </ul> -->
+    <label class='form-control'>Email</label>
+    <input class='form-control' type='text' name='email'></input>
+    <label class='form-control'>Password</label>
+    <input class='form-control' type='password' name='password'></input>
+    <button type="submit" class="btn btn-default">Submit</button>
+
+    <a href='/'>Home</a>
+</form>
+
+
+
+
+
+
+
+
+                </main>
+            </div>
         </div>
-      </li>
+<<<<<<< HEAD
+
 
       {{#if user}}
        {{#if photo}}
@@ -37,21 +91,19 @@
 </nav>
 
 <div class='row main-pic'>
-  <div class='col-md-12'>
-    <img class='landing center-block' src='https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking-large.jpg'>
-  </div>
-  <h1 class='header'>gnosh.</h1>
-  <h4 class='header text-center'>All the snacks you need. <br>Right to your door.</h4>
+
+    <div class='col-md-12'>
+        <img class='landing center-block' src='https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking-large.jpg'>
+    </div>
+
+    <h1 class='header'>gnosh.</h1>
+    <h4 class='header text-center'>All the snacks you need. <br>Right to your door.</h4>
+
 </div>
-
-<aside class='mask mask-left'>
-</aside>
-<aside class='mask mask-right'>
-</aside>
-
 
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" interval="false" wrap='true'>
+
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
