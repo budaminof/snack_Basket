@@ -1,18 +1,21 @@
-<h1>Log In</h1>
-<form action='/users/login' method='post'>
-  <ul class='errors'>
-    {{#errors}}
-    <li><b>{{this}}</b></li>
-    {{/errors}}
-  </ul>
-  <br>
-  <label for='name'>Email</label>
-  <input type='text' name='email'></input>
-  <br><br>
-  <label for='email'>Password</label>
-  <input type='password' name='password'></input>
-  <br><br>
-  <button type='submit'>Log In</button>
-</form>
+<main class='login'>
+  <img class='login-background' src='http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg'>
+  <h1 class='login'>Log In</h1>
+  <form class='login center-block' action='/users/login' method='post'>
+    <ul class='errors'>
+      {{#errors}}
+      <li><b>{{this}}</b></li>
+      {{/errors}}
+    </ul>
+    <br>
+    <label for='name'>Email</label>
+    <input type='text' name='email'></input>
+    <br><br>
+    <label for='email'>Password</label>
+    <input type='password' name='password'></input>
+    <br><br>
+    <button type='submit'>Log In</button>
+  </form>
 
-<a href='/'>Home</a>
+  <a href='/'>Home</a>
+</main>

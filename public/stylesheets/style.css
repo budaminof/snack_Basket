@@ -1,12 +1,7 @@
 body {
   display:relative;
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   width: 100%;
-}
-
-.hidden {
-  display: none;
 }
 
 /* Top Navbar */
@@ -14,7 +9,6 @@ body {
 .navbar-default {
   padding: 0.5%;
 }
-
 
 /* Cart Dropdown */
 
@@ -41,140 +35,121 @@ td.cart {
 }
 
 a {
-  color: #00B7FF;
+  color: #121f6e;
 }
 
-
-/* LISTINGS */
-
-/* Side blurring for carousel */
-.mask-left {
-  z-index: 100;
-  background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
-  position: fixed;
-  height: 100%;
-  width: 10%;
-  left: 0;
-}
-
-.mask-right {
-  z-index: 100;
-  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-  position: fixed;
-  height: 100%;
-  width: 10%;
-  right: 0;
-}
-
-/* Landing */
+/* Main Landing */
 
 #container {
   height: 100%;
-    postition: relative;
-    width: 100%;
+  postition: relative;
+  width: 100%;
 }
-/* Header */
-
-header {
-  position: fixed;
-  display: relative;
-}
-
-div.container2 {
-    height:20px;
-    position: sticky;
-}
-
-table {
-  /*position: relative;*/
-position: sticky;
-  padding-top: 500px;
-}
-
-div.main-pic {
-  position: absolute;
-  left: 0;
-  padding: 0;
-}
-
-div.table-div {
-  position: absolute;
-  overflow: scroll;
-}
-
-table {
-  display: inline-block;
-  margin: auto;
-  margin-top: 10%;
-}
-
-/*div.main-pic {
-  position: relative;
-  display: flex;
-}*/
 
 img.landing {
-  position: fixed;
+  position: relative;
   left: 0;
   padding: 0;
+  width: 100%;
+  margin: auto;
 }
 
-/* LISTINGS */
-
-/* Side blurring for carousel */
-.mask-left {
+h1.header {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 78px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(63,44,42);
+  position: absolute;
   z-index: 100;
-  background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
-  position: fixed;
-  height: 100%;
-  width: 10%;
-  left: 0;
+  left: 14%;
+  top: 27%;
 }
 
-.mask-right {
+h4.header {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 22px;
+  position: absolute;
   z-index: 100;
-  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-  position: fixed;
-  height: 100%;
-  width: 10%;
-  right: 0;
+  left: 14%;
+  top: 45%;
 }
 
-
-
-td, th {
-  padding: 1%;
-}
+/* Listings */
 
 .item-pic {
   height: 300px;
   width: 300px;
   border-radius: 50%;
+  margin-bottom: 10px !important;
 }
 
-.listing {
-  padding: 0 0.5%;
+.item-description {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Listings Carousel */
+.carousel {
+  width: 100vw;
+  height: 60vh;
+  display: block;
+  padding-top: 2%;
+}
+
+.first-slide {
+  margin-bottom: -25px;
+}
+
+.carousel-caption {
+  display: block;
+  padding-top: 5%;
+  color: black;
+}
+
+/* Login & Signup*/
+
+img.login-background, img.signup-background {
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  z-index: -1;
+}
+
+main.login, main.signup {
+  margin: auto;
+  margin-top: 15%;
+  width: 30%;
+  background-color: rgba(228, 228, 228, 0.45);
+  border-radius: 8px;
   text-align: center;
 }
 
-td.description {
-  text-align: left;
-  padding-left: 15%;
-
+main.login > form {
+  color: black;
 }
+
+main.signup > form {
+  color: black;
+}
+
+main.login > form > label {
+  font-size: 28px;
+}
+
+h1.login, h1.signup {
+  color: white;
+  font-size: 72px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(63,44,42);
+}
+
 /* email format items */
 .thumbnail {
-    width:25%;
+  width:25%;
 }
-
 .google{
   width: 250px;
 }
@@ -183,6 +158,7 @@ a:hover{
   background-color: inherit;
   color:inherit;
 }
+
 .signup {
   width: 250px;
   background-color: rgb(55, 152, 76);
