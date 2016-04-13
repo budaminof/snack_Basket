@@ -32,8 +32,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
-    console.log('item', req.params.item_id);
-    console.log('user', req.session.passport.user.user_id);
 
     knex('users_cart')
         .insert({
@@ -42,7 +40,6 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
         })
         .returning('*')
         .then(function(data) {
-            console.log(data);
             res.redirect('/');
         })
 })
@@ -69,6 +66,26 @@ router.get('/preview', function(req, res) {
         firstName: 'Bud'
     })
 
+})
+
+router.post('/cart/add/:itemId', function (req, res ,next){
+    var item = req.params.itemId;
+    var user;
+    if(!req.session.passport){
+     user = req.session.id
+        } else{
+        user = req.session.passport.user.id;
+        }
+
+    knex('users_cart')
+    .insert({
+        user_id: user,
+        item_id: item
+    })
+    .returning('*')
+    .then(function(data){
+        res.redirect('/');
+    })
 })
 
 

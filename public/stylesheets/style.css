@@ -2,12 +2,7 @@ body {
   display:relative;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-<<<<<<< HEAD
   width: 100%;
-=======
-  width:100%;
-  height:95vh;
->>>>>>> 512c450c367cc0924bdee2765aafd1c381538b2f
 }
 
 .hidden {
@@ -19,8 +14,6 @@ body {
 .navbar-default {
   padding: 0.5%;
 }
-
-
 
 
 /* Cart Dropdown */
@@ -51,7 +44,7 @@ a {
   color: #00B7FF;
 }
 
-<<<<<<< HEAD
+
 /* LISTINGS */
 
 /* Side blurring for carousel */
@@ -83,7 +76,7 @@ a {
   height: 100%;
     postition: relative;
     width: 100%;
-=======
+}
 /* Header */
 
 header {
@@ -94,14 +87,14 @@ header {
 div.container2 {
     height:20px;
     position: sticky;
->>>>>>> 512c450c367cc0924bdee2765aafd1c381538b2f
 }
+
 table {
   /*position: relative;*/
 position: sticky;
   padding-top: 500px;
+}
 
-<<<<<<< HEAD
 div.main-pic {
   position: absolute;
   left: 0;
@@ -114,11 +107,6 @@ div.table-div {
 }
 
 table {
-  /*position: relative;*/
-  /*display: block;*/
-  margin: auto;
-  margin-top: 12%;
-=======
   display: inline-block;
   margin: auto;
   margin-top: 10%;
@@ -147,7 +135,6 @@ img.landing {
   height: 100%;
   width: 10%;
   left: 0;
->>>>>>> 512c450c367cc0924bdee2765aafd1c381538b2f
 }
 
 .mask-right {
@@ -177,10 +164,6 @@ td, th {
   padding: 0 0.5%;
   text-align: center;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 512c450c367cc0924bdee2765aafd1c381538b2f
 
 td.description {
   text-align: left;
