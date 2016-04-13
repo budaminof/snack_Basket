@@ -9,15 +9,15 @@ var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')('MatieuB', 'tenbusch7');
 
 
-router.get('/', function (req, res, next){
+router.get('/', function(req, res, next) {
     res.render('admin');
 })
 
-router.get('/new', function (req, res, next){
+router.get('/new', function(req, res, next) {
     res.render('admin_new');
 })
 
-router.post('/new', function (req, res, next){
+router.post('/new', function(req, res, next) {
     var errorArray = [];
 
     if (!req.body.email) {
@@ -45,7 +45,7 @@ router.post('/new', function (req, res, next){
             .where({
                 email: req.body.email
             })
-        .then(function(response) {
+            .then(function(response) {
                 if (response.length > 0) {
                     res.render('signup', {
                         error: 'An account with that email already exists'
@@ -63,7 +63,7 @@ router.post('/new', function (req, res, next){
                         })
                         .then(function(id) {
                             //get file
-                            var regEmail = fs.readFileSync('./views/email.hbs','utf-8');
+                            var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
                             //compile template
                             var compiledTemplate = Handlebars.compile(regEmail);
 
@@ -71,91 +71,112 @@ router.post('/new', function (req, res, next){
                                 to: req.body.email,
                                 from: 'noreply@gnosh.com',
                                 subject: 'New Admin!',
-                                html: compiledTemplate({firstName:req.body.first_name})
+                                html: compiledTemplate({
+                                    firstName: req.body.first_name
+                                })
                             }, function(err, json) {
-                                if(err) {
+                                if (err) {
                                     console.log('oh no!');
-                                } console.log('success!!!',json);
+                                }
+                                console.log('success!!!', json);
                             })
 
                         }).then(function() {
                             res.redirect('/admin/users');
                         })
-                    }
-                })
-            };
+                }
+            })
+    };
 })
 
-router.get('/users', function (req, res, next){
+router.get('/users', function(req, res, next) {
     knex('users')
-    .then(function(data){
-        res.render('admin_users', {data: data});
-    })
+        .then(function(data) {
+            res.render('admin_users', {
+                data: data
+            });
+        })
 })
 
-router.get('/users/:id/edit', function (req, res, next){
+router.get('/users/:id/edit', function(req, res, next) {
     knex('users')
-    .where({id: req.params.id})
-    .first()
-    .then(function (data){
-        res.render('admin_users_edit',{data: data});
-    })
+        .where({
+            id: req.params.id
+        })
+        .first()
+        .then(function(data) {
+            res.render('admin_users_edit', {
+                data: data
+            });
+        })
 })
 
-router.post('/users/:id/edit', function (req, res, next){
+router.post('/users/:id/edit', function(req, res, next) {
     knex('users')
-    .where({id: req.params.id})
-    .update(req.body)
-    .then(function(info){
-        res.redirect('/admin/users');
-    })
+        .where({
+            id: req.params.id
+        })
+        .update(req.body)
+        .then(function(info) {
+            res.redirect('/admin/users');
+        })
 })
 
-router.get('/products', function (req, res, next){
+router.get('/products', function(req, res, next) {
     knex('items')
-    .select('name','description','price','image_url', 'id')
-    .then(function(items) {
-      res.render('admin_products', { items });
-    })
+        .select('name', 'description', 'price', 'image_url', 'id')
+        .then(function(items) {
+            res.render('admin_products', {
+                items
+            });
+        })
 })
 
-router.get('/products/:id/edit', function (req, res, next){
+router.get('/products/:id/edit', function(req, res, next) {
     knex('items')
-    .where({id: req.params.id})
-    .then(function (data){
-        res.render('admin_products_edit',{data: data[0]})
-    })
+        .where({
+            id: req.params.id
+        })
+        .then(function(data) {
+            res.render('admin_products_edit', {
+                data: data[0]
+            })
+        })
 })
 
-router.get('/products/:id/edit', function (req, res, next){
+router.get('/products/:id/edit', function(req, res, next) {
     knex('items')
-    .where({id: req.params.id})
-    .update(req.body)
-    .then(function (info){
-        res.redirect('/admin/products');
-    })
+        .where({
+            id: req.params.id
+        })
+        .update(req.body)
+        .then(function(info) {
+            res.redirect('/admin/products');
+        })
 })
 
-router.get('/products/:id/delete', function (req, res, next){
+router.get('/products/:id/delete', function(req, res, next) {
     knex('items')
-    .where({id: req.params.id})
-    .first()
-    .del()
-    .then(function (info){
-        res.redirect('/admin/products');
-    })
+        .where({
+            id: req.params.id
+        })
+        .first()
+        .del()
+        .then(function(info) {
+            res.redirect('/admin/products');
+        })
 })
 
-router.get('/products/add', function (req, res, next){
+router.get('/products/add', function(req, res, next) {
     res.render('products_add');
 })
 
-router.post('/products/add', function (req, res, next){
+router.post('/products/add', function(req, res, next) {
     knex('items')
-    .insert(req.body)
-    .returning('id')
-    .then(function(id){
-        res.redirect('/admin/products');
-    })
+        .insert(req.body)
+        .returning('id')
+        .then(function(id) {
+            res.redirect('/admin/products');
+        })
 })
 module.exports = router;

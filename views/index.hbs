@@ -22,12 +22,13 @@
       </li>
 
       {{#if user}}
-      {{#if photo}}
-      <li role='presentation'><img src="{{photo}}"/></li>
-      {{/if}}
-      <li role='presentation'><h5>Welcome, {{name}}!</h5></li>
+        {{#if photo}}
+          <li role='presentation'><img src="{{photo}}" /></li>
+        {{/if}}
+        <li role='presentation'>
+          <h5>Welcome, {{name}}!</h5></li>
       {{else}}
-      <h2><a href='/auth/google'>log in with google</a></h2>
+        <h2><a href='/auth/google'>log in with google</a></h2>
       {{/if}}
       <li role="presentation"><a href="/users/signup">Sign Up</a></li>
       <li role="presentation"><a href="/users/login">Log In</a></li>
@@ -44,27 +45,26 @@
 </div>
 
 <div id='conainer'>
-<div class='row main-pic'>
-  <div class='col-md-12'>
-    <img class='landing' src='/images/spread.jpg'>
+  <div class='row main-pic'>
+    <div class='col-md-12'>
+      <img class='landing' src='/images/spread.jpg'>
+    </div>
   </div>
-</div>
-
 
   <div class='row table-div'>
     <div class='col-md-12'>
       <table>
         <tr class='listing-row'>
           {{#items}}
-          <td class='listing'>
-            <img class='item-pic' src='{{this.image_url}}'>
-            <h2>{{this.name}}</h2>
-            <p>${{this.price}}</p>
-            <p>{{this.description}}</p>
-            <form class="" action="/cart/add/{{this.id}}" method="post">
+            <td class='listing'>
+              <img class='item-pic' src='{{this.image_url}}'>
+              <h2>{{this.name}}</h2>
+              <p>${{this.price}}</p>
+              <p>{{this.description}}</p>
+              <form class="" action="/cart/add/{{this.id}}" method="post">
                 <input class='add-to-cart' type='submit' value='Add to Cart'>
-            </form>
-          </td>
+              </form>
+            </td>
           {{/items}}
         </tr>
       </table>

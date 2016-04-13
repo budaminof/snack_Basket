@@ -1,4 +1,9 @@
-####################
+#README
+#getting started
 
-welcome to our basket.
-don't forget to npm insatll (:
+-fork, clone, npm install
+-nore instructions for getting dev environment.
+-cope something to something.
+
+#Deploy
+-set configs..
