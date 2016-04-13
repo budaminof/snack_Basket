@@ -1,9 +1,6 @@
 $('document').ready(function() {
   console.log('Ready!');
 
-  $('.carousel').carousel({
-  })
-
   $('.add-to-cart').click(function(){
     var listing = $(this).parent().parent();
     console.log(listing);
