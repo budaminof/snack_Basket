@@ -14,7 +14,7 @@ var compiledTemplate = Handlebars.compile(regEmail);
 
 
 function isloggedIn(req, res, next) {
-    if (!req.session.passport.user.user_id) return res.redirect('/login')
+    if (!req.session.passport) return res.redirect('/login')
     next();
 }
 
