@@ -191,3 +191,29 @@ td.description {
 .thumbnail {
     width:25%;
 }
+
+.google{
+  width: 250px;
+}
+
+a:hover{
+  background-color: inherit;
+  color:inherit;
+}
+.signup {
+  width: 250px;
+  background-color: rgb(55, 152, 76);
+  color: rgb(255, 255, 255);
+}
+
+.login {
+  width: 250px;
+  background-color: rgb(91, 139, 179);
+  color: rgb(255, 255, 255);
+}
+
+.logout{
+  width: 250px;
+  background-color: rgb(146, 189, 187);
+  color: rgb(255, 255, 255);
+}
