@@ -5,7 +5,8 @@ var fs = require('fs');
 var Handlebars = require("handlebars");
 
 var dotenv = require('dotenv');
-var sendgrid = require(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
+var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_USERNAME);
+
 //get file
 var regEmail = fs.readFileSync('./views/email.hbs','utf-8');
 //compile template
