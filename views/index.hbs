@@ -39,23 +39,52 @@
 </nav>
 
 
-<table>
-  <tr>
-    <th>Image</th>
-    <th class='hidden'>ID</th>
-    <th class='text-center'>Name</th>
-    <th class='text-center'>Price</th>
-    <th class='text-center'>Description</th>
-    <th class='text-center'>Add to Cart</th>
-  </tr>
-  {{#items}}
-  <tr class='listing-row'>
-    <td><img class='item-pic' src='{{this.image_url}}'></td>
-    <td class='hidden'>{{this.id}}</td>
-    <td class='text-center'>{{this.name}}</td>
-    <td class='text-center'>${{this.price}}</td>
-    <td class='description hide-in-cart'>{{this.description}}</td>
-    <td class='hide-in-cart'><input class='add-to-cart' type='submit' value='Add to Cart'></td>
-  </tr>
-  {{/items}}
-</table>
+
+<div class='row main-pic'>
+    <div class='col-md-12'>
+        <img class='landing' src='/images/spread.jpg'>
+        <header>
+            <h1 class='text-center'>gnosh.</h1>
+            <h4 class='text-center'>All the snacks you need. Right to your door.</h4>
+        </header>
+    </div>
+</div>
+
+<div class='container2 row'>
+    <div class='mask mask-left'>
+    </div>
+    <table >
+      <tr class='listing-row'>
+        {{#items}}
+        // Add a slide
+        $('table').slick('slickAdd',"<div>
+        </div>
+
+
+            <td class='listing'>
+
+                <p class='hidden'>
+                    {{this.id}}
+                </p>
+                <img class='item-pic' src='{{this.image_url}}'>
+                <h2>{{this.name}}</h2>
+                <p>${{this.price}}</p>
+                <p>{{this.description}}</p>
+
+                <form action="" method="POST">
+                    <input class='add-to-cart' type='submit' value='Add to Cart'>
+                </form>
+
+
+
+        {{/items}}
+
+       </tr>
+    </table>
+</div>
+
+<div class='mask mask-right'>
+</div>
+<div class="col-md-12">
+    <h1>random</h1>
+</div>
