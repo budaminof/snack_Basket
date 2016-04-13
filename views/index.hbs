@@ -1,49 +1,100 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container nav-container">
-    <ul class="nav nav-pills">
-      <li>
-        <div class="dropdown cart">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Cart
-            <span class="caret"></span>
-          </button>
-          <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-            <tr>
-              <td></td>
-            </tr>
-            <tr id='total'>
-              <td><b>Total:</b></td>
-              <td>$total</td>
-            </tr>
-          </table>
+    <div class="container nav-container">
+        <ul class="nav nav-pills">
+            <li>
+                <div class="dropdown cart">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Cart
+                        <span class="caret"></span>
+                    </button>
+                    <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr id='total'>
+                            <td><b>Total:</b></td>
+                            <td>$total</td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
+
+            {{#if user}}
+                {{#if photo}}
+                    <li role='presentation'><img src="{{photo}}" /></li>
+                {{/if}}
+                <li role='presentation'>
+                    <h5>Welcome, {{name}}!</h5></li>
+            {{else}}
+                <h2><a href='/auth/google'>log in with google</a></h2>
+            {{/if}}
+            <li role="presentation"><a href="/users/signup">Sign Up</a></li>
+            <li role="presentation"><a href="/users/login">Log In</a></li>
+            <li role="presentation"><a href="/users/logout">Log out</a></li>
+        </ul>
+
+    </div>
+    <!-- Large modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Loginl</button>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content login-background">
+                <main class='login'>
+                    <!-- <img class='' src='http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg'> -->
+                    <h1 class='login'>Log In</h1>
+                    <div class="center-block form-group">
+                        <label class='form-control'>Email</label>
+                        <input type='text' name='email'></input>
+
+
+
+
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+
+
+
+                    <form class='login center-block' action='/users/login' method='post'>
+                        <ul class='errors'>
+                            {{#errors}}
+                                <li><b>{{this}}</b></li>
+                            {{/errors}}
+                        </ul>
+                        <br>
+                        <label for='name'>Email</label>
+                        <input type='text' name='email'></input>
+                        <br>
+                        <br>
+                        <label>Password</label>
+                        <input type='password' name='password'></input>
+                        <br>
+                        <br>
+                        <button type='submit'>Log In</button>
+                    </form>
+
+                    <a href='/'>Home</a>
+                </main>
+            </div>
         </div>
-      </li>
-
-      {{#if user}}
-      {{#if photo}}
-      <li role='presentation'><img src="{{photo}}"/></li>
-      {{/if}}
-      <li role='presentation'><h5>Welcome, {{name}}!</h5></li>
-      {{else}}
-      <h2><a href='/auth/google'>log in with google</a></h2>
-      {{/if}}
-      <li role="presentation"><a href="/users/signup">Sign Up</a></li>
-      <li role="presentation"><a href="/users/login">Log In</a></li>
-      <li role="presentation"><a href="/users/logout">Log out</a></li>
-    </ul>
-
-  </div>
+    </div>
 </nav>
 
-    
+
+
+
+
+
+
 <div class='row main-pic'>
 
-  <div class='col-md-12'>
-    <img class='landing center-block' src='https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking-large.jpg'>
-  </div>
+    <div class='col-md-12'>
+        <img class='landing center-block' src='https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking-large.jpg'>
+    </div>
 
-  <h1 class='header'>gnosh.</h1>
-  <h4 class='header text-center'>All the snacks you need. <br>Right to your door.</h4>
+    <h1 class='header'>gnosh.</h1>
+    <h4 class='header text-center'>All the snacks you need. <br>Right to your door.</h4>
 </div>
 
 
@@ -51,43 +102,43 @@
 
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" interval="false" wrap='true'>
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
 
-  <!-- Wrapper for slides -->
-  <div class='carousel-inner'>
-    <div class="item active">
-      <div>
-        <img class='first-slide center-block' src="http://www.zillow.com/blog/files/2012/11/Knife-on-cutting-board.jpg" alt="...">
-      </div>
-      <div class='text-center item-description'>
-      	<h3>Check Out Our Goodies!</h3>
-        <p>All the gnosh</p>
-      </div>
+    <!-- Wrapper for slides -->
+    <div class='carousel-inner'>
+        <div class="item active">
+            <div>
+                <img class='first-slide center-block' src="http://www.zillow.com/blog/files/2012/11/Knife-on-cutting-board.jpg" alt="...">
+            </div>
+            <div class='text-center item-description'>
+                <h3>Check Out Our Goodies!</h3>
+                <p>All the gnosh</p>
+            </div>
+        </div>
+        {{#items}}
+            <div class='item'>
+                <div>
+                    <img class='item-pic center-block form-control form-group' src='{{this.image_url}}'>
+                </div>
+                <div class='text-center'>
+                    <h3>{{this.name}}</h3>
+                    <p>{{this.description}}</p>
+                </div>
+            </div>
+        {{/items}}
     </div>
-    {{#items}}
-    <div class='item'>
-      <div>
-        <img class='item-pic center-block form-control form-group' src='{{this.image_url}}'>
-      </div>
-      <div class='text-center'>
-        <h3>{{this.name}}</h3>
-        <p>{{this.description}}</p>
-      </div>
-    </div>
-    {{/items}}
-  </div>
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-</div> <!-- Carousel -->
->>>>>>> d01edf2606c87a624c59493c401bad32ef1e2bb3
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+<!-- Carousel -->
