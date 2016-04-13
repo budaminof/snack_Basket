@@ -18,7 +18,6 @@ function isloggedIn(req, res, next) {
 }
 
 router.get('/', function(req, res, next) {
-    console.log('user_id from passport', req.session.passport.user.user_id);
     knex('items')
         .select('name', 'description', 'price', 'image_url', 'id')
         .then(function(items) {
