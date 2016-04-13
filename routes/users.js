@@ -6,7 +6,7 @@ var fs = require('fs');
 var Handlebars = require("handlebars");
 
 var dotenv = require('dotenv');
-var sendgrid = require('sendgrid')('MatieuB', 'tenbusch7');
+var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_USERNAME);
 
 dotenv.load();
 
