@@ -11,7 +11,6 @@ var regEmail = fs.readFileSync('./views/email.hbs','utf-8');
 //compile template
 var compiledTemplate = Handlebars.compile(regEmail);
 
-/* GET home page. */
 
 router.get('/', function(req, res, next) {
   knex('items')
@@ -19,9 +18,9 @@ router.get('/', function(req, res, next) {
   .then(function(items) {
     if (!req.session.passport) return res.render('index', { items });
     res.render('index', {
-      name: (req.session.passport.user.displayName).split(' ').splice(0, 1).join(' '),
-      photo: req.session.passport.user.photo,
-      items: items
+        items: items,
+        name: req.session.passport.user.name,
+        photo: req.session.passport.user.photo
     });
   })
 });
@@ -47,8 +46,24 @@ router.get('/preview', function(req,res){
 })
 
 router.post('/cart/add/:itemId', function (req, res ,next){
-    console.log(req.session);
-    res.redirect('/');
+    var item = req.params.itemId;
+    var user;
+    if(!req.session.passport){
+     user = req.session.id
+        } else{
+        user = req.session.passport.user.id;
+        }
+
+    knex('users_cart')
+    .insert({
+        user_id: user,
+        item_id: item
+    })
+    .returning('*')
+    .then(function(data){
+        console.log(data);
+        res.redirect('/');
+    })
 })
 
 module.exports = router;

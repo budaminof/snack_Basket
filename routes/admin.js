@@ -18,8 +18,6 @@ router.get('/new', function (req, res, next){
 })
 
 router.post('/new', function (req, res, next){
-    console.log(req.body);
-
     var errorArray = [];
 
     if (!req.body.email) {

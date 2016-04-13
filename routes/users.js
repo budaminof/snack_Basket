@@ -8,7 +8,6 @@ var Handlebars = require("handlebars");
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')('MatieuB', 'tenbusch7');
 
-
 dotenv.load();
 
 router.get('/', function(req, res, next) {});
@@ -51,7 +50,6 @@ router.post('/signup', function(req, res, next) {
                     .where({
                         email: req.body.email
                     })
-
                 .then(function(response) {
                         if (response.length > 0) {
                             res.render('signup', {
@@ -91,29 +89,6 @@ router.post('/signup', function(req, res, next) {
                 })
 
     };
-});
-
-
-
-
-router.post('/login', function(req, res, next) {
-    knex('users')
-        .where('email', '=', req.body.email)
-        .first()
-        .then(function(response) {
-            if (response && bcrypt.compareSync(req.body.password, response.password)) {
-                req.session.id = response.id;
-                req.session.email = response.email;
-                req.session.admin = response.admin;
-
-                if (req.session.admin) return res.redirect('/admin');
-                    res.redirect('/');
-                    } else {
-                        res.render('login', {
-                            errors: 'Invalid username or password'
-                        });
-                    }
-    });
 });
 
 router.get('/logout', function(req, res, next) {
