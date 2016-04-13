@@ -14,7 +14,7 @@ var compiledTemplate = Handlebars.compile(regEmail);
 
 
 function isloggedIn(req, res, next) {
-    if (!req.session.passport.user.user_id) return res.redirect('/login')
+    if (!req.session.passport) return res.redirect('/users/login')
     next();
 }
 
@@ -33,7 +33,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
-
     knex('users_cart')
         .insert({
             user_id: req.session.passport.user.user_id,
@@ -43,50 +42,6 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
         .then(function(data) {
             res.redirect('/');
         })
-})
-
-//sendgrid email test
-router.get('/email', function(req, res) {
-    sendgrid.send({
-        to: ['bouchard.matthewj@gmail.com'],
-        from: 'noreply@gnosh.com',
-        subject: 'Welcome from GNOSH.com',
-        html: compiledTemplate({
-            firstName: 'Matthew, Bud and & Daniel!!!'
-        })
-    }, function(err, json) {
-        if (err) {
-            res.send('oh no!!');
-        }
-        res.send('success!!!!!!!', json);
-    })
-});
-//test render rich html email
-router.get('/preview', function(req, res) {
-    res.render('email', {
-        firstName: 'Bud'
-    })
-
-})
-
-router.post('/cart/add/:itemId', function (req, res ,next){
-    var item = req.params.itemId;
-    var user;
-    if(!req.session.passport){
-     user = req.session.id
-        } else{
-        user = req.session.passport.user.id;
-        }
-
-    knex('users_cart')
-    .insert({
-        user_id: user,
-        item_id: item
-    })
-    .returning('*')
-    .then(function(data){
-        res.redirect('/');
-    })
 })
 
 
