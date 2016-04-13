@@ -58,18 +58,24 @@
         {{#items}}
         // Add a slide
         $('table').slick('slickAdd',"<div>
+        </div>
 
 
             <td class='listing'>
+
+                <p class='hidden'>
+                    {{this.id}}
+                </p>
                 <img class='item-pic' src='{{this.image_url}}'>
                 <h2>{{this.name}}</h2>
                 <p>${{this.price}}</p>
                 <p>{{this.description}}</p>
-                <input class='add-to-cart' type='submit' value='Add to Cart'>
-            </td>
+
+                <form action="" method="POST">
+                    <input class='add-to-cart' type='submit' value='Add to Cart'>
+                </form>
 
 
-        </div>
 
         {{/items}}
 
