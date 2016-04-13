@@ -44,5 +44,17 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
         })
 })
 
+router.get('/products', function(req, res, nex){
+  knex('items')
+      .select('name', 'description', 'price', 'image_url', 'id')
+      .then(function(items) {
+          if (!req.session.passport) return res.render('products',{items});
+          res.render('products', {
+              items: items,
+              name: req.session.passport.user.name,
+              photo: req.session.passport.user.photo
+          });
+      })
+})
 
 module.exports = router;

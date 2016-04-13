@@ -81,7 +81,7 @@ h4.header {
 .item-pic {
   height: 300px;
   width: 300px;
-  border-radius: 50%;
+  /*border-radius: 50%;*/
   margin-bottom: 10px !important;
 }
 
@@ -142,7 +142,19 @@ h1.login, h1.signup {
   -webkit-text-stroke-color: rgb(63,44,42);
 }
 
-/* email format items */
 .thumbnail {
-  width:25%;
+  border: none;
+}
+
+.container {
+  padding-top: 20px;
+}
+.all {
+  margin-top: 90px;
+}
+.shadow{
+  margin: 10px;
+  -webkit-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
 }
