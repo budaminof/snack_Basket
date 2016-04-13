@@ -1,8 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container nav-container">
-
     <ul class="nav nav-pills">
-
       <li>
         <div class="dropdown cart">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -11,7 +9,7 @@
           </button>
           <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
             <tr>
-              <td>--------------------</td>
+              <td></td>
             </tr>
             <tr id='total'>
               <td><b>Total:</b></td>
@@ -34,44 +32,62 @@
       <li role="presentation"><a href="/users/logout">Log out</a></li>
     </ul>
 
-
   </div>
 </nav>
 
-<div class='mask mask-left'>
-</div>
-<div class='mask mask-right'>
-</div>
 
-<div id='conainer'>
 <div class='row main-pic'>
   <div class='col-md-12'>
-    <img class='landing' src='/images/spread.jpg'>
+    <img class='landing center-block' src='https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking-large.jpg'>
   </div>
+  <h1 class='header'>gnosh.</h1>
+  <h4 class='header text-center'>All the snacks you need. <br>Right to your door.</h4>
 </div>
 
+<aside class='mask mask-left'>
+</aside>
+<aside class='mask mask-right'>
+</aside>
 
-  <div class='row table-div'>
-    <div class='col-md-12'>
-      <table>
-        <tr class='listing-row'>
-          {{#items}}
-          <td class='listing'>
-            <img class='item-pic' src='{{this.image_url}}'>
-            <h2>{{this.name}}</h2>
-            <p>${{this.price}}</p>
-            <p>{{this.description}}</p>
-            <input class='add-to-cart' type='submit' value='Add to Cart'>
-          </td>
-          {{/items}}
-          <!-- <td class='hidden'>{{this.id}}</td> -->
-          <!-- <td class='text-center'>{{this.name}}</td>
-          <td class='text-center'>${{this.price}}</td>
-          <td class='description hide-in-cart'>{{this.description}}</td>
-          <td class='hide-in-cart'><input class='add-to-cart' type='submit' value='Add to Cart'></td> -->
-        </tr>
-      </table>
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" interval="false" wrap='true'>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class='carousel-inner'>
+    <div class="item active">
+      <div>
+        <img class='first-slide center-block' src="http://www.zillow.com/blog/files/2012/11/Knife-on-cutting-board.jpg" alt="...">
+      </div>
+      <div class='text-center'>
+      	<h3>Check Out Our Goodies!</h3>
+        <p>All the gnosh</p>
+      </div>
     </div>
+    {{#items}}
+    <div class='item'>
+      <div>
+        <img class='item-pic center-block form-control form-group' src='{{this.image_url}}'>
+      </div>
+      <div class='text-center'>
+        <h3>{{this.name}}</h3>
+        <p>{{this.description}}</p>
+      </div>
+    </div>
+    {{/items}}
   </div>
 
-</div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->
