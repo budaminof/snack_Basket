@@ -19,18 +19,6 @@
         </div>
       </li>
 
-      <!-- {{#if user}}
-      {{#if photo}}
-      <li role='presentation'><img src="{{photo}}"/></li>
-      {{/if}}
-      <li role='presentation'><h5>Welcome, {{name}}!</h5></li>
-      {{else}}
-      <h2><a href='/auth/google'>log in with google</a></h2>
-      {{/if}}
-      <li role="presentation"><a href="/users/signup">Sign Up</a></li>
-      <li role="presentation"><a href="/users/login">Log In</a></li>
-      <li role="presentation"><a href="/users/logout">Log out</a></li> -->
-
       {{#if user}}
        {{#if photo}}
        <li><img src="{{photo}}"/></li>
@@ -48,18 +36,18 @@
   </div>
 </nav>
 
-
 <div class='row main-pic'>
-
   <div class='col-md-12'>
     <img class='landing center-block' src='https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking-large.jpg'>
   </div>
-
   <h1 class='header'>gnosh.</h1>
   <h4 class='header text-center'>All the snacks you need. <br>Right to your door.</h4>
 </div>
 
-
+<aside class='mask mask-left'>
+</aside>
+<aside class='mask mask-right'>
+</aside>
 
 
 
@@ -78,7 +66,7 @@
         <img class='first-slide center-block' src="http://www.zillow.com/blog/files/2012/11/Knife-on-cutting-board.jpg" alt="...">
       </div>
       <div class='text-center item-description'>
-      	<h3>Check Out Our Goodies!</h3>
+          <h3>Check Out Our Goodies!</h3>
         <p>All the gnosh</p>
       </div>
     </div>
@@ -108,5 +96,3 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div> <!-- Carousel -->
-
-<button>
