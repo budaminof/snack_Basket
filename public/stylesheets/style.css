@@ -3,6 +3,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   width: 100%;
 }
+.login-background {
+    background-image:  url('http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg');
+}
 
 /* Top Navbar */
 

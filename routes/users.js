@@ -7,7 +7,6 @@ var Handlebars = require("handlebars");
 
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
-
 dotenv.load();
 
 router.get('/', function(req, res, next) {});
