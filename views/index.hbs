@@ -2,6 +2,25 @@
   <div class="container nav-container">
 
     <ul class="nav nav-pills">
+
+      <li>
+        <div class="dropdown cart">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Cart
+            <span class="caret"></span>
+          </button>
+          <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+            <tr>
+              <td>--------------------</td>
+            </tr>
+            <tr id='total'>
+              <td><b>Total:</b></td>
+              <td>$total</td>
+            </tr>
+          </table>
+        </div>
+      </li>
+
       {{#if user}}
       {{#if photo}}
       <li role='presentation'><img src="{{photo}}"/></li>
@@ -15,46 +34,51 @@
       <li role="presentation"><a href="/users/logout">Log out</a></li>
     </ul>
 
-    <div class="dropdown cart">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Cart
-        <span class="caret"></span>
-      </button>
-      <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-        <tr>
-          <td>--------------------</td>
-        </tr>
-        <tr id='total'>
-          <td><b>Total:</b></td>
-          <td>$total</td>
-        </tr>
-      </table>
-    </div>
 
   </div>
 </nav>
 
 
-<div class="conainer1">
 
-    <table>
-      <tr>
-        <th>Image</th>
-        <th class='hidden'>ID</th>
-        <th class='text-center'>Name</th>
-        <th class='text-center'>Price</th>
-        <th class='text-center'>Description</th>
-        <th class='text-center'>Add to Cart</th>
-      </tr>
-      {{#items}}
+<div class='row main-pic'>
+    <div class='col-md-12'>
+        <img class='landing' src='/images/spread.jpg'>
+        <header>
+            <h1 class='text-center'>gnosh.</h1>
+            <h4 class='text-center'>All the snacks you need. Right to your door.</h4>
+        </header>
+    </div>
+</div>
+
+<div class='container2 row'>
+    <div class='mask mask-left'>
+    </div>
+    <table >
       <tr class='listing-row'>
-        <td><img class='item-pic' src='{{this.image_url}}'></td>
-        <td class='hidden'>{{this.id}}</td>
-        <td class='text-center'>{{this.name}}</td>
-        <td class='text-center'>${{this.price}}</td>
-        <td class='description hide-in-cart'>{{this.description}}</td>
-        <td class='hide-in-cart'><form method='POST' action='/cart/add/{{this.id}}'><input type='submit' value='Add to Cart'></form></td>
-      </tr>
-      {{/items}}
+        {{#items}}
+        // Add a slide
+        $('table').slick('slickAdd',"<div>
+
+
+            <td class='listing'>
+                <img class='item-pic' src='{{this.image_url}}'>
+                <h2>{{this.name}}</h2>
+                <p>${{this.price}}</p>
+                <p>{{this.description}}</p>
+                <input class='add-to-cart' type='submit' value='Add to Cart'>
+            </td>
+
+
+        </div>
+
+        {{/items}}
+
+       </tr>
     </table>
+</div>
+
+<div class='mask mask-right'>
+</div>
+<div class="col-md-12">
+    <h1>random</h1>
 </div>

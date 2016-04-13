@@ -1,7 +1,9 @@
 body {
+  display:relative;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+  width:100%;
+  height:95vh;
 }
 
 .hidden {
@@ -14,11 +16,6 @@ body {
   padding: 0.5%;
 }
 
-div.container {
-  margin-left: 2%;
-
-
-}
 
 
 
@@ -38,42 +35,90 @@ ul.dropdown-menu > li {
 }
 
 .dropdown-menu > tbody > tr > td > img {
-  height: 75px;
-  width: 75px;
+  height: 200px;
+  width: 200px;
 }
 
 td.cart {
   padding: 2% 0;
 }
+
 a {
   color: #00B7FF;
 }
 
-.item-pic {
-  height: 200px;
-  width: 200px;
-  border-radius: 8px;
+/* Header */
+
+header {
+  position: fixed;
+  display: relative;
 }
 
-.listing-row {
-  margin: 2%;
+div.container2 {
+    height:20px;
+    position: sticky;
 }
-
-
-/* Listings Table */
-
 table {
-  margin: auto;
-  margin-top: 3%;
+  /*position: relative;*/
+position: sticky;
+  padding-top: 500px;
 
+  display: inline-block;
+  margin: auto;
+  margin-top: 10%;
 }
-.container1 {
-    height:50vh;
-    overflow-y: scroll;
+
+/*div.main-pic {
+  position: relative;
+  display: flex;
+}*/
+
+img.landing {
+  position: fixed;
+  left: 0;
+  padding: 0;
 }
+
+/* LISTINGS */
+
+/* Side blurring for carousel */
+.mask-left {
+  z-index: 100;
+  background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+  position: fixed;
+  height: 100%;
+  width: 10%;
+  left: 0;
+}
+
+.mask-right {
+  z-index: 100;
+  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+  position: fixed;
+  height: 100%;
+  width: 10%;
+  right: 0;
+}
+
+
 
 td, th {
   padding: 1%;
+}
+
+.item-pic {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+
+.listing {
+  padding: 0 0.5%;
+  text-align: center;
 }
 
 
