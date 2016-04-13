@@ -61,7 +61,6 @@ router.post('/cart/add/:itemId', function (req, res ,next){
     })
     .returning('*')
     .then(function(data){
-        console.log(data);
         res.redirect('/');
     })
 })
