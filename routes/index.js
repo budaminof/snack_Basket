@@ -12,11 +12,18 @@ var regEmail = fs.readFileSync('./views/email.hbs','utf-8');
 var compiledTemplate = Handlebars.compile(regEmail);
 
 
+function isloggedIn (req, res, next){
+    if(!req.session.passport.user.user_id) return res.redirect('/login')
+    next();
+}
+
 router.get('/', function(req, res, next) {
+    console.log('user_id from passport',req.session.passport.user.user_id);
   knex('items')
   .select('name','description','price','image_url','id')
   .then(function(items) {
-    if (!req.session.passport) return res.render('index', { items });
+    if (!req.session.passport) return res.render('index');
+
     res.render('index', {
         items: items,
         name: req.session.passport.user.name,
@@ -25,6 +32,21 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.post('/cart/add/:item_id', isloggedIn,function (req, res ,next){
+console.log('item',req.params.item_id);
+console.log('user', req.session.passport.user.user_id);
+
+    knex('users_cart')
+    .insert({
+        user_id: req.session.passport.user.user_id,
+        item_id: req.params.item_id
+    })
+    .returning('*')
+    .then(function(data){
+        console.log(data);
+        res.redirect('/');
+    })
+})
 
 //sendgrid email test
 router.get('/email', function(req, res) {
@@ -45,25 +67,5 @@ router.get('/preview', function(req,res){
 
 })
 
-router.post('/cart/add/:itemId', function (req, res ,next){
-    var item = req.params.itemId;
-    var user;
-    if(!req.session.passport){
-     user = req.session.id
-        } else{
-        user = req.session.passport.user.id;
-        }
-
-    knex('users_cart')
-    .insert({
-        user_id: user,
-        item_id: item
-    })
-    .returning('*')
-    .then(function(data){
-        console.log(data);
-        res.redirect('/');
-    })
-})
 
 module.exports = router;
