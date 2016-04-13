@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
+
 var cookieSession = require('cookie-session');
 var User = require('./routes/oauth/oauth_init')
 var knex = require('knex')(require('./knexfile')[process.env.DB_ENV]);
@@ -44,17 +46,37 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.HOST+"/auth/google/callback"
   },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate( profile, function (err, user) {
-      return cb(null, {
-          oauth_id: profile.id,
-          displayName: profile.displayName,
-          photo: profile.photos[0].value,
-          email: JSON.parse(profile._raw).emails[0].value
+  function(accessToken, refreshToken, profile, cb1) {
+    User.findOrCreate(profile, function (err, user) {
+      return cb1(null, {
+          user_id: user[0].id,
+          admin: user[0].admin,
+          name: user[0].first_name,
+          photo: user[0].image_url
       });
     });
   }
 ));
+
+passport.use(new LocalStrategy({
+    usernameField: 'email'
+}, function(email, password, cb){
+    knex('users')
+    .where({email: email})
+    .first()
+    .then(function(user){
+        if(!user) return cb(null, false);
+        else if(user && bcrypt.compareSync(password, user.password)){
+            return cb(null, {
+                user_id: user.id,
+                admin: user.admin,
+                name: user.first_name
+            });
+        } else {
+            return cb(null, false);
+        }
+    });
+}))
 
 passport.serializeUser(function(user, done) {
     done(null, user);
@@ -76,6 +98,14 @@ app.get('/auth/google/callback',
     res.redirect('/');
   });
 
+app.get('/auth/local', passport.authenticate('local'), function (req,res){
+
+})
+
+app.post('/users/login', passport.authenticate('local', {failureRedirect: '/login' }),
+    function(req,res){
+    res.redirect('/');
+});
 
 app.use(function (req, res, next) {
     if(req.session.passport) {
@@ -86,24 +116,9 @@ app.use(function (req, res, next) {
 
 function userAdmin(req, res, next){
 
-    if(!req.session.passport){
-        knex('users')
-        .where({email: req.session.email})
-        .then(function(data){
-            if(!data[0].admin) return res.redirect('/users/login');
-        })
-        next();
-    }
-    else {
-        knex('users')
-        .where({email: req.session.passport.user.email})
-        .then(function(user){
-            if(!user[0].admin) return res.redirect('/users/login');
-        })
-        next();
-    }
-
- }
+    if(!req.session.passport.user.admin) return res.redirect('/users/login')
+    next();
+}
 
 app.use('/', routes);
 app.use('/users', users);

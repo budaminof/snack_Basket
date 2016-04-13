@@ -7,6 +7,8 @@ exports.up = function(knex, Promise) {
         table.string('email').unique();
         table.string('password');
         table.boolean('admin').defaultTo(false);
+        table.string('oauth_type');
+        table.string('image_url');
     })
 
 };
