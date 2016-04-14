@@ -45,32 +45,62 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
         })
 })
 
+router.get('/cart', isloggedIn,function(req, res,next){
+  knex('users_cart')
+  .where({user_id: req.session.passport.user.user_id})
+  .innerJoin('items', 'users_cart.item_id', 'items.id')
+  .then(function(data){
+
+      return knex('users')
+      .where({id: req.session.passport.user.user_id})
+      .then(function(user){
+
+        res.render('cart',{
+          name: req.session.passport.user.name,
+          photo: req.session.passport.user.photo,
+          data: data,
+          user: user
+        });
+      })
+  })
+})
+
+router.get('/cart/:id/delete', isloggedIn,function(req, res, next){
+  knex('users_cart')
+  .where({
+    user_id: req.session.passport.user.user_id,
+    item_id: req.params.id
+  })
+  .first()
+  .del()
+  .then(function(data){
+    res.redirect('/cart');
+  })
+})
+
 router.get('/products', function(req, res, nex){
   knex('items')
-      .select('name', 'description', 'price', 'image_url', 'id')
-      .then(function(items) {
-          if (!req.session.passport) return res.render('products',{items});
-          res.render('products', {
-              items: items,
-              name: req.session.passport.user.name,
-              photo: req.session.passport.user.photo
-          });
-      })
+  .select('name', 'description', 'price', 'image_url', 'id')
+  .then(function(items) {
+      if (!req.session.passport){
+           res.render('products',{items: items});
+       } else {
+           res.render('products', {
+               items: items,
+               name: req.session.passport.user.name,
+               photo: req.session.passport.user.photo
+           });
+       }
+  })
 })
+
 router.get('/product/:id', function(req, res, nex){
   knex('items')
-      .where({id:req.params.id})
-      .select('name', 'description', 'price', 'image_url', 'id')
-      .then(function(item) {
-          console.log(item);
-        res.render('product',{item:item[0]});
-    });
+  .where({id:req.params.id})
+  .select('name', 'description', 'price', 'image_url', 'id')
+  .then(function(item) {
+    res.render('product',{item:item[0]});
+  });
 })
-
-
-
-
-
-
 
 module.exports = router;

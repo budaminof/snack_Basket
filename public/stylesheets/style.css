@@ -344,3 +344,11 @@ footer > div > div > ul > li {
   height: 100%;
 
 }
+
+.modal-backdrop {
+  z-index: 1020;
+}
+
+.cartH2{
+  margin-top: 50px;
+}
