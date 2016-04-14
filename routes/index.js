@@ -57,22 +57,13 @@ router.get('/products', function(req, res, nex){
           });
       })
 })
-router.get('/productd/:id', function(req, res, nex){
+router.get('/product/:id', function(req, res, nex){
   knex('items')
       .where({id:req.params.id})
       .select('name', 'description', 'price', 'image_url', 'id')
-      .then(function(itema) {
-          if (!req.session.passport) {
-              return res.render('products',{items:items});
-
-          } else {
-              res.render('product', {
-                  item: item,
-                  name: req.session.passport.user.name,
-                  photo: req.session.passport.user.photo
-              });
-          }
-
+      .then(function(item) {
+          console.log(item);
+        res.render('product',{item:item[0]});
     });
 })
 

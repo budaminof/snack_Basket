@@ -1,238 +1,235 @@
 body {
-  display:relative;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  width: 100%;
+    display: relative;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    width: 100%;
 }
 .myInput {
     z-index: 10000;
 }
 .modal-content {
-    background-image:  url('http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg');
+    background-image: url('http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg');
 }
 .modal-body > form > input {
-    height:50px;
-    width:200px;
-
+    height: 50px;
+    width: 200px;
+}
+#logo {
+    width: 150px;
+    height: 150px;
 }
 .modal-body > form > label {
     /*height:50px;*/
-    width:200px;
-    color:white;
+    width: 200px;
+    color: white;
+}
+.modal-backdrop {
+    z-index: 1020;
 }
 .google {
-    width:80%;
+    width: 80%;
 }
-
 
 /* Top Navbar */
 
 .navbar-default {
-  padding: 0.5%;
+    padding: 0.5%;
 }
 
 /* Cart Dropdown */
 
 div.cart {
-  text-align: left;
-  margin-top: 5px;
-
+    text-align: left;
+    margin-top: 5px;
 }
 #cartButton {
-    width:75px;
-    height:30px;
+    width: 75px;
+    height: 30px;
     /*padding-top: 2%;*/
     font-size: 20px;
-
 }
-
 ul.dropdown-menu > li {
-  text-align: right;
+    text-align: right;
 }
-
 .dropdown-menu > tbody > tr > td.hide-in-cart {
-  display: none;
+    display: none;
 }
-
 .dropdown-menu > tbody > tr > td > img {
-  height: 200px;
-  width: 200px;
+    height: 200px;
+    width: 200px;
 }
-
 td.cart {
-  padding: 2% 0;
+    padding: 2% 0;
 }
-
 a {
-  color: #121f6e;
+    color: #121f6e;
 }
 
 /* Main Landing */
 
 #container {
-  height: 100%;
-  postition: relative;
-  width: 100%;
+    height: 100%;
+    postition: relative;
+    width: 100%;
 }
-
 img.landing {
-  position: relative;
-  left: 0;
-  padding: 0;
-  width: 100%;
-  margin: auto;
+    position: relative;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    margin: auto;
 }
-
 h1.header {
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  font-size: 78px;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: rgb(63,44,42);
-  position: absolute;
-  z-index: 100;
-  left: 14%;
-  top: 27%;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 78px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(63, 44, 42);
+    position: absolute;
+    z-index: 100;
+    left: 14%;
+    top: 27%;
 }
-
 h4.header {
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  font-size: 22px;
-  position: absolute;
-  z-index: 100;
-  left: 14%;
-  top: 45%;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 22px;
+    position: absolute;
+    z-index: 100;
+    left: 14%;
+    top: 45%;
 }
 
 /* Listings */
 
- .item-pic {
-  height:100x;
-  width: 100px;
-  /*border-radius: 50%;*/
-  margin-bottom: 10px !important;
+.item-pic {
+    height: 100x;
+    width: 100px;
+    /*border-radius: 50%;*/
+    margin-bottom: 10px !important;
 }
-
 .item-description {
-  font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Listings Carousel */
+
 .carousel {
-  width: 100vw;
-  height: 60vh;
-  display: block;
-  padding-top: 2%;
+    width: 100vw;
+    height: 60vh;
+    display: block;
+    padding-top: 2%;
 }
-
 .first-slide {
-  margin-bottom: -25px;
+    margin-bottom: -25px;
 }
-
 .carousel-caption {
-  display: block;
-  padding-top: 5%;
-  color: black;
+    display: block;
+    padding-top: 5%;
+    color: black;
 }
 
 /* Login & Signup*/
 
 img.login-background, img.signup-background {
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0;
-  z-index: -1;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    z-index: -1;
 }
-
 main.login, main.signup {
-  margin: auto;
-  margin-top: 15%;
-  width: 30%;
-  background-color: rgba(228, 228, 228, 0.45);
-  border-radius: 8px;
-  text-align: center;
+    margin: auto;
+    margin-top: 15%;
+    width: 30%;
+    background-color: rgba(228, 228, 228, 0.45);
+    border-radius: 8px;
+    text-align: center;
 }
-
 main.login > form {
-  color: black;
+    color: black;
 }
-
 main.signup > form {
-  color: black;
+    color: black;
 }
-
 h1.login, h1.signup {
-  color: white;
-  font-size: 72px;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: rgb(63,44,42);
+    color: white;
+    font-size: 72px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(63, 44, 42);
 }
-
 .thumbnail {
-  border: none;
+    border: none;
 }
-
 .container {
-  padding-top: 20px;
+    padding-top: 20px;
 }
 .all {
-  margin-top: 90px;
+    margin-top: 90px;
 }
-.shadow{
-  margin: 10px;
-  -webkit-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
+.shadow {
+    margin: 10px;
+    -webkit-box-shadow: -1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+/*PRODUCT VIEW*/
+
+.productView {
+    width: 30%;
+    height: 30%;
+    border:3px solid white;
+    box-shadow: -webkit-box-shadow: 9px 6px 7px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 9px 6px 7px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 9px 6px 7px 0px rgba(0, 0, 0, 0.75);
+}
+.productConatainer {
+    margin-top:10%;
+    margin-left:5%;
 }
 
 /*ADMIN VIEW*/
-iframe{
-  width:100%;
-  height: 299px;
-}
 
+iframe {
+    width: 100%;
+    height: 299px;
+}
 .users, .items, .addAdmin, .addProduct {
-  display: none;
+    display: none;
 }
-.items{
-  margin-top: 10px;
+.items {
+    margin-top: 10px;
 }
-
-th{
-  font-size: 18px;
-  padding: 5px 17px;
+th {
+    font-size: 18px;
+    padding: 5px 17px;
 }
-td{
-  font-size: 17px;
-  padding: 5px 17px;
+td {
+    font-size: 17px;
+    padding: 5px 17px;
 }
-.danger{
-  color: rgb(251, 0, 0);
+.danger {
+    color: rgb(251, 0, 0);
 }
-.msg{
-  color:rgb(58, 144, 71);
+.msg {
+    color: rgb(58, 144, 71);
 }
-.form-control{
-  width: 70%;
+.form-control {
+    width: 70%;
 }
-
 .addProduct {
-  width: 70%;
-  border: solid 2px rgb(40, 71, 113);
+    width: 70%;
+    border: solid 2px rgb(40, 71, 113);
 }
-
 .users, .addAdmin {
-  width: 60%;
-  border: solid 2px rgb(40, 71, 113);
+    width: 60%;
+    border: solid 2px rgb(40, 71, 113);
 }
-
-.addAdminForm, .addProductFrom{
-  padding: 20px;
-  padding-left: 100px;
+.addAdminForm, .addProductFrom {
+    padding: 20px;
+    padding-left: 100px;
 }
-
 #bottomPanel {
     background-color: rgb(159, 187, 128);
 }
