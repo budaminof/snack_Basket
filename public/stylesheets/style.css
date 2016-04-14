@@ -281,6 +281,11 @@ div.users > table > tr > th,td {
 
 /* ADMIN / ITEMS */
 
+img.admin-item {
+  height: 100px;
+  width: 100px;
+}
+
 /* ADMIN / ADD ADMIN */
 
 div.addAdmin {
