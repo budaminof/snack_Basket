@@ -23,22 +23,30 @@ body {
     width:80%;
 }
 
-nav{
-  height: 40px;
-}
-.text-right {
-  margin-top: -30px;
-}
-.welcome{
-  margin-top: -15px;
-  float:right;
-  width: 30%;
-}
 
 /* Top Navbar */
 
+nav {
+  height: 40px;
+}
+
+.nav-container {
+  padding-top: 20px;
+  margin-right: 5%;
+}
+
 .navbar-default {
   padding: 0.5%;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.text-right {
+  margin-top: -30px;
+}
+
+.welcome{
+  margin-top: -15px;
+  float:right;
 }
 
 /* Cart Dropdown */
@@ -87,6 +95,12 @@ a {
   width: 100%;
 }
 
+.container {
+  padding-right: 0;
+  padding-left: 0;
+  padding-top: 20px;
+}
+
 img.landing {
   position: relative;
   left: 0;
@@ -117,18 +131,7 @@ h4.header {
   top: 45%;
 }
 
-/* Listings */
 
-.item-pic {
-  height: 300px;
-  width: 300px;
-  /*border-radius: 50%;*/
-  margin-bottom: 10px !important;
-}
-
-.item-description {
-  font-family: 'Montserrat', sans-serif;
-}
 
 /* Listings Carousel */
 .carousel {
@@ -142,10 +145,32 @@ h4.header {
   margin-bottom: -25px;
 }
 
+.item-pic {
+  height: 300px;
+  width: 300px;
+  /*border-radius: 50%;*/
+  margin-bottom: 10px !important;
+}
+
+.item-description {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .carousel-caption {
   display: block;
   padding-top: 5%;
   color: black;
+}
+
+.glyphicon-chevron-left, .glyphicon-chevron-right {
+  color: black;
+}
+
+.carousel-control.left {
+  background-image: -webkit-linear-gradient(left,rgba(147, 147, 147, 0.5) 0,rgba(0,0,0,.0001) 100%);
+}
+.carousel-control.right {
+  background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(147, 147, 147, 0.5) 100%);
 }
 
 /* Login & Signup*/
@@ -187,9 +212,6 @@ h1.login, h1.signup {
   border: none;
 }
 
-.container {
-  padding-top: 20px;
-}
 .all {
   margin-top: 90px;
 }
@@ -254,12 +276,56 @@ td{
   padding-left: 100px;
 }
 
-footer{
-  background-color: rgb(40, 40, 40);
-  color:rgb(251, 251, 251);
-  width: 115%;
-  margin-left: -135px;
+div.thumbnail {
+  padding: 0 2%;
 }
+
+img.info {
+  border-radius: 6px;
+}
+
+/* Footer */
+
+footer {
+  font-family: 'Montserrat', sans-serif;
+  position: sticky;
+  bottom: 0;
+  background-color: rgb(209, 207, 207);
+  color: rgb(68, 66, 66);
+  width: 100vw;
+  padding-bottom: 2%;
+}
+
+footer > * {
+  background-color: rgb(209, 207, 207);
+}
+
+footer > div {
+  margin-top: 1%;
+}
+
+h1.footer {
+  font-size: 54px;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(56, 56, 56);
+}
+
+.footer-links {
+  margin-top: 3%;
+}
+
+a.footer-links {
+  text-decoration: none;
+  color: rgb(43, 43, 43);
+}
+
+footer > div > div > ul > li {
+  list-style-type: none;
+}
+
+/* Admin */
+
 .admin > h4 {
   padding-top: 20px;
 }

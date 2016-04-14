@@ -5,6 +5,7 @@
   <title>gnosh</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,200' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <!-- jQuery -->
@@ -20,10 +21,10 @@
   <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container nav-container">
           <div class="dropdown cart">
-              <button id="cartButton" class="btn btn-default  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <!-- <button id="cartButton" class="btn btn-default  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   Cart
                   <span class="caret"></span>
-              </button>
+              </button> -->
               <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
                   <tr>
                       <td></td>
@@ -39,11 +40,12 @@
                   {{#if photo}}
                       <img src="{{photo}}"/>
                   {{/if}}
-                  <h3 class="welcome">Welcome, {{name}}!
+                  <h3 class="welcome"><b>Welcome, {{name}}!</b>
                     {{#if admin}}
-                    <small><a href="/admin">Admin</a></small>
+                    <small><a class='admin' href="/admin">Admin</a></small>
                     {{/if}}
-                    <small><a class="logout" href="/users/logout">Log out</a></small>
+                    <small><a class='cart' href='#'>MY CART</a></small>
+                    <small><a class="logout" href="/users/logout">LOG OUT</a></small>
                   </h3>
               {{/if}}
               {{#unless user}}
@@ -120,8 +122,28 @@
     {{{body}}}
 
     <footer class='footer'>
-      <div class="container">
-        <h3>Daniel, Matthew and Bud</h3>
+      <div class='container'>
+        <div class='col-md-2 col-md-offset-1'>
+          <h1 class='footer text-center'>gnosh.</h1>
+        </div>
+        <div class="col-md-2 col-md-offset-1 footer-links">
+          <ul>
+            <li><a class='footer-links' href='#'>Our Mission</a></li>
+            <li><a class='footer-links' href='#'>History</a></li>
+          <ul>
+        </div>
+        <div class='col-md-2 footer-links'>
+          <ul>
+            <li><a class='footer-links' href='#'>Contact Us</a></li>
+            <li><a class='footer-links' href='#'>Careers</a></li>
+          </ul>
+        </div>
+        <div class='col-md-2 footer-links'>
+          <ul>
+            <li><a class='footer-links' href='#'>My Account</a></li>
+            <li><a class='footer-links' href='#'>Log Out</a></li>
+          </ul>
+        </div>
       </div>
     </footer>
 
