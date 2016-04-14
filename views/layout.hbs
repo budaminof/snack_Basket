@@ -37,23 +37,21 @@
           <div class="text-right">
               {{#if user}}
                   {{#if photo}}
-                      <img src="{{photo}}" />
+                      <img src="{{photo}}"/>
                   {{/if}}
-                  <h3>Welcome, {{name}}!</h3>
-                  <a class="logout" href="/users/logout">Log out</a>
+                  <h3 class="welcome">Welcome, {{name}}!
+                    {{#if admin}}
+                    <small><a href="/admin">Admin</a></small>
+                    {{/if}}
+                    <small><a class="logout" href="/users/logout">Log out</a></small>
+                  </h3>
               {{/if}}
-
               {{#unless user}}
-
                   <div class="text-center">
-
                       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                           Login or Sign up!
                       </button>
               {{/unless}}
-              {{#if admin}}
-                  <a href="/admin">Admin</a>
-              {{/if}}
               </div>
           </div>
   <!-- Modal -->
@@ -109,8 +107,6 @@
 
                               <button class='btn btn-default' type='submit'>Sign Up!</button>
                           </form>
-
-
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -118,7 +114,6 @@
                   </div>
               </div>
           </div>
-
   </nav>
   {{{body}}}
 

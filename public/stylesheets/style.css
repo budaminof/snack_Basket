@@ -23,6 +23,17 @@ body {
     width:80%;
 }
 
+nav{
+  height: 40px;
+}
+.text-right {
+  margin-top: -30px;
+}
+.welcome{
+  margin-top: -15px;
+  float:right;
+  width: 30%;
+}
 
 /* Top Navbar */
 
@@ -33,8 +44,10 @@ body {
 /* Cart Dropdown */
 
 div.cart {
+  float: left;
   text-align: left;
-  margin-top: 5px;
+  margin-top: -17px;
+  width: 30%;
 
 }
 #cartButton {
@@ -188,7 +201,12 @@ h1.login, h1.signup {
 }
 
 /*ADMIN VIEW*/
+.admin{
+  text-align: center;
+}
+
 iframe{
+  margin-top: 40px;
   width:100%;
   height: 299px;
 }
@@ -219,11 +237,13 @@ td{
 }
 
 .addProduct {
+  margin-left: 200px;
   width: 70%;
   border: solid 2px rgb(40, 71, 113);
 }
 
 .users, .addAdmin {
+  margin-left: 200px;
   width: 60%;
   border: solid 2px rgb(40, 71, 113);
 }
