@@ -1,12 +1,56 @@
 <div class="container col-md-offset-1 col-md-12 all">
 <div class="row">
 {{#items}}
-    <div class="thumbnail col-md-3 shadow">
+    <div class="thumbnail col-md-3 shadow text-center">
+
       <img style="height:250px" src="{{this.image_url}}" alt="...">
+
       <div class="caption text-center">
         <h4>{{this.name}}</h4>
+
       </div>
+      <a class="btn btn-lg btn-default"
+         data-toggle="modal"
+         data-target="#productModal"
+         href="/products/{{id}}">Product Details</a>
+
+<!-- <a href="products/{{id}}">
+      <button id="productDetails" type="button" class="btn btn-primary btn-lg t" data-toggle="modal" data-target="#productModal">
+          Product Details
+      </button> -->
+ </a>
     </div>
 {{/items}}
 </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Product Details</h4>
+      </div>
+      <div class="modal-body">
+          {{#items}}
+              <div class="thumbnail col-md-3 shadow">
+                <img style="height:250px" src="{{this.image_url}}" alt="...">
+                <div class="caption text-center">
+                  <h4>{{this.name}}</h4>
+                  <h3>{{this.description}}</h3>
+                  <h3>{{this.price}}</h3>
+
+                </div>
+              </div>
+          {{/items}}
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
 </div>
