@@ -6,17 +6,22 @@ $('document').ready(function() {
 
 //bud
   $('.clickUsers').on('click', function(){
-        $('.users').toggle('slow');
-    })
+    $('.videobox').slideUp('slow');
+    $('.users').toggle('slow');
+  })
+
   $('.clickItems').on('click', function(){
+    $('.videobox').slideUp('slow');
     $('.items').toggle('slow');
   })
 
   $('.clickAdmin').on('click', function(){
+    $('.videobox').slideUp('slow');
     $('.addAdmin').toggle('slow');
   })
 
   $('.clickAddProduct').on('click', function(){
+    $('.videobox').slideUp('slow');
     $('.addProduct').toggle('slow');
   })
 

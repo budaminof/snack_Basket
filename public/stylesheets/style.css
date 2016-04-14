@@ -33,6 +33,10 @@ body {
 
 /* Top Navbar */
 
+div.signup-login {
+  margin-top: 7px;
+}
+
 h3.main-logo {
   position: fixed;
   left: 44%;
@@ -251,6 +255,10 @@ div.thumbnail {
 }
 
 /*ADMIN VIEW*/
+
+div.adminContainer {
+  padding-bottom: 65px;
+}
 .admin {
   text-align: center;
 }
@@ -259,7 +267,6 @@ iframe{
   margin-top: 40px;
   width:100%;
   height: 350px;
-
 }
 
 .users, .items, .addAdmin, .addProduct {
@@ -292,10 +299,9 @@ td {
 
 }
 .users, .addAdmin {
-
-      margin-left: 200px;
+  margin-left: 200px;
   width: 60%;
-  border: solid 2px rgb(40, 71, 113);
+  /*border: solid 2px rgb(40, 71, 113);*/
 
 }
 .addAdminForm, .addProductFrom {
