@@ -8,15 +8,15 @@
   </div>
 </div>
 
-<div class="col-md-11 col-md-offset-1">
-  <h3>Hey {{name}}</h3>
+<div class="container adminContainer">  
+<div class="col-md-11 col-md-offset-1 admin">
   {{#errors}}
     <h4 class='danger'>{{this}}</h4>
   {{/errors}}
   {{#msg}}
     <h4 class='msg'>{{this}}</h4>
   {{/msg}}
-  <h4>What would you like to do?</h4>
+  <h3>{{name}}, What would you like to do?</h3>
   <h4 class="clickUsers">See all users</h4>
   <div class="users">
     <table>
@@ -116,4 +116,5 @@
       </form>
     </div>
   </div>
+</div>
 </div>

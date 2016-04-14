@@ -29,6 +29,17 @@ body {
     width: 80%;
 }
 
+nav{
+  height: 40px;
+}
+.text-right {
+  margin-top: -30px;
+}
+.welcome{
+  margin-top: -15px;
+  float:right;
+
+}
 /* Top Navbar */
 
 .navbar-default {
@@ -38,8 +49,12 @@ body {
 /* Cart Dropdown */
 
 div.cart {
-    text-align: left;
-    margin-top: 5px;
+
+  float: left;
+  text-align: left;
+  margin-top: -17px;
+  width: 30%;
+
 }
 #cartButton {
     width: 75px;
@@ -167,6 +182,7 @@ h1.login, h1.signup {
 .all {
     margin-top: 90px;
 }
+
 .shadow {
     margin: 10px;
     -webkit-box-shadow: -1px 1px 5px 0px rgba(0, 0, 0, 0.75);
@@ -187,14 +203,22 @@ h1.login, h1.signup {
 .productConatainer {
     margin-top:10%;
     margin-left:5%;
-}
+
+
+
 
 /*ADMIN VIEW*/
-
-iframe {
-    width: 100%;
-    height: 299px;
+.admin {
+  text-align: center;
 }
+
+iframe{
+  margin-top: 40px;
+  width:100%;
+  height: 350px;
+
+}
+
 .users, .items, .addAdmin, .addProduct {
     display: none;
 }
@@ -219,17 +243,34 @@ td {
     width: 70%;
 }
 .addProduct {
-    width: 70%;
-    border: solid 2px rgb(40, 71, 113);
+  margin-left: 200px;
+  width: 70%;
+  border: solid 2px rgb(40, 71, 113);
+
 }
 .users, .addAdmin {
-    width: 60%;
-    border: solid 2px rgb(40, 71, 113);
+
+      margin-left: 200px;
+  width: 60%;
+  border: solid 2px rgb(40, 71, 113);
+
 }
 .addAdminForm, .addProductFrom {
     padding: 20px;
     padding-left: 100px;
 }
-#bottomPanel {
-    background-color: rgb(159, 187, 128);
+
+footer{
+  background-color: rgb(40, 40, 40);
+  color:rgb(251, 251, 251);
+  width: 115%;
+  margin-left: -135px;
+}
+.admin > h4 {
+  padding-top: 20px;
+}
+.adminContainer{
+  padding-bottom: 100px;
+  height: 100%;
+
 }
