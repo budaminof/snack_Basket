@@ -49,13 +49,19 @@ router.get('/cart', isloggedIn,function(req, res,next){
   knex('users_cart')
   .where({user_id: req.session.passport.user.user_id})
   .innerJoin('items', 'users_cart.item_id', 'items.id')
-  .select('name','price','description','image_url','id')
   .then(function(data){
-    res.render('cart',{
-      name: req.session.passport.user.name,
-      photo: req.session.passport.user.photo,
-      data: data
-    });
+
+      return knex('users')
+      .where({id: req.session.passport.user.user_id})
+      .then(function(user){
+
+        res.render('cart',{
+          name: req.session.passport.user.name,
+          photo: req.session.passport.user.photo,
+          data: data,
+          user: user
+        });
+      })
   })
 })
 
@@ -86,22 +92,16 @@ router.get('/products', function(req, res, nex){
                    photo: req.session.passport.user.photo
                });
            }
-      })
-})
+      });
+});      
+
 router.get('/product/:id', function(req, res, nex){
   knex('items')
-      .where({id:req.params.id})
-      .select('name', 'description', 'price', 'image_url', 'id')
-      .then(function(item) {
-          console.log(item);
-        res.render('product',{item:item[0]});
-    });
+  .where({id:req.params.id})
+  .select('name', 'description', 'price', 'image_url', 'id')
+  .then(function(item) {
+    res.render('product',{item:item[0]});
+  });
 })
-
-
-
-
-
-
 
 module.exports = router;

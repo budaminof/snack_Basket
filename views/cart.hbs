@@ -1,14 +1,12 @@
 <div class="container">
   <div class="col-md-12">
-    <h2>You have in your cart:</h2>
+    <h2 class="cartH2">You have in your cart:</h2>
     <table class="cartTable">
       <tr>
-        <td>Image</td>
-        <td>description</td>
-        <td>name</td>
-        <td>price</td>
-        <td>Delete</td>
-
+        <th>Image</th>
+        <th>description</th>
+        <th>name</th>
+        <th>price</th>
       </tr>
       {{#data}}
       <tr>
@@ -16,15 +14,29 @@
         <td>{{this.description}}</td>
         <td>{{this.name}}</td>
         <td class="price" price-data={{this.price}}>{{this.price}}</td>
-        <td><a href="/cart/{{this.id}}/delete">Delete this item</a></td>
+        <td><a href="/cart/{{this.item_id}}/delete">Delete this item</a></td>
       </tr>
       {{/data}}
-
     </table>
     <div class="taxTotal">
       <h4 class="tax"></h4>
       <h3 class="total"></h3>
     </div>
+  </div>
+
+  <div class="payment">
+    <form action="/users/payment" method="POST">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+      data-amount="2000"
+      data-name="Demo Site"
+      data-description="2 widgets ($20.00)"
+      data-image="/128x128.png"
+      data-locale="auto">
+    </script>
+  </form>
+
   </div>
 
 </div>
