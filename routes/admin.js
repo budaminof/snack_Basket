@@ -119,7 +119,7 @@ router.post('/products/add', function(req, res, next) {
     .returning('id')
     .then(function(id) {
       msg = 'Product added successfuly!'
-      res.redirect('/admin/products');
+      res.redirect('/admin');
     })
   }
 })
