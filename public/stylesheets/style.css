@@ -281,6 +281,17 @@ div.users > table > tr > th,td {
 
 /* ADMIN / ITEMS */
 
+/* ADMIN / ADD ADMIN */
+
+div.addAdmin {
+  text-align: center;
+}
+
+div.addAdmin > div > form > div > label {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .users, .items, .addAdmin, .addProduct {
     display: none;
 }
@@ -316,7 +327,11 @@ td {
   /*border: solid 2px rgb(40, 71, 113);*/
 
 }
-.addAdminForm, .addProductFrom {
+.addAdminForm {
+  padding: 20px;
+}
+
+.addProductFrom {
     padding: 20px;
     padding-left: 100px;
 }
