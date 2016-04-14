@@ -1,20 +1,20 @@
 <div class='container'>
-  <div class="col-md-offset-1 col-md-12 all">
+  <div class="col-md-offset-1 col-md-11 all">
     <div class="row">
     {{#items}}
         <div class="thumbnail col-md-3 shadow">
           <img style="height:250px" src="{{this.image_url}}" alt="...">
-          <div class="caption text-center">
-            <h4>{{this.name}}</h4>
+          <div class="caption">
+            <h4 class='text-center'>{{this.name}}</h4>
           </div>
+          <a class='center-block text-center' href="/product/{{id}}"><button class="btn btn-default"type="button" >Product Details</button></a>
         </div>
       <!-- Modal Trigger button -->
       <!-- <a href="/product/{{id}}" data-remote="false" data-toggle="modal" data-target="#productModal" class="btn btn-default">
           Launch Modal
       </a> -->
-      <a href="/product/{{id}}"><button class="btn btn-default"type="button" >Product Details</button></a>
+      {{/items}}
      </div>
-    {{/items}}
     </div>
   </div>
 </div>
