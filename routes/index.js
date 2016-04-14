@@ -78,10 +78,9 @@ router.get('/products', function(req, res, nex){
       .then(function(items) {
           console.log('items', items);
           if (!req.session.passport){
-               res.render('products',{test: [1,2,3,4,5],items: items});
+               res.render('products',{items: items});
            } else {
                res.render('products', {
-                   test: [1,2,3,4,5],
                    items: items,
                    name: req.session.passport.user.name,
                    photo: req.session.passport.user.photo
