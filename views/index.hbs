@@ -1,50 +1,50 @@
 <div class='row main-pic'>
-  <div class='col-md-12'>
-    <img class='landing center-block' src='./images/food-kitchen-cutting-board-cooking-large.jpg'>
-  </div>
-  <h1 class='header'>gnosh.</h1>
-  <h4 class='header text-center'>All the snacks you need. <br>Right to your door.</h4>
+
+ <div class='col-md-12'>
+   <img class='landing center-block' src='./images/food-kitchen-cutting-board-cooking-large.jpg'>
+ </div>
+ <h1 class='header'>gnosh.</h1>
+ <h4 class='header text-center'>All the snacks you need. <br>Right to your door.</h4>
 </div>
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" interval="false" wrap='true'>
 
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
+ <!-- Indicators -->
+ <ol class="carousel-indicators">
+   <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+   <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+   <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+ </ol>
 
-  <!-- Wrapper for slides -->
-  <div class='carousel-inner'>
-    <div class="item active">
-      <div>
-        <img class='first-slide center-block' src="http://www.zillow.com/blog/files/2012/11/Knife-on-cutting-board.jpg" alt="...">
-      </div>
-      <div class='text-center item-description'>
-          <h3>Check Out Our Goodies!</h3>
-        <p>All the gnosh</p>
-      </div>
-    </div>
-    {{#items}}
-    <div class='item'>
-      <div>
-        <img class='item-pic center-block form-control form-group' src='{{this.image_url}}'>
-      </div>
-      <div class='text-center'>
-        <h3>{{this.name}}</h3>
-        <p>{{this.description}}</p>
-        <div>
-          <form class="" action="/cart/add/{{this.id}}" method="post">
-            <input class='add-to-cart' type='submit' value='Add to Cart'>
-          </form>
-        </div>
-      </div>
-    </div>
-    {{/items}}
-  </div>
-
-  <!-- Controls -->
+ <!-- Wrapper for slides -->
+ <div class='carousel-inner'>
+   <div class="item active">
+     <div>
+       <img class='first-slide center-block' src="http://www.zillow.com/blog/files/2012/11/Knife-on-cutting-board.jpg" alt="...">
+     </div>
+     <div class='text-center item-description'>
+         <h3>Check Out Our Goodies!</h3>
+       <p>All the gnosh</p>
+     </div>
+   </div>
+   {{#items}}
+   <div class='item'>
+     <div>
+       <img class='item-pic center-block form-control form-group' src='{{this.image_url}}'>
+     </div>
+     <div class='text-center'>
+       <h3>{{this.name}}</h3>
+       <p>{{this.description}}</p>
+       <div>
+         <form class="" action="/cart/add/{{this.id}}" method="post">
+           <input class='add-to-cart' type='submit' value='Add to Cart'>
+         </form>
+       </div>
+     </div>
+   </div>
+   {{/items}}
+ </div>
+ <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
