@@ -8,17 +8,24 @@ var Handlebars = require("handlebars");
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')('MatieuB', 'tenbusch7');
 
+var errorArray = [];
 
 router.get('/', function(req, res, next) {
-    res.render('admin');
-})
-
-router.get('/new', function(req, res, next) {
-    res.render('admin_new');
+  knex('users')
+      .then(function(data) {
+        return knex('items')
+            .select('name', 'description', 'price', 'image_url', 'id')
+            .then(function(items) {
+              res.render('admin',{
+                name: req.session.passport.user.name,
+                data: data,
+                items:items
+              });
+          })
+  })
 })
 
 router.post('/new', function(req, res, next) {
-    var errorArray = [];
 
     if (!req.body.email) {
         errorArray.push('Please enter an email');
@@ -37,9 +44,7 @@ router.post('/new', function(req, res, next) {
     }
 
     if (errorArray.length > 0) {
-        res.render('admin_new', {
-            errors: errorArray
-        });
+        res.redirect('/admin');
     } else if (req.body.email && req.body.first_name && req.body.last_name && req.body.password && req.body.confirm) {
         knex('users')
             .where({
@@ -47,7 +52,7 @@ router.post('/new', function(req, res, next) {
             })
             .then(function(response) {
                 if (response.length > 0) {
-                    res.render('signup', {
+                    res.redirect('/users/login', {
                         error: 'An account with that email already exists'
                     });
                 } else {
@@ -82,21 +87,14 @@ router.post('/new', function(req, res, next) {
                             })
 
                         }).then(function() {
-                            res.redirect('/admin/users');
+                            res.redirect('/admin');
                         })
                 }
             })
     };
 })
 
-router.get('/users', function(req, res, next) {
-    knex('users')
-        .then(function(data) {
-            res.render('admin_users', {
-                data: data
-            });
-        })
-})
+
 
 router.get('/users/:id/edit', function(req, res, next) {
     knex('users')
@@ -118,19 +116,10 @@ router.post('/users/:id/edit', function(req, res, next) {
         })
         .update(req.body)
         .then(function(info) {
-            res.redirect('/admin/users');
+            res.redirect('/admin');
         })
 })
 
-router.get('/products', function(req, res, next) {
-    knex('items')
-        .select('name', 'description', 'price', 'image_url', 'id')
-        .then(function(items) {
-            res.render('admin_products', {
-                items
-            });
-        })
-})
 
 router.get('/products/:id/edit', function(req, res, next) {
     knex('items')
@@ -151,7 +140,7 @@ router.get('/products/:id/edit', function(req, res, next) {
         })
         .update(req.body)
         .then(function(info) {
-            res.redirect('/admin/products');
+            res.redirect('/admin');
         })
 })
 
@@ -163,13 +152,10 @@ router.get('/products/:id/delete', function(req, res, next) {
         .first()
         .del()
         .then(function(info) {
-            res.redirect('/admin/products');
+            res.redirect('/admin');
         })
 })
 
-router.get('/products/add', function(req, res, next) {
-    res.render('products_add');
-})
 
 router.post('/products/add', function(req, res, next) {
     knex('items')

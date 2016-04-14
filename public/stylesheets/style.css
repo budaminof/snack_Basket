@@ -161,3 +161,29 @@ h1.login, h1.signup {
   -moz-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
   box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
 }
+
+/*ADMIN VIEW*/
+iframe{
+  width:100%;
+  height: 299px;
+}
+
+.users, .items, .addAdmin, .addProduct {
+  display: none;
+}
+.items{
+  margin-top: 10px;
+}
+
+th{
+  font-size: 18px;
+  padding: 5px 17px;
+}
+td{
+  font-size: 17px;
+  padding: 5px 17px;
+}
+
+.form-control{
+  width: 50%;
+}

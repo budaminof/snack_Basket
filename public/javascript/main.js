@@ -1,9 +1,19 @@
 $('document').ready(function() {
   console.log('Ready!');
 
-  $('.add-to-cart').click(function(){
-    var listing = $(this).parent().parent();
-    console.log(listing);
-    $(listing).clone().prependTo('.dropdown-menu')
-  });
+  $('.clickUsers').on('click', function(){
+    $('.users').toggle('slow');
+  })
+
+  $('.clickItems').on('click', function(){
+    $('.items').toggle('slow');
+  })
+
+  $('.clickAdmin').on('click', function(){
+    $('.addAdmin').toggle('slow');
+  })
+
+  $('.clickAddProduct').on('click', function(){
+    $('.addProduct').toggle('slow');
+  })
 })
