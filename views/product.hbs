@@ -1,0 +1,15 @@
+
+
+
+
+<div class="productConatainer text-center">
+{{#item}}
+
+    <img class="productView" src="{{image_url}}" alt="{{name}}" />
+        <h1> {{name}}</h1>
+        <h3>Description</h3>
+        <h4>{{description}}</h4>
+        <p>${{price}}</p>
+<a href="/cart"><button class="btn btn-defualt" type="button" name="button">Add to Cart</button></a>
+{{/item}}
+</div>
