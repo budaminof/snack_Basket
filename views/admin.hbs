@@ -10,6 +10,12 @@
 
 <div class="col-md-11 col-md-offset-1">
   <h3>Hey {{name}}</h3>
+  {{#errors}}
+    <h4 class='danger'>{{this}}</h4>
+  {{/errors}}
+  {{#msg}}
+    <h4 class='msg'>{{this}}</h4>
+  {{/msg}}
   <h4>What would you like to do?</h4>
   <h4 class="clickUsers">See all users</h4>
   <div class="users">
@@ -46,64 +52,68 @@
   </div>
   <h4 class="clickAdmin">Add new admin</h4>
   <div class="addAdmin">
-    <form action="/admin/new" method="post" >
-      <div class="form-group ">
-        <label>First Name</label>
-        <input class="form-control" type="text" name="first_name" value="">
-      </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <input class="form-control" type="texr" name="last_name" value="">
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input class="form-control" type="text" name="email" value="">
-      </div>
-      <div class="form-group">
-        <label>password</label>
-        <input class="form-control" type="password" name="password" value="">
-      </div>
-      <div class="form-group">
-        <label>confirm password</label>
-        <input class="form-control" type="password" name="confirm" value="">
-      </div>
-      <div class="form-group">
-        <label>Admin:</label>
-        <select class="form-control" class="" name="admin">
-          <option value='true'>true</option>
-          <option value='false'>false</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="submit"  value="Add Admin">
-      </div>
-    </form>
+    <div class="addAdminForm">
+      <form action="/admin/new" method="post" >
+        <div class="form-group ">
+          <label>First Name</label>
+          <input class="form-control" type="text" name="first_name" value="">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input class="form-control" type="texr" name="last_name" value="">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" type="text" name="email" value="">
+        </div>
+        <div class="form-group">
+          <label>password</label>
+          <input class="form-control" type="password" name="password" value="">
+        </div>
+        <div class="form-group">
+          <label>confirm password</label>
+          <input class="form-control" type="password" name="confirm" value="">
+        </div>
+        <div class="form-group">
+          <label>Admin:</label>
+          <select class="form-control" class="" name="admin">
+            <option value='true'>true</option>
+            <option value='false'>false</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="submit"  value="Add Admin">
+        </div>
+      </form>
+    </div>
   </div>
   <h4 class="clickAddProduct">Add new Product</h4>
   <div class="addProduct">
-    <form action="/admin/products/add" method="post">
-      <div class="form-group">
-        <label>product name</label>
-        <input class="form-control" type="text" name="name" value="">
-      </div>
-      <div class="form-group">
-        <label>description</label>
-        <input class="form-control" type="text" name="description" value="">
-      </div>
-      <div class="form-group">
-        <label>Image URL</label>
-        <input class="form-control" type="text" name="image_url" value="">
-      </div>
-      <div class="form-group">
-        <label>Active?</label>
-        <select class="form-control" class="" name="active">
-          <option value='true'>true</option>
-          <option value='false'>false</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="submit" value="Add this item">
-      </div>
-    </form>
+    <div class="addProductFrom">
+      <form action="/admin/products/add" method="post">
+        <div class="form-group">
+          <label>product name</label>
+          <input class="form-control" type="text" name="name" value="">
+        </div>
+        <div class="form-group">
+          <label>description</label>
+          <input class="form-control" type="text" name="description" value="">
+        </div>
+        <div class="form-group">
+          <label>Image URL</label>
+          <input class="form-control" type="text" name="image_url" value="">
+        </div>
+        <div class="form-group">
+          <label>Active?</label>
+          <select class="form-control" class="" name="active">
+            <option value='true'>true</option>
+            <option value='false'>false</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="submit" value="Add this item">
+        </div>
+      </form>
+    </div>
   </div>
 </div>

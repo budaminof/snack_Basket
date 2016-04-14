@@ -183,7 +183,27 @@ td{
   font-size: 17px;
   padding: 5px 17px;
 }
-
+.danger{
+  color: rgb(251, 0, 0);
+}
+.msg{
+  color:rgb(58, 144, 71);
+}
 .form-control{
-  width: 50%;
+  width: 70%;
+}
+
+.addProduct {
+  width: 70%;
+  border: solid 2px rgb(40, 71, 113);
+}
+
+.users, .addAdmin {
+  width: 60%;
+  border: solid 2px rgb(40, 71, 113);
+}
+
+.addAdminForm, .addProductFrom{
+  padding: 20px;
+  padding-left: 100px;
 }
