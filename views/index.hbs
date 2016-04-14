@@ -9,41 +9,43 @@
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" interval="false" wrap='true'>
 
- <!-- Indicators -->
- <ol class="carousel-indicators">
-   <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-   <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-   <li data-target="#carousel-example-generic" data-slide-to="2"></li>
- </ol>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
 
- <!-- Wrapper for slides -->
- <div class='carousel-inner'>
-   <div class="item active">
-     <div>
-       <img class='first-slide center-block' src="http://www.zillow.com/blog/files/2012/11/Knife-on-cutting-board.jpg" alt="...">
-     </div>
-     <div class='text-center item-description'>
-         <h3>Check Out Our Goodies!</h3>
-       <p>All the gnosh</p>
-     </div>
-   </div>
-   {{#items}}
-   <div class='item'>
-     <div>
-       <img class='item-pic center-block form-control form-group' src='{{this.image_url}}'>
-     </div>
-     <div class='text-center'>
-       <h3>{{this.name}}</h3>
-       <p>{{this.description}}</p>
-       <div>
-         <form class="" action="/cart/add/{{this.id}}" method="post">
-           <input class='add-to-cart' type='submit' value='Add to Cart'>
-         </form>
-       </div>
-     </div>
-   </div>
-   {{/items}}
- </div>
+  <!-- Wrapper for slides -->
+  <div class='carousel-inner'>
+    <div class="item active">
+      <div>
+        <img class='first-slide center-block' src="http://www.zillow.com/blog/files/2012/11/Knife-on-cutting-board.jpg" alt="...">
+      </div>
+      <div class='text-center item-description'>
+          <h3>Check Out Our Goodies!</h3>
+        <p>All the gnosh</p>
+      </div>
+    </div>
+    {{#items}}
+    <div class='item'>
+      <div>
+        <img class='item-pic center-block form-group' src='{{this.image_url}}'>
+      </div>
+      <div class='text-center'>
+        <h3>{{this.name}}</h3>
+        <p>{{this.description}}</p>
+        <div>
+          <form class="" action="/cart/add/{{this.id}}" method="post">
+            <input class='add-to-cart' type='submit' value='Add to Cart'>
+          </form>
+        </div>
+      </div>
+    </div>
+    {{/items}}
+  </div>
+
+
  <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
@@ -52,27 +54,22 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div> <!-- Carousel -->
-<div class="container col-md-offset-1 col-md-11">
-<div class="row">
-    <div class="thumbnail col-md-3">
-      <img style="height:200px" src="http://naturalwayforhealth.com/wp-content/uploads/2014/09/organic-food.jpg" alt="fresh">
-      <div class="caption">
-        <h3>How did it all started</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum faucibus sem sit amet massa euismod, non convallis ligula bibendum. Fusce sagittis leo ac laoreet commodo. Suspendisse aliquet, tortor eu tristique suscipit, nibh elit ullamcorper libero, eu sollicitudin risus ex vel elit. Pellentesque non eros felis. Donec luctus et mi sit amet interdum. Curabitur suscipit risus ligula, </p>
+
+<div class="container">
+  <div class="row">
+      <div class="thumbnail col-md-6">
+        <img class='info' style="height: 300px;" src="http://ec.europa.eu/agriculture/organic/images/standard/ec_organic_189.jpg" alt="cheese">
+        <div class="caption">
+          <a href="/products"><h3 class='text-center'>Our Baskets</h3></a>
+          <p class='text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum faucibus sem sit amet massa euismod, non convallis ligula bibendum. Fusce sagittis leo ac laoreet commodo. Suspendisse aliquet, tortor eu tristique suscipit, nibh elit ullamcorper libero, eu sollicitudin risus ex vel elit. Pellentesque non eros felis. Donec luctus et mi sit amet interdum. Curabitur suscipit risus ligula, </p>
+        </div>
       </div>
-    </div>
-    <div class="thumbnail col-md-3 col-md-offset-1">
-      <img style="height:200px" src="http://ec.europa.eu/agriculture/organic/images/standard/ec_organic_189.jpg" alt="cheese">
-      <div class="caption">
-        <a href="/products"><h3>Our Baskets</h3></a>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum faucibus sem sit amet massa euismod, non convallis ligula bibendum. Fusce sagittis leo ac laoreet commodo. Suspendisse aliquet, tortor eu tristique suscipit, nibh elit ullamcorper libero, eu sollicitudin risus ex vel elit. Pellentesque non eros felis. Donec luctus et mi sit amet interdum. Curabitur suscipit risus ligula, </p>
+      <div class="thumbnail col-md-6">
+        <img class='info' style="height: 300px;" src="http://outoftheboxcollective.com/files/Food%20box%20delivery.jpeg" alt="delivery">
+        <div class="caption">
+          <h3 class='text-center'>Our Story</h3>
+          <p class='text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum faucibus sem sit amet massa euismod, non convallis ligula bibendum. Fusce sagittis leo ac laoreet commodo. Suspendisse aliquet, tortor eu tristique suscipit, nibh elit ullamcorper libero, eu sollicitudin risus ex vel elit. Pellentesque non eros felis. Donec luctus et mi sit amet interdum. Curabitur suscipit risus ligula, </p>
+        </div>
       </div>
-    </div>
-    <div class="thumbnail col-md-3 col-md-offset-1">
-      <img style="height:200px" src="http://outoftheboxcollective.com/files/Food%20box%20delivery.jpeg" alt="delivery">
-      <div class="caption">
-        <h3>our Mission</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum faucibus sem sit amet massa euismod, non convallis ligula bibendum. Fusce sagittis leo ac laoreet commodo. Suspendisse aliquet, tortor eu tristique suscipit, nibh elit ullamcorper libero, eu sollicitudin risus ex vel elit. Pellentesque non eros felis. Donec luctus et mi sit amet interdum. Curabitur suscipit risus ligula, </p>
-      </div>
-    </div>
+  </div>
 </div>
