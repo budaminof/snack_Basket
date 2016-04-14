@@ -45,6 +45,33 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
         })
 })
 
+router.get('/cart', isloggedIn,function(req, res,next){
+  knex('users_cart')
+  .where({user_id: req.session.passport.user.user_id})
+  .innerJoin('items', 'users_cart.item_id', 'items.id')
+  .select('name','price','description','image_url','id')
+  .then(function(data){
+    res.render('cart',{
+      name: req.session.passport.user.name,
+      photo: req.session.passport.user.photo,
+      data: data
+    });
+  })
+})
+
+router.get('/cart/:id/delete', isloggedIn,function(req, res, next){
+  knex('users_cart')
+  .where({
+    user_id: req.session.passport.user.user_id,
+    item_id: req.params.id
+  })
+  .first()
+  .del()
+  .then(function(data){
+    res.redirect('/cart');
+  })
+})
+
 router.get('/products', function(req, res, nex){
   knex('items')
       .select('name', 'description', 'price', 'image_url', 'id')
