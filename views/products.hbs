@@ -9,15 +9,19 @@
         <h4>{{this.name}}</h4>
 
       </div>
-      <a class="btn btn-lg btn-default"
+      <!-- <iframe id="iframe" src="" width="400px" height="300px">
+          testet
+          {{this.name}}
+      </iframe> -->
+      <!-- <a id='link'class="btn btn-lg btn-default"
          data-toggle="modal"
          data-target="#productModal"
-         href="/products/{{id}}">Product Details</a>
+         href="/product/{{id}}">Product Details</a> -->
 
-<!-- <a href="products/{{id}}">
+<a href="product/{{id}}">
       <button id="productDetails" type="button" class="btn btn-primary btn-lg t" data-toggle="modal" data-target="#productModal">
           Product Details
-      </button> -->
+      </button>
  </a>
     </div>
 {{/items}}
@@ -32,17 +36,37 @@
         <h4 class="modal-title" id="myModalLabel">Product Details</h4>
       </div>
       <div class="modal-body">
-          {{#items}}
+          <script type="text/javascript">
+          $('#iframe').hide();
+
+          $('#link').on('click',function(){
+              $('#iframe').show();
+
+              console.log('clicked!'
+              );
+
+              knex('items')
+              .where({id:req.params.id})
+              .select('name', 'description', 'price', 'image_url', 'id')
+              .then(function(item) {
+                  res.render({item:item})
+              });
+
+          });
+
+          </script>
+
+          {{#item}}
               <div class="thumbnail col-md-3 shadow">
                 <img style="height:250px" src="{{this.image_url}}" alt="...">
                 <div class="caption text-center">
-                  <h4>{{this.name}}</h4>
+                  <h4>{{name}}</h4>
                   <h3>{{this.description}}</h3>
                   <h3>{{this.price}}</h3>
 
                 </div>
               </div>
-          {{/items}}
+          {{/item}}
 
 
 

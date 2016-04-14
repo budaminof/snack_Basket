@@ -57,27 +57,29 @@ router.get('/products', function(req, res, nex){
           });
       })
 })
+router.get('/productd/:id', function(req, res, nex){
+  knex('items')
+      .where({id:req.params.id})
+      .select('name', 'description', 'price', 'image_url', 'id')
+      .then(function(itema) {
+          if (!req.session.passport) {
+              return res.render('products',{items:items});
 
-router.get('/products/:id', function(requ,res,nex) {
-    knex('items')
-        .where({id:req.params.id})
-        .select('name', 'description', 'price', 'image_url', 'id')
-        .then(function(item) {
-            res.render('products',{item:item})
-        });
+          } else {
+              res.render('product', {
+                  item: item,
+                  name: req.session.passport.user.name,
+                  photo: req.session.passport.user.photo
+              });
+          }
+
     });
+})
 
 
-        // {
-        //     if (!req.session.passport) return res.render('products',{items});
-        //     res.render('products', {
-        //         items: items,
-        //         name: req.session.passport.user.name,
-        //         photo: req.session.passport.user.photo
-        //     });
-        // })
-  // })
 
-// })
+
+
+
 
 module.exports = router;
