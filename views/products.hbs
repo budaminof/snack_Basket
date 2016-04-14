@@ -1,15 +1,17 @@
 <div class='container'>
   <div class="col-md-offset-1 col-md-11 all">
     <div class="row">
-    {{#items}}
+        {{#items}}
         <div class="thumbnail col-md-3 shadow">
-          <img style="height:250px" src="{{this.image_url}}" alt="...">
-          <div class="caption">
-            <h4 class='text-center'>{{this.name}}</h4>
-          </div>
-          <a class='center-block text-center' href="/product/{{id}}"><button class="btn btn-default"type="button">Product Details</button></a>
+            <img style="height:250px" src="{{this.image_url}}" alt="...">
+            <div class="caption">
+                <h4 class='text-center'>{{this.name}}</h4>
+            </div>
+            <a class='center-block text-center' href="/product/{{id}}">
+            <button class="btn btn-default" type="button">Product Details</button>
+            </a>
         </div>
-     {{/items}}
-     </div>
+        {{/items}}
+        </div>
     </div>
-  </div>
+</div>

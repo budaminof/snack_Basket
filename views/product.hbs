@@ -10,6 +10,8 @@
         <h3>Description</h3>
         <h4>{{description}}</h4>
         <p>${{price}}</p>
-<a href="/cart"><button class="btn btn-defualt" type="button" name="button">Add to Cart</button></a>
+        <form class="" action="/cart/add/{{id}}" method="post">
+          <input class="btn btn-defualt" type="submit" value="Add to Cart"></input>
+        </form>
 {{/item}}
 </div>

@@ -7,13 +7,13 @@ exports.seed = function(knex, Promise) {
         {
         name: 'Cured Meat',description:"It's the cure for your meat needs",
         price:10.00,
-        image_url:"http://thewinebar.com/sites/default/files/styles/main_image/public/cured-meat.png?itok=7NlNPLw5"
+        image_url:"http://macarenasdelicorner.com/376-thickbox/bellota-iberico-pork-cured-loin-jabugo.jpg"
         },
 
         {
         name: 'Pickles',
         description:"Sweet and spicy tastes so nicey",
-        price:7.00, image_url:"http://static1.squarespace.com/static/563ace9be4b0f155c92ec39c/5647a58de4b0389db0961861/5647a5bfe4b0a1999a71a4ad/1447536066617/picklesopt.jpg"
+        price:7.00, image_url:"https://cdn.shopify.com/s/files/1/0100/5392/products/PicklePeckTaster_6cbcbf95-3bf9-4f64-9b44-e60d2eafacd8_grande.jpg"
         },
 
         {
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
         name: 'Olives',
         description:"'Olive you more!'",
         price:6.00,
-        image_url:"http://p-fst2.pixstatic.com/524ee0d1697ab06140007c25._w.1500_s.fit_.jpg"
+        image_url:"https://s-media-cache-ak0.pinimg.com/736x/d2/8b/d3/d28bd34a06fb69c5940b99139477a1e1.jpg"
         },
 
         {
@@ -41,28 +41,28 @@ exports.seed = function(knex, Promise) {
         name:'Tapenade',
         description:"Yummy!",
         price:10.00,
-        image_url:"http://blog.fatfreevegan.com/images/artichoke-tapenade.jpg"
+        image_url:"http://images.sunflower.vn/wp-content/uploads/2015/06/colavita-black-olive-tapenade-03-600x600.jpg"
         },
 
         {
         name: 'Pesto',
         description:"It's the BESTO!",
         price:8.50,
-        image_url:"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQdEnZZ4MhoKhnH_7pTKomAaCZyo07hojcC9LV26WTI6MBIObRNrw"
+        image_url:"https://www.weightwatchers.com/images/1033/dynamic/foodandrecipes/2011/11/PestoSauce_290_600.jpg"
         },
 
         {
         name: 'Mixed Nuts',
         description:"Hand picked and shelled by our fair trade cooperative of indigenous squirrels.",
         price:8.50,
-        image_url:"http://s-ak.buzzfed.com/static/enhanced/terminal01/2010/11/10/16/enhanced-buzz-16108-1289424850-3.jpg"
+        image_url:"http://inzanaranch.com/Store/media/catalog/product/3/-/3-img_1443-600.jpg"
         },
 
         {
         name: 'Stanky Cheese',
         description:"All this shit is so cheesy!",
         price:7.25,
-        image_url:"http://culturecheesemag.com/wp-content/uploads/2015/01/shutterstock-stinky-cheese-plate-750x368.jpg"
+        image_url:"http://www.kirklands.com/blog/wp-content/uploads/2015/11/rsz_143803_1.jpg"
         },
 
         {
@@ -76,14 +76,14 @@ exports.seed = function(knex, Promise) {
         name: 'Meat Basket',
         description:"Enjoy this meat basket but don't enjoy it too much.",
         price:40.00,
-        image_url:"http://thumbs.dreamstime.com/z/sausage-meat-basket-wooden-table-space-text-41055380.jpg"
+        image_url:"http://ak1.ostkcdn.com/images/products/7325735/Deli-Direct-Wisconsin-Cheese-and-Sausage-Large-Gift-Basket-200d8862-18a0-4101-976d-01bb6d4152dc_600.jpg"
         },
 
         {
         name: 'Autoimmune Paleo Basket',
         description:"Endocrine disrupters, glyphosate.",
         price:40.00,
-        image_url:"http://s3.amazonaws.com/weighttraining.com/data/1303/content.jpg?1339031847"
+        image_url:"https://cdn3.volusion.com/vskvu.sucqz/v/vspfiles/photos/GiftBasket-XL-2.jpg?1444591744"
         },
 
         {
