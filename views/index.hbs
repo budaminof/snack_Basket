@@ -1,62 +1,57 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container nav-container">
-        <ul class="nav nav-pills">
-            <li>
-                <div class="dropdown cart">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <div  class="dropdown cart">
+            <button id="cartButton" class="btn btn-default  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Cart
-                        <span class="caret"></span>
-                    </button>
-                    <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                        <tr>
-                            <td></td>
-                        </tr>
-                        <tr id='total'>
-                            <td><b>Total:</b></td>
-                            <td>$total</td>
-                        </tr>
+            <span class="caret"></span>
+            </button>
+                <table class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                    <tr>
+                    <td></td>
+                    </tr>
+                    <tr id='total'>
+                        <td><b>Total:</b></td>
+                        <td>$total</td>
+                    </tr>
                     </table>
                 </div>
-            </li>
-
-            {{#if user}}
-                {{#if photo}}
-                    <li><img src="{{photo}}" /></li>
+                <div class="text-right">
+                    {{#if user}}
+                    {{#if photo}}
+                        <img src="{{photo}}" />
+                    {{/if}}
+                    <h3>Welcome, {{name}}!</h3>
+                    <a class="logout" href="/users/logout">Log out</a>
                 {{/if}}
-                <li>
-                    <h5>Welcome, {{name}}!</h5></li>
-                <li><a class="logout" href="/users/logout">Log out</a></li>
-            {{/if}}
-            {{#unless user}}
-                <li>
-                    <a href='/auth/google'><img class="google" src="http://i.stack.imgur.com/XzoRm.png" alt="google oauth" /></a>
-                </li>
-                <li><a class="signup" href="/users/signup">Sign Up</a></li>
-                <li><a class="login" href="/users/login">Log In</a></li>
-            {{/unless}}
+                </div>
+</div>
 
-        </ul>
-
-    </div>
-
-
-
-  </div>
 <!-- Modal Button -->
+<div class="text-center">
+
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Login or Sign up!
 </button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
-      <div  class="modal-body">
+      <div  class="modal-body ">
+            <div class="text-center">
+                <a class='text-center' href='/auth/google'>
+                <img class="google" src="http://i.stack.imgur.com/XzoRm.png" alt="google oauth"/>
+                </a>
+            </div>
+
+
           <form   class="myInput form-group col-md-6"action="/users/login" method='post'>
+
                 <ul class='errors'>
                     {{#errors}}
                     <li><b>{{this}}</b></li>
@@ -98,7 +93,7 @@
               <button class='btn btn-default' type='submit'>Sign Up!</button>
             </form>
 
-    
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -168,3 +163,26 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div> <!-- Carousel -->
+
+
+
+<!-- bottom panel -->
+<div id="bottomPanel" class="panel panel-default col-md-12">
+  <div class="panel-body">
+
+<ul class="list-group col-md-offset-1 col-md-4">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+<ul class="list-group col-md-5 col-md-offset-2">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+  </div>
+</div>
