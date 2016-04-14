@@ -3,8 +3,21 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   width: 100%;
 }
-.login-background {
+.myInput {
+    z-index: 10000;
+}
+.modal-content {
     background-image:  url('http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg');
+}
+.modal-body > form > input {
+    height:50px;
+    width:200px;
+
+}
+.modal-body > form > label {
+    /*height:50px;*/
+    width:200px;
+    color:white;
 }
 
 /* Top Navbar */
