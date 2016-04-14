@@ -1,4 +1,3 @@
-
 <div class='container'>
   <div class="col-md-offset-1 col-md-12 all">
     <div class="row">
@@ -9,7 +8,42 @@
             <h4>{{this.name}}</h4>
           </div>
         </div>
+      <!-- Modal Trigger button -->
+      <!-- <a href="/product/{{id}}" data-remote="false" data-toggle="modal" data-target="#productModal" class="btn btn-default">
+          Launch Modal
+      </a> -->
+      <a href="/product/{{id}}"><button class="btn btn-default"type="button" >Product Details</button></a>
+     </div>
     {{/items}}
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
+
+<!-- Default bootstrap modal example -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+          {{#item}}
+          <p>
+              {{name}}
+              {{description}}
+
+          </p>
+
+          {{/item}}
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
 </div>
