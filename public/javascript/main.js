@@ -1,11 +1,7 @@
 $('document').ready(function() {
-
-
-
-
-
-
-
+  $('#myModal').on('focus', function () {
+    $('#email').focus();
+  })
 
   $('.clickUsers').on('click', function(){
     $('.users').toggle('slow');
@@ -22,4 +18,5 @@ $('document').ready(function() {
   $('.clickAddProduct').on('click', function(){
     $('.addProduct').toggle('slow');
   })
-})
+
+});

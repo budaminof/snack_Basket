@@ -3,9 +3,26 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   width: 100%;
 }
-.login-background {
+.myInput {
+    z-index: 10000;
+}
+.modal-content {
     background-image:  url('http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg');
 }
+.modal-body > form > input {
+    height:50px;
+    width:200px;
+
+}
+.modal-body > form > label {
+    /*height:50px;*/
+    width:200px;
+    color:white;
+}
+.google {
+    width:80%;
+}
+
 
 /* Top Navbar */
 
@@ -18,6 +35,14 @@ body {
 div.cart {
   text-align: left;
   margin-top: 5px;
+
+}
+#cartButton {
+    width:75px;
+    height:30px;
+    /*padding-top: 2%;*/
+    font-size: 20px;
+
 }
 
 ul.dropdown-menu > li {
@@ -206,4 +231,8 @@ td{
 .addAdminForm, .addProductFrom{
   padding: 20px;
   padding-left: 100px;
+}
+
+#bottomPanel {
+    background-color: rgb(159, 187, 128);
 }
