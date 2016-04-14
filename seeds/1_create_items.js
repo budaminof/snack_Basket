@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
         name: 'Relish',
         description:"You will relish every bite",
         price:7.00,
-        image_url:"http://static.wixstatic.com/media/4f8415_a6e2134a965e4af5bb63e4d06da5f3a6.jpg_srz_980_735_85_22_0.50_1.20_0.00_jpg_srz"
+        image_url:"http://www.healthyseasonalrecipes.com/wp-content/uploads/2014/08/lemony-fennel-relish-sq-sm-006.jpg"
         },
 
         {
@@ -90,7 +90,7 @@ exports.seed = function(knex, Promise) {
         name: 'Veggie Basket',
         description:"Because people 50 years from now will look at us like barbarians!",
         price:40.00,
-        image_url:"https://newgrassgardens.files.wordpress.com/2011/03/plangardenveggiebasket.jpg"
+        image_url:"http://nebula.wsimg.com/obj/RTk2QTlGMjU5M0E4MTQxODRFRTk6MjY3MjU2MzA0ZDVkMTc1ZjA0ZTdlMWE2ZGQ0OWJhZjU6Ojo6OjA="
         },
 
         {
@@ -111,14 +111,14 @@ exports.seed = function(knex, Promise) {
         name: 'Savory Basket',
         description:"Sometimes you just neeed to slow down and savor the juiciness of life.",
         price:28.00,
-        image_url:"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQZhFbi9j1--fx3JOV0NTDsFa-_sTDY2Ho7Kz9Li_OInyRIkPI-gA"
+        image_url:"http://protokitty.com/269-thickbox_default/savory-meat-and-cheese-gift-basket.jpg"
         },
 
         {
         name: 'Chocolate Covered Espresso Beans',
         description:"Yes yes yes!",
         price:9.00,
-        image_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCNuEePhTze-39I2rsYw3CKAdIJg9bDyxMasWuKsAeZzfdmi-U"
+        image_url:"https://noellyanik.files.wordpress.com/2014/02/loose_espressobean_600_2.jpg?w=600"
         }
 
     ])
