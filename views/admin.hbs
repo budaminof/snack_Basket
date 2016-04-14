@@ -11,7 +11,12 @@
     <h4 class='msg'>{{this}}</h4>
   {{/msg}}
   <h3>{{name}}, What would you like to do?</h3>
+
   <button class='btn btn-primary'><h4 class="clickUsers">See All Users</h4></button>
+  <button class='btn btn-primary'><h4 class="clickItems">See All Products</h4></button>
+  <button class='btn btn-primary'><h4 class="clickAdmin">Add New Admin</h4></button>
+  <button class='btn btn-primary'><h4 class="clickAddProduct">Add New Product</h4></button>
+
   <div class="users">
     <table>
       <tr>
@@ -31,20 +36,19 @@
       {{/data}}
     </table>
   </div>
-  <button class='btn btn-primary'><h4 class="clickItems">See All Products</h4></button>
   <div class="container col-md-offset-1 col-md-12 all items">
-  <div class="row">
-  {{#items}}
-      <div class="thumbnail col-md-3 shadow">
-        <img style="height:250px" src="{{this.image_url}}" alt="...">
-        <div class="caption text-center">
-          <h4>{{this.name}}</h4>
+    <div class="row">
+    {{#items}}
+        <div class="thumbnail col-md-3 shadow">
+          <img style="height:250px" src="{{this.image_url}}" alt="...">
+          <div class="caption text-center">
+            <h4>{{this.name}}</h4>
+          </div>
         </div>
-      </div>
-  {{/items}}
+    {{/items}}
+    </div>
   </div>
-  </div>
-  <button class='btn btn-primary'><h4 class="clickAdmin">Add New Admin</h4></button>
+
   <div class="addAdmin">
     <div class="addAdminForm">
       <form action="/admin/new" method="post" >
@@ -81,7 +85,7 @@
       </form>
     </div>
   </div>
-  <button class='btn btn-primary'><h4 class="clickAddProduct">Add New Product</h4></button>
+
   <div class="addProduct">
     <div class="addProductFrom">
       <form action="/admin/products/add" method="post">

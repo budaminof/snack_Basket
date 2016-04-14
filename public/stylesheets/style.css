@@ -295,7 +295,7 @@ td {
 .addProduct {
   margin-left: 200px;
   width: 70%;
-  border: solid 2px rgb(40, 71, 113);
+  /*border: solid 2px rgb(40, 71, 113);*/
 
 }
 .users, .addAdmin {
