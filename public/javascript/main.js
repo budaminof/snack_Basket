@@ -1,5 +1,11 @@
 $('document').ready(function() {
-  console.log('Ready!');
+
+
+
+
+
+
+
 
   $('.clickUsers').on('click', function(){
     $('.users').toggle('slow');

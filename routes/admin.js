@@ -138,16 +138,50 @@ router.get('/users/:id/edit', function(req, res, next) {
 })
 
 router.post('/users/:id/edit', function(req, res, next) {
+
+      if (!req.body.email) {
+          errorArray.push('Please enter an email');
+      }
+      if (!req.body.first_name) {
+          errorArray.push('Please enter a first name');
+      }
+      if (!req.body.last_name) {
+          errorArray.push('Please enter a last name');
+      }
+      if (!req.body.password) {
+          errorArray.push('Please enter a password');
+      }
+      if (!req.body.confirm) {
+          errorArray.push('Please confirm password');
+      }
+
+      if (errorArray.length > 0) {
+          res.redirect('/admin');
+      } else{
+        knex('users')
+        .where({
+          id: req.params.id
+        })
+        .update(req.body)
+        .then(function(info) {
+          msg = 'User was successfuly edited!'
+          res.redirect('/admin');
+        })
+      }
+})
+
+router.get('/users/:id/delete', function(req, res, next) {
     knex('users')
         .where({
             id: req.params.id
         })
-        .update(req.body)
+        .first()
+        .del()
         .then(function(info) {
+          msg='User was successfuly deleted!'
             res.redirect('/admin');
         })
 })
-
 
 router.get('/products/:id/edit', function(req, res, next) {
     knex('items')
@@ -161,15 +195,31 @@ router.get('/products/:id/edit', function(req, res, next) {
         })
 })
 
-router.get('/products/:id/edit', function(req, res, next) {
+router.post('/products/:id/edit', function(req, res, next) {
+  if (!req.body.name) {
+      errorArray.push('Please enter a product name');
+  }
+  if (!req.body.description) {
+      errorArray.push('Don\'t you think that a description is necessary?');
+  }
+  if (!req.body.image_url) {
+      errorArray.push('You want to have here a good looking image..');
+  }
+
+  if (errorArray.length > 0){
+    res.redirect('/admin');
+  }
+  else{
     knex('items')
-        .where({
-            id: req.params.id
-        })
-        .update(req.body)
-        .then(function(info) {
-            res.redirect('/admin');
-        })
+    .where({
+      id: req.params.id
+    })
+    .update(req.body)
+    .then(function(info) {
+      msg='Product was successfuly updated!'
+      res.redirect('/admin');
+    })
+  }
 })
 
 router.get('/products/:id/delete', function(req, res, next) {
@@ -180,8 +230,11 @@ router.get('/products/:id/delete', function(req, res, next) {
         .first()
         .del()
         .then(function(info) {
+          msg='Product was successfuly deleted!'
             res.redirect('/admin');
         })
 })
+
+
 
 module.exports = router;
