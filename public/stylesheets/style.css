@@ -193,6 +193,7 @@ h1.login, h1.signup {
 .all {
   margin-top: 90px;
 }
+
 .shadow{
   margin: 10px;
   -webkit-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
@@ -208,7 +209,7 @@ h1.login, h1.signup {
 iframe{
   margin-top: 40px;
   width:100%;
-  height: 299px;
+  height: 350px;
 }
 
 .users, .items, .addAdmin, .addProduct {
@@ -253,6 +254,16 @@ td{
   padding-left: 100px;
 }
 
-#bottomPanel {
-    background-color: rgb(159, 187, 128);
+footer{
+  background-color: rgb(40, 40, 40);
+  color:rgb(251, 251, 251);
+  width: 115%;
+  margin-left: -135px;
+}
+.admin > h4 {
+  padding-top: 20px;
+}
+.adminContainer{
+  padding-bottom: 100px;
+  height: 100%;
 }
