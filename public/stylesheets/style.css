@@ -292,6 +292,17 @@ div.addAdmin > div > form > div > label {
   margin-left: auto;
 }
 
+/* ADMIN / ADD PRODUCT */
+
+div.addProduct {
+  text-align: center;
+}
+
+div.addProduct > div > form > div > label {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .users, .items, .addAdmin, .addProduct {
     display: none;
 }
@@ -317,7 +328,7 @@ td {
 }
 .addProduct {
   margin-left: 200px;
-  width: 70%;
+  width: 60%;
   /*border: solid 2px rgb(40, 71, 113);*/
 
 }
@@ -331,9 +342,8 @@ td {
   padding: 20px;
 }
 
-.addProductFrom {
+.addProductForm {
     padding: 20px;
-    padding-left: 100px;
 }
 
 img.info {
