@@ -1,19 +1,72 @@
 <div class="container">
   <div class="col-md-12">
     <h2 class="cartH2">You have in your cart:</h2>
+    <!-- Modal Remote -->
+    <a href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" class="btn btn-default">
+        Update My Info
+    </a>
+
+    <!-- Default bootstrap modal example -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Update My Info</h4>
+          </div>
+          <div class="modal-body">
+            <form action="{{domething}}"  method="POST" class="text-center col-md-9">
+            <fieldset>
+            <!-- Text input-->
+            <div class="form-group">
+            <label class="col-md-4 control-label">FIRST NAME</label>
+            <input name="first_name" type="text" value"{{user.first_name}}" class="form-control">
+            <label class="col-md-4 control-label">LAST NAME</label>
+            <input name="last_name" type="text" value"{{user.last_name}}" class="form-control">
+            <label class="col-md-4 control-label">EMAIL</label>
+            <input name="email" type="text" value"{{user.email}}" class="form-control">
+            <input type="submit" name="name" value="SAVE MY INFO">
+            </div>
+            </fieldset>
+            </form>
+            <form action="{{domething}}"  method="POST" class="text-center col-md-9">
+            <fieldset>
+            <!-- Text input-->
+            <div class="form-group">
+            <label class="col-md-4 control-label">STREET 1</label>
+            <input name="street1" type="text" value"" class="form-control">
+            <label class="col-md-4 control-label">STREET 2</label>
+            <input name="street2" type="text" value"" class="form-control">
+            <label class="col-md-4 control-label">CITY</label>
+            <input name="city" type="text" value"" class="form-control">
+            <label class="col-md-4 control-label">STATE</label>
+            <input name="state" type="text" value"" class="form-control">
+            <label class="col-md-4 control-label">ZIP</label>
+            <input name="zipcode" type="text" value"" class="form-control">
+            <input type="submit" name="name" value="SAVE ADDRESS">
+            </div>
+            </fieldset>
+            </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href=""><button type="button" class="btn btn-primary">Save changes</button></a>  </div>
+        </div>
+      </div>
+    </div>
     <table class="cartTable">
       <tr>
-        <th>Image</th>
+        <th></th>
+        <th>item</th>
         <th>description</th>
-        <th>name</th>
         <th>price</th>
       </tr>
       {{#data}}
       <tr>
         <td><img style="height: 100px;" src="{{this.image_url}}"/></td>
-        <td>{{this.description}}</td>
         <td>{{this.name}}</td>
-        <td class="price" price-data={{this.price}}>{{this.price}}</td>
+        <td>{{this.description}}</td>
+        <td class="price" price-data={{this.price}}>${{this.price}}</td>
         <td><a href="/cart/{{this.item_id}}/delete">Delete this item</a></td>
       </tr>
       {{/data}}

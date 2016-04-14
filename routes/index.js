@@ -41,7 +41,7 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
         })
         .returning('*')
         .then(function(data) {
-            res.redirect('/');
+            res.redirect('/cart');
         })
 })
 
@@ -54,13 +54,13 @@ router.get('/cart', isloggedIn,function(req, res,next){
       return knex('users')
       .where({id: req.session.passport.user.user_id})
       .then(function(user){
-
+console.log(user);
         res.render('cart',{
           name: req.session.passport.user.name,
           photo: req.session.passport.user.photo,
           data: data,
-          user: user
-        });
+          user: user[0]
+      });
       })
   })
 })
@@ -93,7 +93,7 @@ router.get('/products', function(req, res, nex){
                });
            }
       });
-});      
+});
 
 router.get('/product/:id', function(req, res, nex){
   knex('items')
