@@ -41,7 +41,7 @@ exports.seed = function(knex, Promise) {
         name:'Tapenade',
         description:"Yummy!",
         price:10.00,
-        image_url:"http://images.sunflower.vn/wp-content/uploads/2015/06/colavita-black-olive-tapenade-03-600x600.jpg"
+        image_url:"https://www.weightwatchers.com/images/1033/dynamic/foodandrecipes/2011/03/EasySundriedTomatoTapenade_203_600.jpg"
         },
 
         {
