@@ -3,6 +3,8 @@ var router = express.Router();
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
 var fs = require('fs');
 var Handlebars = require("handlebars");
+var stripe = require("stripe")(process.env.TEST_SECRET_KEY);
+var stripeToken;
 
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
@@ -11,7 +13,8 @@ var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SEN
 var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 //compile template
 var compiledTemplate = Handlebars.compile(regEmail);
-
+var msg='';
+var amount=0;
 
 function isloggedIn(req, res, next) {
     if (!req.session.passport) return res.redirect('/users/login')
@@ -54,14 +57,28 @@ router.get('/cart', isloggedIn,function(req, res,next){
       return knex('users')
       .where({id: req.session.passport.user.user_id})
       .then(function(user){
+          var toPay= 0;
+
+          for (var i = 0; i < data.length; i++) {
+            toPay += Number(data[i].price);
+          }
+          toPay= toPay.toFixed(2);
+          var arr = toPay.split('');
+          arr.splice(2,1);
+          amount = Number(arr.join(''));
+          amount += amount * 0.8;
 
         res.render('cart',{
           name: req.session.passport.user.name,
           photo: req.session.passport.user.photo,
           data: data,
-          user: user
+          user: user,
+          msg: msg,
+          key: process.env.TEST_SECRET_KEY,
+          amount: amount
         });
       })
+      msg='';
   })
 })
 
@@ -103,4 +120,22 @@ router.get('/product/:id', function(req, res, nex){
   });
 })
 
+router.post('/cart/payment', function(req,res, next){
+  stripeToken = req.body.stripeToken;
+
+  var charge = stripe.charges.create({
+  amount: amount, // amount in cents, again
+  currency: "usd",
+  source: stripeToken,
+  description: "Example charge"
+  }, function(err, charge) {
+    if (err && err.type === 'StripeCardError') {
+      console.log('STRIP ERROR',err);
+      res.redirect('/cart')
+    }
+    msg= 'Successful payment!'
+  res.redirect('/cart');
+});
+
+})
 module.exports = router;
