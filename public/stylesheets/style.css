@@ -146,7 +146,7 @@ h4.header {
 .item-pic {
   height: 300px;
   width: 300px;
-  /*border-radius: 50%;*/
+  border-radius: 6px;
   margin-bottom: 10px !important;
 }
 
@@ -201,9 +201,6 @@ h1.login, h1.signup {
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: rgb(63, 44, 42);
 }
-.thumbnail {
-    border: none;
-}
 
 .container {
     padding-top: 20px;
@@ -230,9 +227,14 @@ h1.login, h1.signup {
     -moz-box-shadow: 9px 6px 7px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 9px 6px 7px 0px rgba(0, 0, 0, 0.75);
 }
-.productConatainer {
+.productContainer {
     margin-top:10%;
     margin-left:5%;
+}
+
+div.thumbnail {
+  width: 300px;
+  margin: 2% 3.5%;
 }
 
 /*ADMIN VIEW*/
@@ -286,10 +288,6 @@ td {
 .addAdminForm, .addProductFrom {
     padding: 20px;
     padding-left: 100px;
-}
-
-div.thumbnail {
-  padding: 0 2%;
 }
 
 img.info {
