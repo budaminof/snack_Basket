@@ -269,6 +269,18 @@ iframe{
   height: 350px;
 }
 
+/* ADMIN / USERS */
+
+div.users > table {
+  margin-top: 3%;
+}
+
+div.users > table > tr > th,td {
+  text-align: left;
+}
+
+/* ADMIN / ITEMS */
+
 .users, .items, .addAdmin, .addProduct {
     display: none;
 }
