@@ -8,17 +8,30 @@ var Handlebars = require("handlebars");
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')('MatieuB', 'tenbusch7');
 
+var errorArray = [];
+var msg = '';
 
 router.get('/', function(req, res, next) {
-    res.render('admin');
-})
+  knex('users')
+      .then(function(data) {
+        return knex('items')
+            .select('name', 'description', 'price', 'image_url', 'id')
+            .then(function(items) {
+              res.render('admin',{
+                name: req.session.passport.user.name,
+                data: data,
+                items:items,
+                errors:errorArray,
+                msg: msg
+              });
+              errorArray=[];
+              msg='';
+          })
+   })
 
-router.get('/new', function(req, res, next) {
-    res.render('admin_new');
 })
 
 router.post('/new', function(req, res, next) {
-    var errorArray = [];
 
     if (!req.body.email) {
         errorArray.push('Please enter an email');
@@ -37,17 +50,15 @@ router.post('/new', function(req, res, next) {
     }
 
     if (errorArray.length > 0) {
-        res.render('admin_new', {
-            errors: errorArray
-        });
-    } else if (req.body.email && req.body.first_name && req.body.last_name && req.body.password && req.body.confirm) {
+        res.redirect('/admin');
+    } else {
         knex('users')
             .where({
                 email: req.body.email
             })
             .then(function(response) {
                 if (response.length > 0) {
-                    res.render('signup', {
+                    res.redirect('/users/login', {
                         error: 'An account with that email already exists'
                     });
                 } else {
@@ -62,9 +73,7 @@ router.post('/new', function(req, res, next) {
                             admin: req.body.admin
                         })
                         .then(function(id) {
-                            //get file
                             var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
-                            //compile template
                             var compiledTemplate = Handlebars.compile(regEmail);
 
                             sendgrid.send({
@@ -82,20 +91,37 @@ router.post('/new', function(req, res, next) {
                             })
 
                         }).then(function() {
-                            res.redirect('/admin/users');
+                            msg = 'A user was added successfuly!'
+                            res.redirect('/admin');
                         })
                 }
             })
     };
 })
 
-router.get('/users', function(req, res, next) {
-    knex('users')
-        .then(function(data) {
-            res.render('admin_users', {
-                data: data
-            });
-        })
+router.post('/products/add', function(req, res, next) {
+  if (!req.body.name) {
+      errorArray.push('Please enter a product name');
+  }
+  if (!req.body.description) {
+      errorArray.push('Don\'t you think that a description is necessary?');
+  }
+  if (!req.body.image_url) {
+      errorArray.push('You want to have here a good looking image..');
+  }
+
+  if (errorArray.length > 0){
+    res.redirect('/admin');
+  }
+  else {
+    knex('items')
+    .insert(req.body)
+    .returning('id')
+    .then(function(id) {
+      msg = 'Product added successfuly!'
+      res.redirect('/admin');
+    })
+  }
 })
 
 router.get('/users/:id/edit', function(req, res, next) {
@@ -112,23 +138,48 @@ router.get('/users/:id/edit', function(req, res, next) {
 })
 
 router.post('/users/:id/edit', function(req, res, next) {
+
+      if (!req.body.email) {
+          errorArray.push('Please enter an email');
+      }
+      if (!req.body.first_name) {
+          errorArray.push('Please enter a first name');
+      }
+      if (!req.body.last_name) {
+          errorArray.push('Please enter a last name');
+      }
+      if (!req.body.password) {
+          errorArray.push('Please enter a password');
+      }
+      if (!req.body.confirm) {
+          errorArray.push('Please confirm password');
+      }
+
+      if (errorArray.length > 0) {
+          res.redirect('/admin');
+      } else{
+        knex('users')
+        .where({
+          id: req.params.id
+        })
+        .update(req.body)
+        .then(function(info) {
+          msg = 'User was successfuly edited!'
+          res.redirect('/admin');
+        })
+      }
+})
+
+router.get('/users/:id/delete', function(req, res, next) {
     knex('users')
         .where({
             id: req.params.id
         })
-        .update(req.body)
+        .first()
+        .del()
         .then(function(info) {
-            res.redirect('/admin/users');
-        })
-})
-
-router.get('/products', function(req, res, next) {
-    knex('items')
-        .select('name', 'description', 'price', 'image_url', 'id')
-        .then(function(items) {
-            res.render('admin_products', {
-                items
-            });
+          msg='User was successfuly deleted!'
+            res.redirect('/admin');
         })
 })
 
@@ -144,15 +195,31 @@ router.get('/products/:id/edit', function(req, res, next) {
         })
 })
 
-router.get('/products/:id/edit', function(req, res, next) {
+router.post('/products/:id/edit', function(req, res, next) {
+  if (!req.body.name) {
+      errorArray.push('Please enter a product name');
+  }
+  if (!req.body.description) {
+      errorArray.push('Don\'t you think that a description is necessary?');
+  }
+  if (!req.body.image_url) {
+      errorArray.push('You want to have here a good looking image..');
+  }
+
+  if (errorArray.length > 0){
+    res.redirect('/admin');
+  }
+  else{
     knex('items')
-        .where({
-            id: req.params.id
-        })
-        .update(req.body)
-        .then(function(info) {
-            res.redirect('/admin/products');
-        })
+    .where({
+      id: req.params.id
+    })
+    .update(req.body)
+    .then(function(info) {
+      msg='Product was successfuly updated!'
+      res.redirect('/admin');
+    })
+  }
 })
 
 router.get('/products/:id/delete', function(req, res, next) {
@@ -163,20 +230,11 @@ router.get('/products/:id/delete', function(req, res, next) {
         .first()
         .del()
         .then(function(info) {
-            res.redirect('/admin/products');
+          msg='Product was successfuly deleted!'
+            res.redirect('/admin');
         })
 })
 
-router.get('/products/add', function(req, res, next) {
-    res.render('products_add');
-})
 
-router.post('/products/add', function(req, res, next) {
-    knex('items')
-        .insert(req.body)
-        .returning('id')
-        .then(function(id) {
-            res.redirect('/admin/products');
-        })
-})
+
 module.exports = router;

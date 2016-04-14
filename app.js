@@ -124,7 +124,6 @@ app.use(function(req, res, next) {
 });
 
 function userAdmin(req, res, next) {
-
     if (!req.session.passport.user.admin) return res.redirect('/users/login')
     next();
 }
