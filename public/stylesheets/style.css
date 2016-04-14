@@ -33,6 +33,21 @@ body {
 
 /* Top Navbar */
 
+div.signup-login {
+  margin-top: 7px;
+}
+
+h3.main-logo {
+  position: fixed;
+  left: 44%;
+  top: -25px;
+  z-index: 1000;
+  color: white;
+  font-size: 50px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
 nav {
   height: 7%;
 }
@@ -146,7 +161,7 @@ h4.header {
 .item-pic {
   height: 300px;
   width: 300px;
-  /*border-radius: 50%;*/
+  border-radius: 6px;
   margin-bottom: 10px !important;
 }
 
@@ -201,9 +216,6 @@ h1.login, h1.signup {
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: rgb(63, 44, 42);
 }
-.thumbnail {
-    border: none;
-}
 
 .container {
     padding-top: 20px;
@@ -220,22 +232,33 @@ h1.login, h1.signup {
     box-shadow: -1px 1px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-/*PRODUCT VIEW*/
+/*SINGLE PRODUCT VIEW*/
 
 .productView {
     width: 30%;
     height: 30%;
-    border:3px solid white;
     box-shadow: -webkit-box-shadow: 9px 6px 7px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 9px 6px 7px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 9px 6px 7px 0px rgba(0, 0, 0, 0.75);
 }
-.productConatainer {
-    margin-top:10%;
-    margin-left:5%;
+.productContainer {
+  font-family: 'Quicksand', sans-serif;
+  margin-top:9%;
+  margin-left:5%;
+}
+
+/* PRODUCTS VIEW */
+
+div.thumbnail {
+  width: 300px;
+  margin: 2% 3.5%;
 }
 
 /*ADMIN VIEW*/
+
+div.adminContainer {
+  padding-bottom: 65px;
+}
 .admin {
   text-align: center;
 }
@@ -244,7 +267,29 @@ iframe{
   margin-top: 40px;
   width:100%;
   height: 350px;
+}
 
+/* ADMIN / USERS */
+
+div.users > table {
+  margin-top: 3%;
+}
+
+div.users > table > tr > th,td {
+  text-align: left;
+}
+
+/* ADMIN / ITEMS */
+
+/* ADMIN / ADD ADMIN */
+
+div.addAdmin {
+  text-align: center;
+}
+
+div.addAdmin > div > form > div > label {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .users, .items, .addAdmin, .addProduct {
@@ -273,23 +318,22 @@ td {
 .addProduct {
   margin-left: 200px;
   width: 70%;
-  border: solid 2px rgb(40, 71, 113);
+  /*border: solid 2px rgb(40, 71, 113);*/
 
 }
 .users, .addAdmin {
-
-      margin-left: 200px;
+  margin-left: 200px;
   width: 60%;
-  border: solid 2px rgb(40, 71, 113);
+  /*border: solid 2px rgb(40, 71, 113);*/
 
 }
-.addAdminForm, .addProductFrom {
+.addAdminForm {
+  padding: 20px;
+}
+
+.addProductFrom {
     padding: 20px;
     padding-left: 100px;
-}
-
-div.thumbnail {
-  padding: 0 2%;
 }
 
 img.info {
