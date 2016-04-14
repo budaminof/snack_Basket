@@ -31,6 +31,9 @@
              <li><a class="signup" href="/users/signup">Sign Up</a></li>
              <li><a class="login" href="/users/login">Log In</a></li>
             {{/unless}}
+            {{#if admin}}
+            <a href="/admin">Admin</a>
+            {{/if}}
             <!-- <li role="presentation"><a href="/users/signup">Sign Up</a></li>
             <li role="presentation"><a href="/all_products">All Products</a></li>
             <li role="presentation"><a href="/users/login">Log In</a></li>

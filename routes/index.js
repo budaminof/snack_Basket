@@ -26,6 +26,7 @@ router.get('/', function(req, res, next) {
 
             res.render('index', {
                 items: items,
+                admin: req.session.passport.user.admin,
                 name: req.session.passport.user.name,
                 photo: req.session.passport.user.photo
             });
