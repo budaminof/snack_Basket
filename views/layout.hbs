@@ -15,6 +15,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
   <!--  CSS -->
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
@@ -54,8 +58,8 @@
                       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                           Login or Sign up!
                       </button>
+                  </div>
               {{/unless}}
-              </div>
           </div>
 
 <!-- Modal -->
@@ -118,6 +122,9 @@
           </div>
         </div>
       </div>
+      {{#if error}}
+      <h3 style="z-index:10;position: fixed; top: -3px;right: 231px;color:red">{{error}}<i class="fa fa-hand-o-right" aria-hidden="true"></i></h3>
+      {{/if}}
   </nav>
 
     {{{body}}}

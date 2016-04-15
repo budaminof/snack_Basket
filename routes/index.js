@@ -22,10 +22,16 @@ function isloggedIn(req, res, next) {
 }
 
 router.get('/', function(req, res, next) {
+  var error = req.session.error;
+  req.session.error = null;
+  console.log(error);
     knex('items')
         .select('name', 'description', 'price', 'image_url', 'id')
         .then(function(items) {
-            if (!req.session.passport) return res.render('index',{items});
+            if (!req.session.passport) return res.render('index',{
+              items: items,
+              error: error
+            });
               res.render('index', {
                 items: items,
                 admin: req.session.passport.user.admin,
@@ -53,7 +59,6 @@ router.post('/signup', function(req, res, next) {
     if (!req.body.confirm) {
         errorArray.push('Please confirm password');
     }
-
     if (errorArray.length > 0) {
         res.redirect('/');
     } else  {

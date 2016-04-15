@@ -131,7 +131,10 @@ function userAdmin(req, res, next) {
     next();
 }
 function isloggedIn(req, res, next) {
-    if (!req.session.passport) return res.redirect('/');
+    if (!req.session.passport){
+      req.session.error = "Please login or signup"
+      return res.redirect('/');
+    }
     next();
 }
 
