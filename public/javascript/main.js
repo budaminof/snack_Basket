@@ -4,10 +4,15 @@ $('document').ready(function() {
     $(this).find(".modal-body").load(link.attr("href"));
   });
 
-  $('.hidden-edit').hide();
+  $('.hidden-edit-user').hide();
+  $('.hidden-edit-item').hide();
 
   $('.edit-item').on('click', function() {
-    $('.hidden-edit').toggle();
+    $('.hidden-edit-item').toggle();
+  });
+
+  $('.edit-user').on('click', function() {
+    $('.hidden-edit-user').toggle();
   })
 
   $('.clickUsers').on('click', function(){
