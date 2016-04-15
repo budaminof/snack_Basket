@@ -3,10 +3,10 @@
     <h2 class="cartH2">Your Shopping Cart</h2>
 
     <!-- Default bootstrap modal example -->
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal text-center fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div id="addAddressModal" class="modal-content text-center col-md-12">
+            <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Add Address</h4>
           </div>
@@ -25,6 +25,8 @@
             <input name="state" type="text" value="" class="form-control">
             <label class="col-md-4 control-label">ZIP</label>
             <input name="zipcode" type="text" value="" class="form-control">
+            <br>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             <input class="btn btn-defualt" type="submit"  value="SAVE ADDRESS">
             </div>
             </fieldset>
@@ -64,6 +66,10 @@
       <span class='totals'><h3>Total:</h3><h3 class="total"></h3></span>
     </div>
   </div>
+  <!-- modal remote -->
+  <a class="address" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" >
+      <button class="btn btn-default" type="button">ADD ADDRESS</button>
+  </a>
 
   <!-- Modal Remote -->
   <a class="address btn btn-primary" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" class="btn btn-default">

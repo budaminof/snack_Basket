@@ -7,11 +7,19 @@ body {
     z-index: 10000;
 }
 .modal-content {
-    background-image: url('http://mooxidesign.com/wp-content/uploads/2015/11/vegetable-set-3.jpg');
+    background-image: url('http://woodenwindow.com/wp-content/uploads/Eastern-Black-Walnut.jpg');
 }
+.modal-dialog {
+    width:600px;
+}
+
 .modal-body > form > input {
     height: 50px;
     width: 200px;
+}
+.modal {
+    color:white;
+
 }
 #logo {
     width: 150px;
