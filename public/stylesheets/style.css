@@ -311,6 +311,14 @@ div.thumbnail {
   width: 300px;
   margin: 2% 3.5%;
 }
+.productsThumb:hover {
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+.productsThumb{
+transition: .25s ease;
+}
+
 
 /*ADMIN VIEW*/
 
