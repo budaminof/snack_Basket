@@ -1,8 +1,22 @@
+html, body {
+  height: 100%;
+}
+
 body {
     display: relative;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     width: 100%;
 }
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  /*padding: 0 0 60px;*/
+}
+
 .myInput {
     z-index: 10000;
 }
@@ -95,13 +109,14 @@ span.totals > h3 {
 }
 
 a.address {
-  width: 10.1%;
+  width: 8.3%;
   margin-bottom: 3px;
-  margin-left: 1.5%
+  margin-left: 9.5%
 }
 
 div.payment {
-  margin-left: 1.5%;
+  margin-left: 9.5%;
+  margin-bottom: 7%;
 }
 
 div.shopping-cart {
@@ -279,6 +294,7 @@ h1.login, h1.signup {
 .productContainer {
   font-family: 'Quicksand', sans-serif;
   margin-top:5%;
+  margin-bottom: 3%;
 }
 
 /* PRODUCTS VIEW */
@@ -291,7 +307,7 @@ div.thumbnail {
 /*ADMIN VIEW*/
 
 div.adminContainer {
-  padding-bottom: 65px;
+  /*padding-bottom: 65px;*/
 }
 .admin {
   text-align: center;
@@ -305,6 +321,11 @@ iframe{
 
 /* ADMIN / USERS */
 
+div.users {
+  max-height: 600px;
+  overflow: scroll;
+}
+
 div.users > table {
   margin-top: 3%;
 }
@@ -314,6 +335,11 @@ div.users > table > tr > th,td {
 }
 
 /* ADMIN / ITEMS */
+
+div.items {
+  max-height: 600px;
+  overflow: scroll;
+}
 
 img.admin-item {
   height: 100px;
