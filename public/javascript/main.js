@@ -48,7 +48,7 @@ $('document').ready(function() {
   })
 
 /// CART
-  if (window.location.pathname == "/cart") {
+  if (window.location.pathname == "/users/cart") {
   var total = 0;
 
   for (var i = 0; i < $('.price').length; i++) {
