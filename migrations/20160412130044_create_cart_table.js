@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
         table.increments();
         table.integer('user_id').references('users.id').onUpdate('CASCADE').onDelete('CASCADE');
         table.integer('item_id').references('items.id').onUpdate('CASCADE').onDelete('CASCADE');
-        table.boolean('paid').defaultTo('false').onUpdate('CASCADE').onDelete('CASCADE');
+        table.boolean('paid').defaultTo('false');
     })
 
 };
