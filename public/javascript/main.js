@@ -4,7 +4,6 @@ $('document').ready(function() {
     $(this).find(".modal-body").load(link.attr("href"));
 });
 
-//bud
   $('.clickUsers').on('click', function(){
     $('.videobox').slideUp('slow');
     $('.users').toggle('slow');
@@ -42,7 +41,6 @@ $('document').ready(function() {
   var total = 0;
 
   for (var i = 0; i < $('.price').length; i++) {
-    console.log($('.price')[i].getAttribute('price-data'));
     total += Number($('.price')[i].getAttribute('price-data'));
   }
   var tax = total * 0.08;
@@ -50,7 +48,6 @@ $('document').ready(function() {
 
   $('.tax').text('$ '+ tax.toFixed(2));
   $('.total').text('$ '+ total.toFixed(2));
-  console.log('total',total);
 }
 
 });

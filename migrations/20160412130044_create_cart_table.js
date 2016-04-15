@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
         table.integer('item_id').references('items.id').onUpdate('CASCADE').onDelete('CASCADE');
         table.boolean('paid').defaultTo('false');
     })
-
 };
 
 exports.down = function(knex, Promise) {

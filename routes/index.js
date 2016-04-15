@@ -75,8 +75,8 @@ router.get('/cart', isloggedIn,function(req, res,next){
           data: data,
           user: user,
           msg: msg,
-          key: process.env.TEST_SECRET_KEY,
-          amount: amount
+          amount: amount,
+          key: process.env.TEST_SECRET_KEY
         });
       })
       msg='';
