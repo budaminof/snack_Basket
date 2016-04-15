@@ -129,8 +129,7 @@ router.post('/cart/payment', function(req,res, next){
                                 console.log('err',err);
                             }
                             console.log('success!!!', json);
-                        })
-                        .then(function() {
+                        });
 
                             stripeToken = req.body.stripeToken;
 
@@ -151,7 +150,6 @@ router.post('/cart/payment', function(req,res, next){
                                     res.redirect('/users/cart');
                                 })
                             });
-                        })
                })
         }
     })

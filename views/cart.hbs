@@ -69,13 +69,13 @@
     </div>
   </div>
 
+  {{#msg}}
+  <h4 class='address-message'>{{this}}</h4>
+  {{/msg}}
   <!-- Modal Remote -->
   <a class="address btn btn-primary" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal">
       Add Address
   </a>
-  {{#msg}}
-    <h4>{{this}}</h4>
-  {{/msg}}
 
 <div class="payment">
     <form action="/users/cart/payment" method="POST">

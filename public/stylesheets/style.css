@@ -114,6 +114,11 @@ a.address {
   margin-left: 9.5%
 }
 
+h4.address-message {
+  color: rgb(116,176,93);
+  margin-left: 9.5%;
+}
+
 div.payment {
   margin-left: 9.5%;
   margin-bottom: 7%;
