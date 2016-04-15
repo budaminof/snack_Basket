@@ -12,10 +12,10 @@
   {{/msg}}
   <h3>{{name}}, What would you like to do?</h3>
 
-  <button class='btn btn-primary'><h4 class="clickUsers">See All Users</h4></button>
-  <button class='btn btn-primary'><h4 class="clickItems">See All Products</h4></button>
-  <button class='btn btn-primary'><h4 class="clickAdmin">Add New Admin</h4></button>
-  <button class='btn btn-primary'><h4 class="clickAddProduct">Add New Product</h4></button>
+  <button class='btn btn-primary clickUsers'><h4>See All Users</h4></button>
+  <button class='btn btn-primary clickItems'><h4>See All Products</h4></button>
+  <button class='btn btn-primary clickAdmin'><h4>Add New Admin</h4></button>
+  <button class='btn btn-primary clickAddProduct'><h4>Add New Product</h4></button>
 
   <div class="users">
     <table>
@@ -23,7 +23,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-        <th>Admin/Not Admin</th>
+        <th>Admin?</th>
       </tr>
       {{#data}}
       <tr>
@@ -31,23 +31,32 @@
         <td>{{last_name}}</td>
         <td>{{email}}</td>
         <td>{{admin}}</td>
-        <td><a href="/admin/users/{{id}}/edit">Edit</a></td>
+        <td><a href="/admin/users/{{id}}/edit">Edit User</a></td>
+        <td><a href="/admin/users/{{id}}/delete">Delete User</a></td>
       </tr>
       {{/data}}
     </table>
   </div>
 
   <div class="container col-md-12 all items">
-    <div class="row">
-    {{#items}}
-        <div class="thumbnail col-md-3 shadow">
-          <img style="height:250px" src="{{this.image_url}}" alt="...">
-          <div class="caption text-center">
-            <h4>{{this.name}}</h4>
-          </div>
-        </div>
+    <table>
+      <tr>
+        <th>Image</th>
+        <th>Item Name</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      {{#items}}
+      <tr>
+        <td><img class='admin-item' src='{{this.image_url}}'</td>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td>${{this.price}}</td>
+        <td><a href='/admin/products/{{id}}/edit'>Edit Item</a></td>
+        <td><a href='/admin/products/{{id}}/delete'>Delete Item</a></td>
+      </tr>
     {{/items}}
-    </div>
+    </table>
   </div>
 
   <div class="addAdmin">
@@ -88,29 +97,29 @@
   </div>
 
   <div class="addProduct">
-    <div class="addProductFrom">
+    <div class="addProductForm">
       <form action="/admin/products/add" method="post">
         <div class="form-group">
-          <label>product name</label>
-          <input class="form-control" type="text" name="name" value="">
+          <label>Product Name</label>
+          <input class="form-control center-block" type="text" name="name" value="">
         </div>
         <div class="form-group">
-          <label>description</label>
-          <input class="form-control" type="text" name="description" value="">
+          <label>Description</label>
+          <input class="form-control center-block" type="text" name="description" value="">
         </div>
         <div class="form-group">
           <label>Image URL</label>
-          <input class="form-control" type="text" name="image_url" value="">
+          <input class="form-control center-block" type="text" name="image_url" value="">
         </div>
         <div class="form-group">
           <label>Active?</label>
-          <select class="form-control" class="" name="active">
-            <option value='true'>true</option>
-            <option value='false'>false</option>
+          <select class="form-control center-block" class="" name="active">
+            <option value='true'>True</option>
+            <option value='false'>False</option>
           </select>
         </div>
         <div class="form-group">
-          <input class="form-control" type="submit" value="Add this item">
+          <input class="form-control btn-success center-block" type="submit" value="Add this item">
         </div>
       </form>
     </div>

@@ -281,6 +281,11 @@ div.users > table > tr > th,td {
 
 /* ADMIN / ITEMS */
 
+img.admin-item {
+  height: 100px;
+  width: 100px;
+}
+
 /* ADMIN / ADD ADMIN */
 
 div.addAdmin {
@@ -288,6 +293,17 @@ div.addAdmin {
 }
 
 div.addAdmin > div > form > div > label {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ADMIN / ADD PRODUCT */
+
+div.addProduct {
+  text-align: center;
+}
+
+div.addProduct > div > form > div > label {
   margin-right: auto;
   margin-left: auto;
 }
@@ -317,7 +333,7 @@ td {
 }
 .addProduct {
   margin-left: 200px;
-  width: 70%;
+  width: 60%;
   /*border: solid 2px rgb(40, 71, 113);*/
 
 }
@@ -331,9 +347,8 @@ td {
   padding: 20px;
 }
 
-.addProductFrom {
+.addProductForm {
     padding: 20px;
-    padding-left: 100px;
 }
 
 img.info {
@@ -388,7 +403,6 @@ footer > div > div > ul > li {
 .adminContainer{
   padding-bottom: 100px;
   height: 100%;
-
 }
 
 .modal-backdrop {
