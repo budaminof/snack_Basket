@@ -13,7 +13,7 @@ var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SEN
 var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 //compile template
 var compiledTemplate = Handlebars.compile(regEmail);
-var amount=0;
+var amount = 0;
 
 function isloggedIn(req, res, next) {
     if (!req.session.passport) return res.redirect('/');
@@ -72,12 +72,12 @@ router.get('/cart', isloggedIn,function(req, res,next){
         photo: req.session.passport.user.photo,
         data: data,
         user: user,
-        msg: msg,
+        msg: req.session.message,
         key: process.env.TEST_SECRET_KEY,
         amount: amount
         });
+        req.session.message= null;
     })
-      msg='';
   })
 })
 
@@ -137,7 +137,7 @@ router.post('/cart/payment', isloggedIn, function(req,res, next){
   stripeToken = req.body.stripeToken;
 
   var charge = stripe.charges.create({
-  amount: amount, 
+  amount: amount,
   currency: "usd",
   source: stripeToken,
   description: "Example charge"
@@ -150,7 +150,7 @@ router.post('/cart/payment', isloggedIn, function(req,res, next){
     .where({user_id: req.session.passport.user.user_id})
     .update({paid: 'true'})
     .then(function(items){
-        msg= 'Successful payment!'
+        req.session.message = 'Successful payment!'
         res.redirect('/cart');
     })
   });
