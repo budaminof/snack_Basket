@@ -107,7 +107,7 @@ app.get('/auth/local', passport.authenticate('local'), function(req, res) {
 
 })
 
-app.post('/users/login', passport.authenticate('local', {
+app.post('/login', passport.authenticate('local', {
         failureRedirect: '/login'
     }),
     function(req, res) {
