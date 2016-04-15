@@ -10,10 +10,16 @@ var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SEN
 
 
 router.get('/', function(req, res, next) {
+  var error = req.session.error;
+  req.session.error = null;
+  console.log(error);
     knex('items')
         .select('name', 'description', 'price', 'image_url', 'id')
         .then(function(items) {
-            if (!req.session.passport) return res.render('index',{items});
+            if (!req.session.passport) return res.render('index',{
+              items: items,
+              error: error
+            });
               res.render('index', {
                 items: items,
                 admin: req.session.passport.user.admin,
