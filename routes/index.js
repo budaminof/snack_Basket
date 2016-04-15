@@ -45,7 +45,7 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
         })
         .returning('*')
         .then(function(data) {
-            res.redirect('/cart');
+            res.redirect('/products');
         })
 })
 
@@ -58,10 +58,6 @@ router.get('/cart', isloggedIn,function(req, res,next){
       return knex('users')
       .where({id: req.session.passport.user.user_id})
       .then(function(user){
-<<<<<<< HEAD
-console.log('------user------',user);
-console.log('-------data-------',data);
-=======
           var toPay= 0;
 
           for (var i = 0; i < data.length; i++) {
@@ -73,22 +69,16 @@ console.log('-------data-------',data);
           amount = Number(arr.join(''));
           amount += amount * 0.08;
 
->>>>>>> 6df9656b332151cb1c0d7375d7507293891a6516
         res.render('cart',{
-          name: req.session.passport.user.name,
-          photo: req.session.passport.user.photo,
-          data: data,
-<<<<<<< HEAD
-          user: user[0]
-      });
-=======
-          user: user,
-          msg: msg,
-          key: process.env.TEST_SECRET_KEY,
-          amount: amount
+        name: req.session.passport.user.name,
+        photo: req.session.passport.user.photo,
+        data: data,
+        user: user,
+        msg: msg,
+        key: process.env.TEST_SECRET_KEY,
+        amount: amount
         });
->>>>>>> 6df9656b332151cb1c0d7375d7507293891a6516
-      })
+    })
       msg='';
   })
 })
@@ -132,7 +122,7 @@ router.get('/product/:id', function(req, res, nex){
   });
 })
 
-<<<<<<< HEAD
+
 router.post('/users/address/:id', function(req, res, nex) {
     knex('addresses')
         .insert(req.body)
@@ -147,7 +137,6 @@ router.post('/users/address/:id', function(req, res, nex) {
         })
 })
 
-=======
 router.post('/cart/payment', isloggedIn, function(req,res, next){
   stripeToken = req.body.stripeToken;
 
@@ -168,8 +157,8 @@ router.post('/cart/payment', isloggedIn, function(req,res, next){
         msg= 'Successful payment!'
         res.redirect('/cart');
     })
-});
+  });
 
 })
->>>>>>> 6df9656b332151cb1c0d7375d7507293891a6516
+
 module.exports = router;
