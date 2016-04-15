@@ -45,7 +45,7 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
         })
         .returning('*')
         .then(function(data) {
-            res.redirect('/');
+            res.redirect('/products');
         })
 })
 
