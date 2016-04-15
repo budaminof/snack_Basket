@@ -40,7 +40,8 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
     knex('users_cart')
         .insert({
             user_id: req.session.passport.user.user_id,
-            item_id: req.params.item_id
+            item_id: req.params.item_id,
+            paid: 'false'
         })
         .returning('*')
         .then(function(data) {
@@ -50,7 +51,7 @@ router.post('/cart/add/:item_id', isloggedIn, function(req, res, next) {
 
 router.get('/cart', isloggedIn,function(req, res,next){
   knex('users_cart')
-  .where({user_id: req.session.passport.user.user_id})
+  .where({user_id: req.session.passport.user.user_id, paid: 'false'})
   .innerJoin('items', 'users_cart.item_id', 'items.id')
   .then(function(data){
 
@@ -66,7 +67,7 @@ router.get('/cart', isloggedIn,function(req, res,next){
           var arr = toPay.split('');
           arr.splice(2,1);
           amount = Number(arr.join(''));
-          amount += amount * 0.8;
+          amount += amount * 0.08;
 
         res.render('cart',{
           name: req.session.passport.user.name,
@@ -120,7 +121,7 @@ router.get('/product/:id', function(req, res, nex){
   });
 })
 
-router.post('/cart/payment', function(req,res, next){
+router.post('/cart/payment', isloggedIn, function(req,res, next){
   stripeToken = req.body.stripeToken;
 
   var charge = stripe.charges.create({
@@ -130,11 +131,16 @@ router.post('/cart/payment', function(req,res, next){
   description: "Example charge"
   }, function(err, charge) {
     if (err && err.type === 'StripeCardError') {
-      console.log('STRIP ERROR',err);
       res.redirect('/cart')
     }
-    msg= 'Successful payment!'
-  res.redirect('/cart');
+
+    knex('users_cart')
+    .where({user_id: req.session.passport.user.user_id})
+    .update({paid: 'true'})
+    .then(function(items){
+        msg= 'Successful payment!'
+        res.redirect('/cart');
+    })
 });
 
 })
