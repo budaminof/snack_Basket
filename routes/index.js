@@ -9,6 +9,23 @@ var bcrypt = require('bcrypt');
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
 
+// router.get('/conf_email', function(req,res,next){
+//     knex('users_cart')
+//       .where({'users_cart.user_id':req.session.passport.user.user_id})
+//       .innerJoin('users','users_cart.user_id','users.id')
+//       .innerJoin('users_addresses','users_cart.user_id','users.id').first()
+//       .innerJoin('addresses','users_addresses.address_id','addresses.id')
+//       .innerJoin('items','users_cart.item_id','items.id')
+//       .then(function(data){
+//           console.log(data);
+//           res.render('conf_email',{
+//               name:first_name,
+//               lastName:lastName,
+//               item:name,
+//               price: price
+//           })
+//       })
+// })
 router.get('/', function(req, res, next) {
     knex('items')
         .select('name', 'description', 'price', 'image_url', 'id')

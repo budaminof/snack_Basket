@@ -16,8 +16,6 @@ var amount=0;
 var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 var compiledTemplate = Handlebars.compile(regEmail);
 
-var amount = 0;
-
 router.post('/cart/add/:item_id', function(req, res, next) {
     knex('users_cart')
         .insert({
@@ -46,6 +44,9 @@ router.get('/cart',function(req, res,next){
           }
           toPay= toPay.toFixed(2);
           var arr = toPay.split('');
+          if(arr.length < 5) {
+              arr.unshift('0')
+          }
           arr.splice(2,1);
           amount = Number(arr.join(''));
           amount += amount * 0.08;
@@ -59,7 +60,7 @@ router.get('/cart',function(req, res,next){
         key: process.env.TEST_SECRET_KEY,
         amount: amount
         });
-      req.session.message= null;
+        req.session.message= null;
     })
   })
 })
@@ -94,25 +95,60 @@ router.post('/address/:id', function(req, res, nex) {
 })
 
 router.post('/cart/payment', function(req,res, next){
-  stripeToken = req.body.stripeToken;
+    knex('users_addresses')
+        .where({user_id:req.session.passport.user.user_id})
+        .then(function(data){
+            if(data.length == 0) {
+                req.session.message = "PLEASE ADD AN ADDRESS!";
+                res.redirect('/users/cart');
+            } else {
+                knex('users')
+                    .where({id:req.session.passport.user.user_id})
+                    .then(function(data) {
+                        var email= data[0].email
+                        //get file
+                        var confEmail = fs.readFileSync('./views/conf_email.hbs', 'utf-8');
+                        //compile template
+                        var compiledTemplate = Handlebars.compile(confEmail);
+                        console.log(req.session);
+                        sendgrid.send({
+                            to: email,
+                            from: 'noreply@gnosh.com',
+                            subject: 'Order confirmation from GNOSH.com',
+                            html: compiledTemplate({
+                                firstName: req.session.passport.user.name
+                            })
+                        }, function(err, json) {
+                            if (err) {
+                                console.log('err',err);
+                            }
+                            console.log('success!!!', json);
+                        })
+                        .then(function() {
 
-  var charge = stripe.charges.create({
-      amount: amount,
-    currency: "usd",
-    source: stripeToken,
-    description: "Example charge"
-    }, function(err, charge) {
-    if (err && err.type === 'StripeCardError') {
-      res.redirect('/users/cart')
-    }
-    knex('users_cart')
-    .where({user_id: req.session.passport.user.user_id})
-    .update({paid: 'true'})
-    .then(function(items){
-        req.session.message = 'Successful payment!';
-        res.redirect('/users/cart');
+                            stripeToken = req.body.stripeToken;
+
+                            var charge = stripe.charges.create({
+                                amount: amount,
+                                currency: "usd",
+                                source: stripeToken,
+                                description: "Example charge"
+                            }, function(err, charge) {
+                                if (err && err.type === 'StripeCardError') {
+                                    res.redirect('/users/cart')
+                                }
+                                knex('users_cart')
+                                .where({user_id: req.session.passport.user.user_id})
+                                .update({paid: 'true'})
+                                .then(function(items){
+                                    req.session.message = 'Successful payment!';
+                                    res.redirect('/users/cart');
+                                })
+                            });
+                        })
+               })
+        }
     })
-  });
 })
 
 router.get('/logout', function(req, res, next) {
