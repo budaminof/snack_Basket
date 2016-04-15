@@ -333,6 +333,7 @@ div.adminContainer {
 }
 .admin {
   text-align: center;
+  min-height: 67vh; 
 }
 
 iframe{
