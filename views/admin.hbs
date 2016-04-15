@@ -52,8 +52,17 @@
         <td>{{this.name}}</td>
         <td>{{this.description}}</td>
         <td>${{this.price}}</td>
-        <td><a href='/admin/products/{{id}}/edit'>Edit Item</a></td>
+        <td><a class='edit-item' href='#'>Edit Item</a></td>
         <td><a href='/admin/products/{{id}}/delete'>Delete Item</a></td>
+      </tr>
+      <tr class='hidden-edit'>
+        <form action='/admin/products/{{id}}/edit' method='POST'>
+          <td><input value='{{image_url}}'></td>
+          <td><input value='{{name}}'></td>
+          <td><input value='{{description}}'></td>
+          <td><input value='{{price}}'</td>
+          <td><input type='submit' value='Submit Edits'></td>
+        </form>
       </tr>
     {{/items}}
     </table>
