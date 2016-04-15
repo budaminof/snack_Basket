@@ -4,8 +4,7 @@ var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
 var bcrypt = require('bcrypt');
 var fs = require('fs');
 var Handlebars = require("handlebars");
-var stripe = require("stripe")(process.env.TEST_SECRET_KEY);
-var stripeToken;
+var bcrypt = require('bcrypt');
 
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
