@@ -3,14 +3,15 @@
     <div class="col-md-12 row">
     {{#items}}
         <div class="thumbnail center-block col-md-4">
-          <img style="height:300px; width: 300px" src="{{this.image_url}}" alt="...">
+          <img style="height:300px; width: 300px" src="{{this.image_url}}" alt="yummy">
           <div class="caption">
             <h4 class='text-center'>{{this.name}}</h4>
           </div>
-          <a class='center-block text-center' href="/product/{{id}}"><button class="btn btn-default"type="button">Product Details</button></a>
+          <a class='center-block text-center' href="/product/{{id}}">
+            <button class="btn btn-default"type="button">Product Details</button>
+          </a>
         </div>
       {{/items}}
      </div>
     </div>
   </div>
-</div>
