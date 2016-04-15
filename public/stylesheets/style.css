@@ -34,7 +34,7 @@ body {
 /* Top Navbar */
 
 div.signup-login {
-  margin-top: 7px;
+  margin-top: 15px;
 }
 
 h3.main-logo {
@@ -49,17 +49,17 @@ h3.main-logo {
 }
 
 nav {
-  height: 7%;
+  height: 8%;
 }
 
 .nav-container {
   padding-top: 20px;
-  margin-right: 5%;
+  margin-right: 2%;
 }
 
 .navbar-default {
-  padding: 0.5%;
   font-family: 'Quicksand', sans-serif;
+  height: 58px;
 }
 
 .text-right {
