@@ -14,6 +14,7 @@ var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 //compile template
 var compiledTemplate = Handlebars.compile(regEmail);
 var amount=0;
+var msg = '';
 
 function isloggedIn(req, res, next) {
     if (!req.session.passport) return res.redirect('/');
@@ -137,7 +138,7 @@ router.post('/cart/payment', isloggedIn, function(req,res, next){
   stripeToken = req.body.stripeToken;
 
   var charge = stripe.charges.create({
-  amount: amount, 
+  amount: amount,
   currency: "usd",
   source: stripeToken,
   description: "Example charge"
