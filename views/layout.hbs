@@ -38,11 +38,11 @@
           <div class="text-right">
               {{#if user}}
                   <h3 class="welcome"><b>Welcome, {{name}}!</b>
-                    <small><a class='logout' href='/Products'>PRODUCTS</a> |</small>
+                    <small><a class='logout' href='/products'>PRODUCTS</a> |</small>
                     {{#if admin}}
                     <small><a class='admin' href="/admin">ADMIN</a> |</small>
                     {{/if}}
-                    <small><a class='cart' href='/cart'>MY CART</a> |</small>
+                    <small><a class='cart' href='/users/cart'>MY CART</a> |</small>
                     <small><a class="logout" href="/users/logout">LOG OUT</a></small>
                     {{#if photo}}
                     <img src="{{photo}}"/>
