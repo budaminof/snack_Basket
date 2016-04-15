@@ -2,7 +2,13 @@ $('document').ready(function() {
   $("#myModal").on("show.bs.modal", function(e) {
     var link = $(e.relatedTarget);
     $(this).find(".modal-body").load(link.attr("href"));
-});
+  });
+
+  $('.hidden-edit').hide();
+
+  $('.edit-item').on('click', function() {
+    $('.hidden-edit').toggle();
+  })
 
 //bud
   $('.clickUsers').on('click', function(){
