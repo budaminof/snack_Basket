@@ -54,7 +54,8 @@ router.get('/cart', isloggedIn,function(req, res,next){
       return knex('users')
       .where({id: req.session.passport.user.user_id})
       .then(function(user){
-console.log(user);
+console.log('------user------',user);
+console.log('-------data-------',data);
         res.render('cart',{
           name: req.session.passport.user.name,
           photo: req.session.passport.user.photo,
@@ -102,6 +103,20 @@ router.get('/product/:id', function(req, res, nex){
   .then(function(item) {
     res.render('product',{item:item[0]});
   });
+})
+
+router.post('/users/address/:id', function(req, res, nex) {
+    knex('addresses')
+        .insert(req.body)
+        .returning('id')
+        .then(function(data){
+            return  knex('users_addresses')
+                .insert({user_id:req.session.passport.user.user_id, address_id :data[0]})
+                .then(function(info){
+                    console.log('inserted',info);
+                    res.redirect('/cart')
+                })
+        })
 })
 
 module.exports = router;
