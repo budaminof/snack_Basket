@@ -17,8 +17,9 @@ var msg='';
 var amount=0;
 
 function isloggedIn(req, res, next) {
-    if (!req.session.passport) return res.redirect('/users/login')
+    if (!req.session.passport) return res.redirect('/')
     next();
+
 }
 
 router.get('/', function(req, res, next) {

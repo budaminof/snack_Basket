@@ -2,21 +2,17 @@
   <div class="col-md-12">
     <h2 class="cartH2">You have in your cart:</h2>
 
-    <!-- Modal Remote -->
-    <a class="address" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" class="btn btn-default">
-        Add Address
-    </a>
-
     <!-- Default bootstrap modal example -->
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal text-center fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div id="addAddressModal" class="modal-content text-center col-md-12">
+            <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Add Address</h4>
           </div>
-          <div class="modal-body">
-            <form action="/users/address/{{user.id}}"  method="POST" class="text-center col-md-9">
+          <div class="modal-body col-md-12">
+             <br>
+            <form action="/users/address/{{user.id}}"  method="POST" class="text-left col-md-offset-2 col-md-12">
             <fieldset>
             <!-- Text input-->
             <div class="form-group">
@@ -30,14 +26,15 @@
             <input name="state" type="text" value="" class="form-control">
             <label class="col-md-4 control-label">ZIP</label>
             <input name="zipcode" type="text" value="" class="form-control">
+            <br>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             <input class="btn btn-defualt" type="submit"  value="SAVE ADDRESS">
             </div>
             </fieldset>
             </form>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <a href=""><button type="button" class="btn btn-primary">Save changes</button></a>  </div>
+         </div>
         </div>
       </div>
     </div>
@@ -67,6 +64,10 @@
       <h3 class="total"></h3>
     </div>
   </div>
+  <!-- modal remote -->
+  <a class="address" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" >
+      <button class="btn btn-default" type="button">ADD ADDRESS</button>
+  </a>
 
   <div class="payment">
     <form action="/cart/payment" method="POST">
