@@ -73,12 +73,12 @@ router.get('/cart', isloggedIn,function(req, res,next){
         photo: req.session.passport.user.photo,
         data: data,
         user: user,
-        msg: msg,
+        msg: req.session.message,
         key: process.env.TEST_SECRET_KEY,
         amount: amount
         });
+        req.session.message= null;
     })
-      msg='';
   })
 })
 
@@ -151,7 +151,7 @@ router.post('/cart/payment', isloggedIn, function(req,res, next){
     .where({user_id: req.session.passport.user.user_id})
     .update({paid: 'true'})
     .then(function(items){
-        msg= 'Successful payment!'
+        req.session.message = 'Successful payment!'
         res.redirect('/cart');
     })
   });

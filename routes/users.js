@@ -9,18 +9,6 @@ var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
 dotenv.load();
 
-router.get('/', function(req, res, next) {});
-
-router.get('/signup', function(req, res, next) {
-    res.render('signup');
-});
-
-router.get('/login', function(req, res, next) {
-    res.render('login', {
-        title: 'gnosh'
-    })
-});
-
 router.post('/signup', function(req, res, next) {
     var errorArray = [];
 
