@@ -175,13 +175,13 @@ router.get('/cart',function(req, res,next){
         name: req.session.passport.user.name,
         photo: req.session.passport.user.photo,
         data: data,
-        user: user,
-        msg: msg,
+        user: req.session.passport.user.user_id,
+        msg: req.session.message,
         key: process.env.TEST_SECRET_KEY,
         amount: amount
         });
     })
-      msg='';
+      req.session.message=null;
   })
 })
 
@@ -194,7 +194,7 @@ router.get('/cart/:id/delete',function(req, res, next){
   .first()
   .del()
   .then(function(data){
-    res.redirect('/cart');
+    res.redirect('/users/cart');
   })
 })
 
@@ -208,7 +208,7 @@ router.post('/address/:id', function(req, res, nex) {
                 .insert({user_id:req.session.passport.user.user_id, address_id :data[0]})
                 .then(function(info){
                     console.log('inserted',info);
-                    res.redirect('/cart')
+                    res.redirect('/users/cart')
                 })
         })
 })
@@ -223,15 +223,15 @@ router.post('/cart/payment', function(req,res, next){
   description: "Example charge"
   }, function(err, charge) {
     if (err && err.type === 'StripeCardError') {
-      res.redirect('/cart')
+      res.redirect('/users/cart')
     }
 
     knex('users_cart')
     .where({user_id: req.session.passport.user.user_id})
     .update({paid: 'true'})
     .then(function(items){
-        msg= 'Successful payment!'
-        res.redirect('/cart');
+        req.session.message = 'Successful payment!';
+        res.redirect('/users/cart');
     })
   });
 
