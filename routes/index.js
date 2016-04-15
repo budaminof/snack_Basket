@@ -9,6 +9,18 @@ var bcrypt = require('bcrypt');
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
 
+//get file
+var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
+//compile template
+var compiledTemplate = Handlebars.compile(regEmail);
+var amount=0;
+var msg = '';
+
+function isloggedIn(req, res, next) {
+    if (!req.session.passport) return res.redirect('/');
+    next();
+}
+
 router.get('/', function(req, res, next) {
     knex('items')
         .select('name', 'description', 'price', 'image_url', 'id')
