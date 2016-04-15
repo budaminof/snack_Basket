@@ -1,5 +1,7 @@
 <div class='row main-pic'>
-
+  {{#if msg}}
+  <h2 class="indexMsg">{{msg}}</h2>
+  {{/if}}
  <div class='col-md-12'>
    <img class='landing center-block' src='./images/food-kitchen-cutting-board-cooking-large.jpg'>
  </div>
@@ -9,14 +11,12 @@
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" interval="false" wrap='true'>
 
-  <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
-  <!-- Wrapper for slides -->
   <div class='carousel-inner'>
     <div class="item active">
       <div>
@@ -36,22 +36,20 @@
         <h3>{{this.name}}</h3>
         <p>{{this.description}}</p>
         <div>
-          <a href="/product/{{id}}">Details</a>
+          <a href="/product/{{id}}"><button class='btn btn-primary'>Details</button></a>
         </div>
       </div>
     </div>
     {{/items}}
   </div>
 
-
- <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
-</div> <!-- Carousel -->
+</div>
 
 <div class="container">
   <div class="row">

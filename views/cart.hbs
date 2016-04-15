@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container shopping-cart">
   <div class="col-md-12">
-    <h2 class="cartH2">You have in your cart:</h2>
+
+    <h2 class="cartH2">Your Shopping Cart</h2>
 
     <!-- Default bootstrap modal example -->
     <div class="modal text-center fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -45,9 +46,9 @@
     <table class="cartTable">
       <tr>
         <th></th>
-        <th>item</th>
-        <th>description</th>
-        <th>price</th>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
       </tr>
       {{#data}}
       <tr>
@@ -55,13 +56,15 @@
         <td>{{this.name}}</td>
         <td>{{this.description}}</td>
         <td class="price" price-data={{this.price}}>${{this.price}}</td>
-        <td><a href="/cart/{{this.item_id}}/delete">Delete this item</a></td>
+        <td><a class='btn btn-danger' href="/cart/{{this.item_id}}/delete">Delete this item</a></td>
       </tr>
       {{/data}}
     </table>
     <div class="taxTotal">
-      <h4 class="tax"></h4>
-      <h3 class="total"></h3>
+      <br>
+      <span class='totals'><h4>Tax:</h4><h4 class="tax"></h4></span>
+      <br>
+      <span class='totals'><h3>Total:</h3><h3 class="total"></h3></span>
     </div>
   </div>
   <!-- modal remote -->
@@ -69,11 +72,16 @@
       <button class="btn btn-default" type="button">ADD ADDRESS</button>
   </a>
 
+  <!-- Modal Remote -->
+  <a class="address btn btn-primary" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" class="btn btn-default">
+      Add Address
+  </a>
+
   <div class="payment">
     <form action="/cart/payment" method="POST">
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+      data-key="pk_test_8sP6vahxQVW8aN5FlAlYJXmF"
       data-amount="{{amount}}"
       data-name="Basket"
       data-description="Thank you!"

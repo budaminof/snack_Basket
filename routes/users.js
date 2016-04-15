@@ -13,7 +13,6 @@ var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 //compile template
 var compiledTemplate = Handlebars.compile(regEmail);
 
-
 var amount=0;
 
 router.post('/signup', function(req, res, next) {

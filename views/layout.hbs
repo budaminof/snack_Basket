@@ -37,9 +37,6 @@
           </div>
           <div class="text-right">
               {{#if user}}
-                  {{#if photo}}
-                      <img src="{{photo}}"/>
-                  {{/if}}
                   <h3 class="welcome"><b>Welcome, {{name}}!</b>
                     <small><a class='logout' href='/Products'>PRODUCTS</a> |</small>
                     {{#if admin}}
@@ -47,6 +44,9 @@
                     {{/if}}
                     <small><a class='cart' href='/cart'>MY CART</a> |</small>
                     <small><a class="logout" href="/users/logout">LOG OUT</a></small>
+                    {{#if photo}}
+                    <img src="{{photo}}"/>
+                    {{/if}}
                   </h3>
               {{/if}}
               {{#unless user}}
@@ -137,13 +137,13 @@
       </div>
       <div class='col-md-2 footer-links'>
         <ul>
+          <li><a class='footer-links' href='/products'>Products</a></li>
           <li><a class='footer-links' href='#'>Contact Us</a></li>
-          <li><a class='footer-links' href='#'>Careers</a></li>
         </ul>
       </div>
       <div class='col-md-2 footer-links'>
         <ul>
-          <li><a class='footer-links' href='#'>My Account</a></li>
+          <li><a class='footer-links' href='/users/cart'>My Cart</a></li>
           <li><a class='footer-links' href='/users/logout'>Log Out</a></li>
         </ul>
       </div>

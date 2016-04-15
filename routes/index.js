@@ -14,22 +14,19 @@ router.get('/', function(req, res, next) {
         .select('name', 'description', 'price', 'image_url', 'id')
         .then(function(items) {
             if (!req.session.passport) return res.render('index',{items});
-
-            res.render('index', {
+              res.render('index', {
                 items: items,
                 admin: req.session.passport.user.admin,
                 name: req.session.passport.user.name,
                 photo: req.session.passport.user.photo
-            });
+              });
         })
 });
-
 
 router.get('/products', function(req, res, nex){
   knex('items')
       .select('name', 'description', 'price', 'image_url', 'id')
       .then(function(items) {
-          console.log('items', items);
           if (!req.session.passport){
                res.render('products',{items: items});
            } else {

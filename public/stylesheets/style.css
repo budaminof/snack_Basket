@@ -38,11 +38,10 @@ body {
     width: 80%;
 }
 
-
 /* Top Navbar */
 
 div.signup-login {
-  margin-top: 7px;
+  margin-top: 15px;
 }
 
 h3.main-logo {
@@ -57,17 +56,17 @@ h3.main-logo {
 }
 
 nav {
-  height: 7%;
+  height: 8%;
 }
 
 .nav-container {
   padding-top: 20px;
-  margin-right: 5%;
+  margin-right: 2%;
 }
 
 .navbar-default {
-  padding: 0.5%;
   font-family: 'Quicksand', sans-serif;
+  height: 58px;
 }
 
 .text-right {
@@ -75,11 +74,33 @@ nav {
 }
 
 .welcome{
-  margin-top: -15px;
+  margin-top: -5px;
   float:right;
 }
 
-/* Cart Dropdown */
+/* Cart */
+
+span.totals > h4 {
+  display: inline-block;
+}
+
+span.totals > h3 {
+  display: inline-block;
+}
+
+a.address {
+  width: 10.1%;
+  margin-bottom: 3px;
+  margin-left: 1.5%
+}
+
+div.payment {
+  margin-left: 1.5%;
+}
+
+div.shopping-cart {
+  font-family: 'Quicksand', sans-serif;
+}
 
 div.cart {
 
@@ -251,7 +272,7 @@ h1.login, h1.signup {
 }
 .productContainer {
   font-family: 'Quicksand', sans-serif;
-  margin-top:7%;
+  margin-top:5%;
 }
 
 /* PRODUCTS VIEW */
@@ -304,6 +325,14 @@ div.addAdmin > div > form > div > label {
   margin-left: auto;
 }
 
+input.edit-name {
+  width: 80%;
+}
+
+input.edit-boolean {
+  width: 50%;
+}
+
 /* ADMIN / ADD PRODUCT */
 
 div.addProduct {
@@ -344,9 +373,9 @@ td {
   /*border: solid 2px rgb(40, 71, 113);*/
 
 }
-.users, .addAdmin {
-  margin-left: 200px;
-  width: 60%;
+.users {
+  margin-left: 130px;
+  /*width: 60%;*/
   /*border: solid 2px rgb(40, 71, 113);*/
 
 }
