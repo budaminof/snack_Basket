@@ -201,6 +201,14 @@ h4.header {
     top: 45%;
 }
 
+a.product-link {
+  text-decoration: none;
+}
+
+a.product-link:hover {
+  color: rgb(47, 180, 255);
+}
+
 /* Listings Carousel */
 
 .carousel {
