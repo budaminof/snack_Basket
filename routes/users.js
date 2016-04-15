@@ -6,20 +6,15 @@ var fs = require('fs');
 var Handlebars = require("handlebars");
 
 var dotenv = require('dotenv');
-var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
 dotenv.load();
+var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
+//get file
+var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
+//compile template
+var compiledTemplate = Handlebars.compile(regEmail);
 
-router.get('/', function(req, res, next) {});
 
-router.get('/signup', function(req, res, next) {
-    res.render('signup');
-});
-
-router.get('/login', function(req, res, next) {
-    res.render('login', {
-        title: 'gnosh'
-    })
-});
+var amount=0;
 
 router.post('/signup', function(req, res, next) {
     var errorArray = [];
@@ -44,7 +39,7 @@ router.post('/signup', function(req, res, next) {
         res.render('signup', {
             errors: errorArray
         });
-    } else if (req.body.email && req.body.first_name && req.body.last_name && req.body.password && req.body.confirm) {
+    } else  {
         knex('users')
             .where({
                 email: req.body.email
@@ -92,6 +87,106 @@ router.post('/signup', function(req, res, next) {
 
     };
 });
+
+router.post('/cart/add/:item_id', function(req, res, next) {
+    knex('users_cart')
+        .insert({
+            user_id: req.session.passport.user.user_id,
+            item_id: req.params.item_id,
+            paid: 'false'
+        })
+        .returning('*')
+        .then(function(data) {
+            res.redirect('/products');
+        })
+})
+
+router.get('/cart',function(req, res,next){
+  knex('users_cart')
+  .where({user_id: req.session.passport.user.user_id, paid: 'false'})
+  .innerJoin('items', 'users_cart.item_id', 'items.id')
+  .then(function(data){
+
+      return knex('users')
+      .where({id: req.session.passport.user.user_id})
+      .then(function(user){
+          var toPay= 0;
+
+          for (var i = 0; i < data.length; i++) {
+            toPay += Number(data[i].price);
+          }
+          toPay= toPay.toFixed(2);
+          var arr = toPay.split('');
+          arr.splice(2,1);
+          amount = Number(arr.join(''));
+          amount += amount * 0.08;
+
+        res.render('cart',{
+        name: req.session.passport.user.name,
+        photo: req.session.passport.user.photo,
+        data: data,
+        user: user,
+        msg: msg,
+        key: process.env.TEST_SECRET_KEY,
+        amount: amount
+        });
+    })
+      msg='';
+  })
+})
+
+router.get('/cart/:id/delete',function(req, res, next){
+  knex('users_cart')
+  .where({
+    user_id: req.session.passport.user.user_id,
+    item_id: req.params.id
+  })
+  .first()
+  .del()
+  .then(function(data){
+    res.redirect('/cart');
+  })
+})
+
+router.post('/address/:id', function(req, res, nex) {
+    console.log('----req.session------',req.session);
+    knex('addresses')
+        .insert(req.body)
+        .returning('id')
+        .then(function(data){
+            return  knex('users_addresses')
+                .insert({user_id:req.session.passport.user.user_id, address_id :data[0]})
+                .then(function(info){
+                    console.log('inserted',info);
+                    res.redirect('/cart')
+                })
+        })
+})
+
+router.post('/cart/payment', function(req,res, next){
+  stripeToken = req.body.stripeToken;
+
+  var charge = stripe.charges.create({
+  amount: amount, // amount in cents, again
+  currency: "usd",
+  source: stripeToken,
+  description: "Example charge"
+  }, function(err, charge) {
+    if (err && err.type === 'StripeCardError') {
+      res.redirect('/cart')
+    }
+
+    knex('users_cart')
+    .where({user_id: req.session.passport.user.user_id})
+    .update({paid: 'true'})
+    .then(function(items){
+        msg= 'Successful payment!'
+        res.redirect('/cart');
+    })
+  });
+
+})
+
 
 router.get('/logout', function(req, res, next) {
     req.session = null;

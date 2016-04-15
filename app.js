@@ -123,12 +123,18 @@ app.use(function(req, res, next) {
     next();
 });
 
+function isloggedIn(req, res, next) {
+    if (!req.session.passport) return res.redirect('/')
+    next();
+}
+
 function userAdmin(req, res, next) {
-    if (!req.session.passport.user.admin) return res.redirect('/users/login')
+    if (!req.session.passport.user.admin) return res.redirect('/')
     next();
 }
 
 app.use('/', routes);
+app.use(isloggedIn);
 app.use('/users', users);
 app.use(userAdmin)
 app.use('/admin', admin);
