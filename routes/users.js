@@ -16,7 +16,6 @@ var amount=0;
 var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 var compiledTemplate = Handlebars.compile(regEmail);
 
-
 router.get('/cart',function(req, res,next){
   knex('users_cart')
   .where({user_id: req.session.passport.user.user_id, paid: 'false'})
@@ -48,7 +47,7 @@ router.get('/cart',function(req, res,next){
         key: process.env.TEST_SECRET_KEY,
         amount: amount
         });
-      req.session.message= null;
+        req.session.message= null;
     })
   })
 })
