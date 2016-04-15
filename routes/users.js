@@ -10,6 +10,9 @@ var stripeToken;
 var dotenv = require('dotenv');
 dotenv.load();
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
+
+var amount=0;
+
 var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 var compiledTemplate = Handlebars.compile(regEmail);
 
@@ -33,7 +36,6 @@ router.get('/cart',function(req, res,next){
   .where({user_id: req.session.passport.user.user_id, paid: 'false'})
   .innerJoin('items', 'users_cart.item_id', 'items.id')
   .then(function(data){
-
       return knex('users')
       .where({id: req.session.passport.user.user_id})
       .then(function(user){
@@ -60,7 +62,7 @@ router.get('/cart',function(req, res,next){
         key: process.env.TEST_SECRET_KEY,
         amount: amount
         });
-        req.session.message= null;
+      req.session.message= null;
     })
   })
 })
@@ -225,7 +227,6 @@ router.post('/cart/payment', function(req,res, next){
     if (err && err.type === 'StripeCardError') {
       res.redirect('/users/cart')
     }
-
     knex('users_cart')
     .where({user_id: req.session.passport.user.user_id})
     .update({paid: 'true'})
@@ -234,7 +235,6 @@ router.post('/cart/payment', function(req,res, next){
         res.redirect('/users/cart');
     })
   });
-
 })
 
 

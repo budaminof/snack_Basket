@@ -9,6 +9,17 @@ var bcrypt = require('bcrypt');
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
 
+//get file
+var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
+//compile template
+var compiledTemplate = Handlebars.compile(regEmail);
+var amount=0;
+var msg = '';
+
+function isloggedIn(req, res, next) {
+    if (!req.session.passport) return res.redirect('/');
+    next();
+}
 
 router.get('/', function(req, res, next) {
   var error = req.session.error;
@@ -50,7 +61,7 @@ router.post('/signup', function(req, res, next) {
     }
     if (errorArray.length > 0) {
         res.redirect('/');
-    } else {
+    } else  {
         knex('users')
             .where({
                 email: req.body.email
@@ -96,7 +107,6 @@ router.post('/signup', function(req, res, next) {
 
     };
 });
-
 
 router.get('/products', function(req, res, nex){
   knex('items')
