@@ -66,8 +66,8 @@ exports.seed = function(knex, Promise) {
         },
 
         {
-        name: 'GF Basket',
-        description:"If you're glutarded like me, you'll really appreciate this compendium of snacks.",
+        name: 'Gluten Free Basket',
+        description:"Here's something your intolerance can tolerate!",
         price:40.00,
         image_url:"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRNky-M8i3IYI_5TD8QfQLV1xBaFfTZdgrGIRlTlgl5kipXHZemHw"
         },
