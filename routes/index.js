@@ -41,7 +41,6 @@ router.post('/signup', function(req, res, next) {
     if (!req.body.confirm) {
         errorArray.push('Please confirm password');
     }
-
     if (errorArray.length > 0) {
         res.redirect('/');
     } else {
