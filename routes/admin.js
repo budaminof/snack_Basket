@@ -28,7 +28,6 @@ router.get('/', function(req, res, next) {
               msg='';
           })
    })
-
 })
 
 router.post('/new', function(req, res, next) {
@@ -118,23 +117,10 @@ router.post('/products/add', function(req, res, next) {
     .insert(req.body)
     .returning('id')
     .then(function(id) {
-      msg = 'Product added successfuly!'
+      msg = 'Product added successfuly!';
       res.redirect('/admin');
     })
   }
-})
-
-router.get('/users/:id/edit', function(req, res, next) {
-    knex('users')
-        .where({
-            id: req.params.id
-        })
-        .first()
-        .then(function(data) {
-            res.render('admin_users_edit', {
-                data: data
-            });
-        })
 })
 
 router.post('/users/:id/edit', function(req, res, next) {
@@ -183,18 +169,6 @@ router.get('/users/:id/delete', function(req, res, next) {
         })
 })
 
-router.get('/products/:id/edit', function(req, res, next) {
-    knex('items')
-        .where({
-            id: req.params.id
-        })
-        .then(function(data) {
-            res.render('admin_products_edit', {
-                data: data[0]
-            })
-        })
-})
-
 router.post('/products/:id/edit', function(req, res, next) {
   if (!req.body.name) {
       errorArray.push('Please enter a product name');
@@ -224,9 +198,7 @@ router.post('/products/:id/edit', function(req, res, next) {
 
 router.get('/products/:id/delete', function(req, res, next) {
     knex('items')
-        .where({
-            id: req.params.id
-        })
+        .where({id: req.params.id})
         .first()
         .del()
         .then(function(info) {
@@ -234,7 +206,5 @@ router.get('/products/:id/delete', function(req, res, next) {
             res.redirect('/admin');
         })
 })
-
-
 
 module.exports = router;

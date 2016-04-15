@@ -13,11 +13,10 @@ var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SEN
 var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 //compile template
 var compiledTemplate = Handlebars.compile(regEmail);
-var msg='';
 var amount=0;
 
 function isloggedIn(req, res, next) {
-    if (!req.session.passport) return res.redirect('/users/login')
+    if (!req.session.passport) return res.redirect('/');
     next();
 }
 
@@ -26,13 +25,12 @@ router.get('/', function(req, res, next) {
         .select('name', 'description', 'price', 'image_url', 'id')
         .then(function(items) {
             if (!req.session.passport) return res.render('index',{items});
-
-            res.render('index', {
+              res.render('index', {
                 items: items,
                 admin: req.session.passport.user.admin,
                 name: req.session.passport.user.name,
                 photo: req.session.passport.user.photo
-            });
+              });
         })
 });
 
@@ -100,7 +98,6 @@ router.get('/products', function(req, res, nex){
   knex('items')
       .select('name', 'description', 'price', 'image_url', 'id')
       .then(function(items) {
-          console.log('items', items);
           if (!req.session.passport){
                res.render('products',{items: items});
            } else {
@@ -131,7 +128,6 @@ router.post('/users/address/:id', function(req, res, nex) {
             return  knex('users_addresses')
                 .insert({user_id:req.session.passport.user.user_id, address_id :data[0]})
                 .then(function(info){
-                    console.log('inserted',info);
                     res.redirect('/cart')
                 })
         })
@@ -141,7 +137,7 @@ router.post('/cart/payment', isloggedIn, function(req,res, next){
   stripeToken = req.body.stripeToken;
 
   var charge = stripe.charges.create({
-  amount: amount, // amount in cents, again
+  amount: amount, 
   currency: "usd",
   source: stripeToken,
   description: "Example charge"
