@@ -40,15 +40,11 @@
                       <img src="{{photo}}"/>
                   {{/if}}
                   <h3 class="welcome"><b>Welcome, {{name}}!</b>
-                    <small><a class='logout' href='/Products'>PRODUCTS</a></small>
+                    <small><a class='logout' href='/Products'>PRODUCTS</a> |</small>
                     {{#if admin}}
-                    <small><a class='admin' href="/admin">ADMIN</a></small>
+                    <small><a class='admin' href="/admin">ADMIN</a> |</small>
                     {{/if}}
-<<<<<<< HEAD
-                    <small><a class='cart' href='/cart'>MY CART | </a></small>
-=======
-                    <small><a class='cart' href='/cart'>MY CART</a></small>
->>>>>>> 6df9656b332151cb1c0d7375d7507293891a6516
+                    <small><a class='cart' href='/cart'>MY CART</a> |</small>
                     <small><a class="logout" href="/users/logout">LOG OUT</a></small>
                   </h3>
               {{/if}}
