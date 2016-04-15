@@ -13,7 +13,7 @@
           </div>
           <div class="modal-body col-md-12">
              <br>
-            <form action="/users/address/{{user.id}}"  method="POST" class="text-left col-md-offset-2 col-md-12">
+            <form action="/users/address/{{user}}"  method="POST" class="text-left col-md-offset-2 col-md-12">
             <fieldset>
             <!-- Text input-->
             <div class="form-group">
@@ -56,7 +56,7 @@
         <td>{{this.name}}</td>
         <td>{{this.description}}</td>
         <td class="price" price-data={{this.price}}>${{this.price}}</td>
-        <td><a class='btn btn-danger' href="/cart/{{this.item_id}}/delete">Delete this item</a></td>
+        <td><a class='btn btn-danger' href="/users/cart/{{this.item_id}}/delete">Delete this item</a></td>
       </tr>
       {{/data}}
     </table>
@@ -68,9 +68,9 @@
     </div>
   </div>
   <!-- modal remote -->
-  <a class="address" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" >
+  <!-- <a class="address" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" >
       <button class="btn btn-default" type="button">ADD ADDRESS</button>
-  </a>
+  </a> -->
 
   <!-- Modal Remote -->
   <a class="address btn btn-primary" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" class="btn btn-default">
@@ -78,7 +78,7 @@
   </a>
 
   <div class="payment">
-    <form action="/cart/payment" method="POST">
+    <form action="/users/cart/payment" method="POST">
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="pk_test_8sP6vahxQVW8aN5FlAlYJXmF"
