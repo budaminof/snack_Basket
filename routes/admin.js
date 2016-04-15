@@ -133,13 +133,7 @@ router.post('/users/:id/edit', function(req, res, next) {
       }
       if (!req.body.last_name) {
           errorArray.push('Please enter a last name');
-      }
-      if (!req.body.password) {
-          errorArray.push('Please enter a password');
-      }
-      if (!req.body.confirm) {
-          errorArray.push('Please confirm password');
-      }
+      } 
 
       if (errorArray.length > 0) {
           res.redirect('/admin');

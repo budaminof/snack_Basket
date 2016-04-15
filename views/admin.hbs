@@ -44,10 +44,10 @@
       </tr>
       <tr class='hidden-edit-user'>
         <form action='/admin/users/{{id}}/edit' method='POST'>
-          <td><input class='edit-name' value='{{first_name}}'></td>
-          <td><input class='edit-name' value='{{last_name}}'></td>
-          <td><input value='{{email}}'></td>
-          <td><input class='edit-boolean' value='{{admin}}'></td>
+          <td><input name="first_name" class='edit-name' value='{{first_name}}'></td>
+          <td><input name="last_name" class='edit-name' value='{{last_name}}'></td>
+          <td><input name="email" value='{{email}}'></td>
+          <td><input name="admin" class='edit-boolean' value='{{admin}}'></td>
           <td><input type='submit' value='Submit Edits'></td>
         </form>
       </tr>
@@ -74,10 +74,10 @@
       </tr>
       <tr class='hidden-edit-item'>
         <form action='/admin/products/{{id}}/edit' method='POST'>
-          <td><input value='{{image_url}}'></td>
-          <td><input value='{{name}}'></td>
-          <td><input value='{{description}}'></td>
-          <td><input value='{{price}}'></td>
+          <td><input name="image_url" value='{{image_url}}'></td>
+          <td><input name="name" value='{{name}}'></td>
+          <td><input name="description" value='{{description}}'></td>
+          <td><input name="price" value='{{price}}'></td>
           <td><input type='submit' value='Submit Edits'></td>
         </form>
       </tr>
