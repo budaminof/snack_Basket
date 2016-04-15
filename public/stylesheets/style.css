@@ -296,6 +296,14 @@ div.addAdmin > div > form > div > label {
   margin-left: auto;
 }
 
+input.edit-name {
+  width: 80%;
+}
+
+input.edit-boolean {
+  width: 50%;
+}
+
 /* ADMIN / ADD PRODUCT */
 
 div.addProduct {
@@ -337,8 +345,8 @@ td {
 
 }
 .users, .addAdmin {
-  margin-left: 200px;
-  width: 60%;
+  margin-left: 130px;
+  /*width: 60%;*/
   /*border: solid 2px rgb(40, 71, 113);*/
 
 }

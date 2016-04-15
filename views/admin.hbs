@@ -31,8 +31,17 @@
         <td>{{last_name}}</td>
         <td>{{email}}</td>
         <td>{{admin}}</td>
-        <td><a href="/admin/users/{{id}}/edit">Edit User</a></td>
+        <td><a class='edit-user' href="#">Edit User</a></td>
         <td><a href="/admin/users/{{id}}/delete">Delete User</a></td>
+      </tr>
+      <tr class='hidden-edit-user'>
+        <form action='/admin/users/{{id}}/edit' method='POST'>
+          <td><input class='edit-name' value='{{first_name}}'></td>
+          <td><input class='edit-name' value='{{last_name}}'></td>
+          <td><input value='{{email}}'></td>
+          <td><input class='edit-boolean' value='{{admin}}'></td>
+          <td><input type='submit' value='Submit Edits'></td>
+        </form>
       </tr>
       {{/data}}
     </table>
@@ -55,12 +64,12 @@
         <td><a class='edit-item' href='#'>Edit Item</a></td>
         <td><a href='/admin/products/{{id}}/delete'>Delete Item</a></td>
       </tr>
-      <tr class='hidden-edit'>
+      <tr class='hidden-edit-item'>
         <form action='/admin/products/{{id}}/edit' method='POST'>
           <td><input value='{{image_url}}'></td>
           <td><input value='{{name}}'></td>
           <td><input value='{{description}}'></td>
-          <td><input value='{{price}}'</td>
+          <td><input value='{{price}}'></td>
           <td><input type='submit' value='Submit Edits'></td>
         </form>
       </tr>
