@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV]);
+var bcrypt = require('bcrypt');
 var fs = require('fs');
 var Handlebars = require("handlebars");
 var bcrypt = require('bcrypt');
 
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
-
 
 router.get('/', function(req, res, next) {
     knex('items')
@@ -44,7 +44,7 @@ router.post('/signup', function(req, res, next) {
 
     if (errorArray.length > 0) {
         res.redirect('/');
-    } else {
+    } else  {
         knex('users')
             .where({
                 email: req.body.email
@@ -90,7 +90,6 @@ router.post('/signup', function(req, res, next) {
 
     };
 });
-
 
 router.get('/products', function(req, res, nex){
   knex('items')

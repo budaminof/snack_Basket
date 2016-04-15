@@ -121,6 +121,11 @@ app.use(function(req, res, next) {
     next();
 });
 
+function isloggedIn(req, res, next) {
+    if (!req.session.passport) return res.redirect('/')
+    next();
+}
+
 function userAdmin(req, res, next) {
     if (!req.session.passport.user.admin) return res.redirect('/')
     next();
