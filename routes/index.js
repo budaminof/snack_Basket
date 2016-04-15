@@ -9,12 +9,11 @@ var bcrypt = require('bcrypt');
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
 
-//get file
 var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 //compile template
 var compiledTemplate = Handlebars.compile(regEmail);
 
-router.get('/', function(req, res, next) {
+    router.get('/', function(req, res, next) {
   var error = req.session.error;
   req.session.error = null;
     knex('items')

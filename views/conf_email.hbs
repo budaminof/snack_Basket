@@ -18,20 +18,22 @@
 </div>
 </div>
 
-Thanks {{firstName}},
+Thanks for your order, {{firstName}}!
 
-how's it going????
+
 <div class="callout large primary">
 <div class="row column text-center">
 <h1>GNOSH TIME!</h1>
-<h2 class="subheader">You're just a few clicks away from endless gnoshing...no more hangriness!</h2>
+<h2 class="subheader">Delicious snacking is in your near future!</h2>
 </div>
 </div>
 
 <div class="row medium-5 large-4 columns text-center">
 <div class="blog-post">
 <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM_B25_yfs0KqPiN7qb4QPKKs4lXkFeL59BvVrInEZTJnTnz2ZNg">
-<p>Look out  or check in for updates coming soon, including special seasonal GNOSH baskets.</p>
+<p>Please see a summary of your order below</p>
+
+<p></p>
 <div class="callout">
 <ul class="menu simple">
 <a href="http:///gnosh.herokuapp.com">GNOSH.COM</a>
@@ -45,6 +47,16 @@ how's it going????
 <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 <script>
       $(document).foundation();
+      knex('users_cart')
+        .innerJoin('users','users_cart.user_id','users.id')
+        .innerJoin('users_addresses','user_id','users.id')
+        .innnerJoin('addresses','users_addresses.address_id','addresses.id')
+        .innerJoin('items','users_cart.item_id','items.id')
+        .then(function(data){
+            res.send(data);
+            console.log(data);
+        })
+
     </script>
 <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
 </body>

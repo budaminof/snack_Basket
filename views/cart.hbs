@@ -36,7 +36,7 @@
             </div>
             <div class="modal-footer">
 
-           </div>
+          </div>
 
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
@@ -44,7 +44,6 @@
         </div>
       </div>
     </div>
-
     <table class="cartTable">
       <tr>
         <th></th>
@@ -69,7 +68,8 @@
       <span class='totals'><h3>Total:</h3><h3 class="total"></h3></span>
     </div>
   </div>
-  
+
+  <!-- Modal Remote -->
   <a class="address btn btn-primary" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal">
       Add Address
   </a>
@@ -77,7 +77,7 @@
     <h4>{{this}}</h4>
   {{/msg}}
 
-  <div class="payment">
+<div class="payment">
     <form action="/users/cart/payment" method="POST">
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -89,7 +89,4 @@
       data-locale="auto">
     </script>
   </form>
-
-  </div>
-
 </div>
