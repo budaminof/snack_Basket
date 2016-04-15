@@ -59,6 +59,6 @@ $('document').ready(function() {
 
   $('.tax').text('$ '+ tax.toFixed(2));
   $('.total').text('$ '+ total.toFixed(2));
-}
+  }
 
 });

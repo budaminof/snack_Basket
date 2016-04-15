@@ -15,12 +15,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
   <!--  CSS -->
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
-    small change
+  <div id='wrap'>
   <nav class="navbar navbar-default navbar-fixed-top">
       <a href='/'><h3 class='main-logo'>gnosh.</h3></a>
       <div class="container nav-container">
@@ -45,7 +49,7 @@
                     <small><a class='cart' href='/users/cart'>MY CART</a> |</small>
                     <small><a class="logout" href="/users/logout">LOG OUT</a></small>
                     {{#if photo}}
-                    <img src="{{photo}}"/>
+                    <img class='prof-pic' src="{{photo}}"/>
                     {{/if}}
                   </h3>
               {{/if}}
@@ -54,8 +58,8 @@
                       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                           Login or Sign up!
                       </button>
+                  </div>
               {{/unless}}
-              </div>
           </div>
 
 <!-- Modal -->
@@ -118,11 +122,14 @@
           </div>
         </div>
       </div>
+      {{#if error}}
+      <h3 style="z-index:10;position: fixed; top: -3px;right: 231px;color:red">{{error}}<i class="fa fa-hand-o-right" aria-hidden="true"></i></h3>
+      {{/if}}
   </nav>
 
     {{{body}}}
 
- <footer class='footer'>
+ <footer class='footer' id='footer'>
     <div class='container'>
       <div class='col-md-2 col-md-offset-1'>
         <a class='footer-links' href='/'><h1 class='footer text-center'>gnosh.</h1></a>
@@ -148,6 +155,7 @@
     </div>
   </footer>
 
+  </div>
   <script type="text/javascript" src="/javascript/main.js"></script>
 </body>
 

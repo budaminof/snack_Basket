@@ -66,8 +66,8 @@ exports.seed = function(knex, Promise) {
         },
 
         {
-        name: 'GF Basket',
-        description:"If you're glutarded like me, you'll really appreciate this compendium of snacks.",
+        name: 'Gluten Free Basket',
+        description:"Here's something your intolerance can tolerate!",
         price:40.00,
         image_url:"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRNky-M8i3IYI_5TD8QfQLV1xBaFfTZdgrGIRlTlgl5kipXHZemHw"
         },
@@ -97,7 +97,7 @@ exports.seed = function(knex, Promise) {
         name: 'Dairy Free Basket',
         description:"Because cows are people too.",
         price:40.00,
-        image_url:"http://vignette4.wikia.nocookie.net/my-family-my-culture/images/d/d9/Free-posters-and-signs-no-cow-1200x880.jpg/revision/latest?cb=20140424023800"
+        image_url:"http://sweetgreetingsshildon.co.uk/image/cache/data/dairy-free-sweets-500x500.jpg"
         },
 
         {

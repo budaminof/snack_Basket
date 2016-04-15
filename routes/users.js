@@ -16,19 +16,6 @@ var amount=0;
 var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
 var compiledTemplate = Handlebars.compile(regEmail);
 
-router.post('/cart/add/:item_id', function(req, res, next) {
-    knex('users_cart')
-        .insert({
-            user_id: req.session.passport.user.user_id,
-            item_id: req.params.item_id,
-            paid: 'false'
-        })
-        .returning('*')
-        .then(function(data) {
-            res.redirect('/products');
-        })
-})
-
 router.get('/cart',function(req, res,next){
   knex('users_cart')
   .where({user_id: req.session.passport.user.user_id, paid: 'false'})
@@ -44,8 +31,8 @@ router.get('/cart',function(req, res,next){
           }
           toPay= toPay.toFixed(2);
           var arr = toPay.split('');
-          if(arr.length < 5) {
-              arr.unshift('0')
+          if(arr.length < 5){
+            arr.unshift('0');
           }
           arr.splice(2,1);
           amount = Number(arr.join(''));
@@ -79,19 +66,39 @@ router.get('/cart/:id/delete',function(req, res, next){
 })
 
 router.post('/address/:id', function(req, res, nex) {
+  var errorArray = [];
+
+  if(!req.body.street1){
+    errorArray.push('Please enter a street');
+  }
+  if(!req.body.city){
+    errorArray.push('Please enter a city');
+  }
+  if(!req.body.state){
+    errorArray.push('Please enter a state');
+  }
+  if(!req.body.zipcode){
+    errorArray.push('Please enter a zipcode');
+  }
+  if(errorArray.length>0){
+    req.session.message = errorArray;
+    res.redirect('/users/cart');
+  }
+  else{
     knex('addresses')
-        .insert(req.body)
-        .returning('id')
-        .then(function(data){
-            return  knex('users_addresses')
-                .insert({
-                  user_id:req.session.passport.user.user_id,
-                  address_id :data[0]
-                })
-                .then(function(info){
-                    res.redirect('/users/cart');
-                })
-        })
+    .insert(req.body)
+    .returning('id')
+    .then(function(data){
+      return  knex('users_addresses')
+      .insert({
+        user_id:req.session.passport.user.user_id,
+        address_id :data[0]
+      })
+      .then(function(info){
+        res.redirect('/users/cart');
+      })
+    })
+  }
 })
 
 router.post('/cart/payment', function(req,res, next){
@@ -110,7 +117,6 @@ router.post('/cart/payment', function(req,res, next){
                         var confEmail = fs.readFileSync('./views/conf_email.hbs', 'utf-8');
                         //compile template
                         var compiledTemplate = Handlebars.compile(confEmail);
-                        console.log(req.session);
                         sendgrid.send({
                             to: email,
                             from: 'noreply@gnosh.com',
@@ -149,6 +155,19 @@ router.post('/cart/payment', function(req,res, next){
                })
         }
     })
+})
+
+router.post('/cart/add/:item_id', function(req, res, next) {
+    knex('users_cart')
+        .insert({
+            user_id: req.session.passport.user.user_id,
+            item_id: req.params.item_id,
+            paid: 'false'
+        })
+        .returning('*')
+        .then(function(data) {
+            res.redirect('/products');
+        })
 })
 
 router.get('/logout', function(req, res, next) {

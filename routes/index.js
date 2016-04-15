@@ -9,28 +9,20 @@ var bcrypt = require('bcrypt');
 var dotenv = require('dotenv');
 var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME,process.env.SENDGRID_PASSWORD);
 
-// router.get('/conf_email', function(req,res,next){
-//     knex('users_cart')
-//       .where({'users_cart.user_id':req.session.passport.user.user_id})
-//       .innerJoin('users','users_cart.user_id','users.id')
-//       .innerJoin('users_addresses','users_cart.user_id','users.id').first()
-//       .innerJoin('addresses','users_addresses.address_id','addresses.id')
-//       .innerJoin('items','users_cart.item_id','items.id')
-//       .then(function(data){
-//           console.log(data);
-//           res.render('conf_email',{
-//               name:first_name,
-//               lastName:lastName,
-//               item:name,
-//               price: price
-//           })
-//       })
-// })
-router.get('/', function(req, res, next) {
+var regEmail = fs.readFileSync('./views/email.hbs', 'utf-8');
+//compile template
+var compiledTemplate = Handlebars.compile(regEmail);
+
+    router.get('/', function(req, res, next) {
+  var error = req.session.error;
+  req.session.error = null;
     knex('items')
         .select('name', 'description', 'price', 'image_url', 'id')
         .then(function(items) {
-            if (!req.session.passport) return res.render('index',{items});
+            if (!req.session.passport) return res.render('index',{
+              items: items,
+              error: error
+            });
               res.render('index', {
                 items: items,
                 admin: req.session.passport.user.admin,
@@ -58,7 +50,6 @@ router.post('/signup', function(req, res, next) {
     if (!req.body.confirm) {
         errorArray.push('Please confirm password');
     }
-
     if (errorArray.length > 0) {
         res.redirect('/');
     } else  {
