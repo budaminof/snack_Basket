@@ -1,14 +1,14 @@
 <div class="productContainer text-center">
-{{#item}}
-  <img class="productView" src="{{image_url}}" alt="{{name}}" />
-  <h1 class='product'> {{name}}</h1>
-  <h6 class='product'>Description</h6>
-  <h4 class='product'><b>{{description}}</b></h4>
-  <h4 class='product'>${{price}}</h4>
-  <form class="" action="/cart/add/{{id}}" method="post">
-    <input class="btn btn-defualt" type="submit" value="Add to Cart"></input>
-  </form>
-  <br>
-  <button class='btn btn-default'><a href='/products'>Back to Products</a></button>
-{{/item}}
+  {{#item}}
+    <img class="productView" src="{{image_url}}" alt="{{name}}" />
+    <h1 class='product'> {{name}}</h1>
+    <h6 class='product'>Description</h6>
+    <h4 class='product'><b>{{description}}</b></h4>
+    <h4 class='product'>${{price}}</h4>
+    <form class="" action="/cart/add/{{id}}" method="post">
+      <input class="btn btn-success" type="submit" value="Add to Cart"></input>
+    </form>
+    <br>
+    <a href='/products'><button class='btn btn-primary'>Back to Products</button></a>
+  {{/item}}
 </div>
