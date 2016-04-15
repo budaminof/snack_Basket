@@ -76,19 +76,39 @@ router.get('/cart/:id/delete',function(req, res, next){
 })
 
 router.post('/address/:id', function(req, res, nex) {
+  var errorArray = [];
+
+  if(!req.body.street1){
+    errorArray.push('Please enter a street');
+  }
+  if(!req.body.city){
+    errorArray.push('Please enter a city');
+  }
+  if(!req.body.state){
+    errorArray.push('Please enter a state');
+  }
+  if(!req.body.zipcode){
+    errorArray.push('Please enter a zipcode');
+  }
+  if(errorArray.length>0){
+    req.session.message = errorArray;
+    res.redirect('/users/cart');
+  }
+  else{
     knex('addresses')
-        .insert(req.body)
-        .returning('id')
-        .then(function(data){
-            return  knex('users_addresses')
-                .insert({
-                  user_id:req.session.passport.user.user_id,
-                  address_id :data[0]
-                })
-                .then(function(info){
-                    res.redirect('/users/cart');
-                })
-        })
+    .insert(req.body)
+    .returning('id')
+    .then(function(data){
+      return  knex('users_addresses')
+      .insert({
+        user_id:req.session.passport.user.user_id,
+        address_id :data[0]
+      })
+      .then(function(info){
+        res.redirect('/users/cart');
+      })
+    })
+  }
 })
 
 router.post('/cart/payment', function(req,res, next){
