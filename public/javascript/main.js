@@ -45,7 +45,7 @@ $('document').ready(function() {
     console.log($('.price')[i].getAttribute('price-data'));
     total += Number($('.price')[i].getAttribute('price-data'));
   }
-  var tax = total * 0.8;
+  var tax = total * 0.08;
   total += tax;
 
   $('.tax').text('$ '+ tax.toFixed(2));
