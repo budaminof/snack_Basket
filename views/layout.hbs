@@ -38,11 +38,11 @@
           <div class="text-right">
               {{#if user}}
                   <h3 class="welcome"><b>Welcome, {{name}}!</b>
-                    <small><a class='logout' href='/Products'>PRODUCTS</a> |</small>
+                    <small><a class='logout' href='/products'>PRODUCTS</a> |</small>
                     {{#if admin}}
                     <small><a class='admin' href="/admin">ADMIN</a> |</small>
                     {{/if}}
-                    <small><a class='cart' href='/cart'>MY CART</a> |</small>
+                    <small><a class='cart' href='/users/cart'>MY CART</a> |</small>
                     <small><a class="logout" href="/users/logout">LOG OUT</a></small>
                     {{#if photo}}
                     <img class='prof-pic' src="{{photo}}"/>
@@ -72,7 +72,7 @@
                   <img class="google" src="http://i.stack.imgur.com/XzoRm.png" alt="google oauth" />
                 </a>
               </div>
-              <form class="myInput form-group col-md-6" action="/users/login" method='post'>
+              <form class="myInput form-group col-md-6" action="/login" method='post'>
                 <ul class='errors'>
                   {{#errors}}
                     <li><b>{{this}}</b></li>
@@ -87,7 +87,7 @@
                 <button type="submit" class="btn btn-default">Submit</button>
               </form>
 
-              <form class='form-group signup center-block col-md-6 ' action='/users/signup' method='post'>
+              <form class='form-group signup center-block col-md-6 ' action='/signup' method='post'>
                 <ul class='errors'>
                   {{#errors}}
                     <li><b>{{this}}</b></li>
@@ -119,8 +119,6 @@
         </div>
       </div>
   </nav>
-
-
 
     {{{body}}}
 
