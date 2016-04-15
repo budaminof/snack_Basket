@@ -44,6 +44,9 @@ router.get('/cart',function(req, res,next){
           }
           toPay= toPay.toFixed(2);
           var arr = toPay.split('');
+          if(arr.length < 5){
+            arr.unshift('0');
+          }
           arr.splice(2,1);
           amount = Number(arr.join(''));
           amount += amount * 0.08;
