@@ -26,6 +26,7 @@
     "pg": "^4.5.3",
     "sendgrid": "^2.0.0",
     "serve-favicon": "~2.3.0",
-    "smtpapi": "^1.2.0"
+    "smtpapi": "^1.2.0",
+    "stripe": "^4.5.0"
   }
 }

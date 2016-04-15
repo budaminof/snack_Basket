@@ -1,15 +1,9 @@
-<div class='row main-pic'>
-  <div class='col-md-11 col-md-offset-1'>
-    <div class="container text-center col-md-10">
-        <div class='text-center videobox' style="position: relative;"display": flex; z-index: -99; width: 90%; height: 90%">
-          <iframe src="//giphy.com/embed/zwHoN7Ch6c9Nu" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/jerology-cinemagraph-sunset-river-zwHoN7Ch6c9Nu"></a></p>
-        </div>
-    </div>
-  </div>
+<div class='text-center videobox' style="position: relative;"display": flex; z-index: -99; width: 90%; height: 90%">
+  <iframe src="//giphy.com/embed/zwHoN7Ch6c9Nu" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/jerology-cinemagraph-sunset-river-zwHoN7Ch6c9Nu"></a></p>
 </div>
 
-<div class="container adminContainer">  
-<div class="col-md-11 col-md-offset-1 admin">
+<div class="container adminContainer">
+<div class="col-md-12  admin">
   {{#errors}}
     <h4 class='danger'>{{this}}</h4>
   {{/errors}}
@@ -17,14 +11,19 @@
     <h4 class='msg'>{{this}}</h4>
   {{/msg}}
   <h3>{{name}}, What would you like to do?</h3>
-  <h4 class="clickUsers">See all users</h4>
+
+  <button class='btn btn-primary clickUsers'><h4>See All Users</h4></button>
+  <button class='btn btn-primary clickItems'><h4>See All Products</h4></button>
+  <button class='btn btn-primary clickAdmin'><h4>Add New Admin</h4></button>
+  <button class='btn btn-primary clickAddProduct'><h4>Add New Product</h4></button>
+
   <div class="users">
     <table>
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-        <th>Admin/Not Admin</th>
+        <th>Admin?</th>
       </tr>
       {{#data}}
       <tr>
@@ -32,86 +31,95 @@
         <td>{{last_name}}</td>
         <td>{{email}}</td>
         <td>{{admin}}</td>
-        <td><a href="/admin/users/{{id}}/edit">Edit</a></td>
+        <td><a href="/admin/users/{{id}}/edit">Edit User</a></td>
+        <td><a href="/admin/users/{{id}}/delete">Delete User</a></td>
       </tr>
       {{/data}}
     </table>
   </div>
-  <h4 class="clickItems">See all products</h4>
-  <div class="container col-md-offset-1 col-md-12 all items">
-  <div class="row">
-  {{#items}}
-      <div class="thumbnail col-md-3 shadow">
-        <img style="height:250px" src="{{this.image_url}}" alt="...">
-        <div class="caption text-center">
-          <h4>{{this.name}}</h4>
-        </div>
-      </div>
-  {{/items}}
+
+  <div class="container col-md-12 all items">
+    <table>
+      <tr>
+        <th>Image</th>
+        <th>Item Name</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      {{#items}}
+      <tr>
+        <td><img class='admin-item' src='{{this.image_url}}'</td>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td>${{this.price}}</td>
+        <td><a href='/admin/products/{{id}}/edit'>Edit Item</a></td>
+        <td><a href='/admin/products/{{id}}/delete'>Delete Item</a></td>
+      </tr>
+    {{/items}}
+    </table>
   </div>
-  </div>
-  <h4 class="clickAdmin">Add new admin</h4>
+
   <div class="addAdmin">
     <div class="addAdminForm">
       <form action="/admin/new" method="post" >
         <div class="form-group ">
           <label>First Name</label>
-          <input class="form-control" type="text" name="first_name" value="">
+          <input class="form-control center-block" type="text" name="first_name" value="">
         </div>
         <div class="form-group">
           <label>Last Name</label>
-          <input class="form-control" type="texr" name="last_name" value="">
+          <input class="form-control center-block" type="texr" name="last_name" value="">
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input class="form-control" type="text" name="email" value="">
+          <input class="form-control center-block" type="text" name="email" value="">
         </div>
         <div class="form-group">
-          <label>password</label>
-          <input class="form-control" type="password" name="password" value="">
+          <label>Password</label>
+          <input class="form-control center-block" type="password" name="password" value="">
         </div>
         <div class="form-group">
-          <label>confirm password</label>
-          <input class="form-control" type="password" name="confirm" value="">
+          <label>Confirm password</label>
+          <input class="form-control center-block" type="password" name="confirm" value="">
         </div>
         <div class="form-group">
-          <label>Admin:</label>
-          <select class="form-control" class="" name="admin">
-            <option value='true'>true</option>
-            <option value='false'>false</option>
+          <label>Admin?</label>
+          <select class="form-control center-block" class="" name="admin">
+            <option value='true'>True</option>
+            <option value='false'>False</option>
           </select>
         </div>
         <div class="form-group">
-          <input class="form-control" type="submit"  value="Add Admin">
+          <input class="form-control center-block btn-success" type="submit"  value="Add Admin">
         </div>
       </form>
     </div>
   </div>
-  <h4 class="clickAddProduct">Add new Product</h4>
+
   <div class="addProduct">
-    <div class="addProductFrom">
+    <div class="addProductForm">
       <form action="/admin/products/add" method="post">
         <div class="form-group">
-          <label>product name</label>
-          <input class="form-control" type="text" name="name" value="">
+          <label>Product Name</label>
+          <input class="form-control center-block" type="text" name="name" value="">
         </div>
         <div class="form-group">
-          <label>description</label>
-          <input class="form-control" type="text" name="description" value="">
+          <label>Description</label>
+          <input class="form-control center-block" type="text" name="description" value="">
         </div>
         <div class="form-group">
           <label>Image URL</label>
-          <input class="form-control" type="text" name="image_url" value="">
+          <input class="form-control center-block" type="text" name="image_url" value="">
         </div>
         <div class="form-group">
           <label>Active?</label>
-          <select class="form-control" class="" name="active">
-            <option value='true'>true</option>
-            <option value='false'>false</option>
+          <select class="form-control center-block" class="" name="active">
+            <option value='true'>True</option>
+            <option value='false'>False</option>
           </select>
         </div>
         <div class="form-group">
-          <input class="form-control" type="submit" value="Add this item">
+          <input class="form-control btn-success center-block" type="submit" value="Add this item">
         </div>
       </form>
     </div>

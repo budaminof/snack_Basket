@@ -1,6 +1,7 @@
 <div class="container">
   <div class="col-md-12">
     <h2 class="cartH2">You have in your cart:</h2>
+<<<<<<< HEAD
     <!-- Modal Remote -->
     <a class="address" href="remoteContent.html" data-remote="false" data-toggle="modal" data-target="#cartModal" class="btn btn-default">
         Add Address
@@ -40,6 +41,11 @@
         </div>
       </div>
     </div>
+=======
+    {{#if msg}}
+      {{msg}}
+    {{/if}}
+>>>>>>> 6df9656b332151cb1c0d7375d7507293891a6516
     <table class="cartTable">
       <tr>
         <th></th>
@@ -64,14 +70,14 @@
   </div>
 
   <div class="payment">
-    <form action="/users/payment" method="POST">
+    <form action="/cart/payment" method="POST">
     <script
       src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-      data-amount="2000"
-      data-name="Demo Site"
-      data-description="2 widgets ($20.00)"
-      data-image="/128x128.png"
+      data-amount="{{amount}}"
+      data-name="Basket"
+      data-description="Thank you!"
+      data-image=""
       data-locale="auto">
     </script>
   </form>
