@@ -70,15 +70,15 @@ router.get('/cart', isloggedIn,function(req, res,next){
           amount += amount * 0.08;
 
         res.render('cart',{
-          name: req.session.passport.user.name,
-          photo: req.session.passport.user.photo,
-          data: data,
-          user: user,
-          msg: msg,
-          key: process.env.TEST_SECRET_KEY,
-          amount: amount
+        name: req.session.passport.user.name,
+        photo: req.session.passport.user.photo,
+        data: data,
+        user: user,
+        msg: msg,
+        key: process.env.TEST_SECRET_KEY,
+        amount: amount
         });
-      })
+    })
       msg='';
   })
 })
@@ -98,19 +98,20 @@ router.get('/cart/:id/delete', isloggedIn,function(req, res, next){
 
 router.get('/products', function(req, res, nex){
   knex('items')
-  .select('name', 'description', 'price', 'image_url', 'id')
-  .then(function(items) {
-      if (!req.session.passport){
-           res.render('products',{items: items});
-       } else {
-           res.render('products', {
-               items: items,
-               name: req.session.passport.user.name,
-               photo: req.session.passport.user.photo
-           });
-       }
-  })
-})
+      .select('name', 'description', 'price', 'image_url', 'id')
+      .then(function(items) {
+          console.log('items', items);
+          if (!req.session.passport){
+               res.render('products',{items: items});
+           } else {
+               res.render('products', {
+                   items: items,
+                   name: req.session.passport.user.name,
+                   photo: req.session.passport.user.photo
+               });
+           }
+      });
+});
 
 router.get('/product/:id', function(req, res, nex){
   knex('items')
@@ -119,6 +120,21 @@ router.get('/product/:id', function(req, res, nex){
   .then(function(item) {
     res.render('product',{item:item[0]});
   });
+})
+
+
+router.post('/users/address/:id', function(req, res, nex) {
+    knex('addresses')
+        .insert(req.body)
+        .returning('id')
+        .then(function(data){
+            return  knex('users_addresses')
+                .insert({user_id:req.session.passport.user.user_id, address_id :data[0]})
+                .then(function(info){
+                    console.log('inserted',info);
+                    res.redirect('/cart')
+                })
+        })
 })
 
 router.post('/cart/payment', isloggedIn, function(req,res, next){
@@ -141,7 +157,8 @@ router.post('/cart/payment', isloggedIn, function(req,res, next){
         msg= 'Successful payment!'
         res.redirect('/cart');
     })
-});
+  });
 
 })
+
 module.exports = router;
