@@ -63,9 +63,7 @@ passport.use(new LocalStrategy({
     usernameField: 'email'
 }, function(email, password, cb) {
     knex('users')
-        .where({
-            email: email
-        })
+        .where({email: email})
         .first()
         .then(function(user) {
             if (!user) return cb(null, false);
@@ -124,7 +122,7 @@ app.use(function(req, res, next) {
 });
 
 function userAdmin(req, res, next) {
-    if (!req.session.passport.user.admin) return res.redirect('/users/login')
+    if (!req.session.passport.user.admin) return res.redirect('/')
     next();
 }
 
