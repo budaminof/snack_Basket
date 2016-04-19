@@ -5,9 +5,7 @@
 -git clone
 -npm install(!)
 
-
-you will have to create a .env file and set all those
-variables in it:
+you will have to create a database and refer to it in the DATABASE_URL, you will have to create a .env file and set all those variables in it:
 
 DATABASE_URL
 DB_ENV
