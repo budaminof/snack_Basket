@@ -70,7 +70,7 @@
         <td>{{this.description}}</td>
         <td>${{this.price}}</td>
         <td><a class='edit-item' href='#'>Edit Item</a></td>
-        <td><a href='/admin/products/{{id}}/delete'>Delete Item</a></td>
+        <td><a href='#' data-item-id='{{id}}' class='adminItemDelete'>Delete Item</a></td>
       </tr>
       <tr class='hidden-edit-item'>
         <form action='/admin/products/{{id}}/edit' method='POST'>
@@ -154,6 +154,7 @@
 </div>
 
 <script type="text/javascript">
+
 $('.deleteUser').on('click', function (e){
   e.preventDefault();
 
@@ -163,11 +164,25 @@ $('.deleteUser').on('click', function (e){
     type: 'DELETE',
     success: function (result){
       if(result){
-        window.location=('/admin');
+        window.location='/admin';
       }
     }
-
   })
-})
+});
 
+$('.adminItemDelete').on('click', function (e) {
+  e.preventDefault();
+
+  var itemId= $(this).data('item-id');
+
+  $.ajax({
+    url: '/admin/products/'+ itemId,
+    type: 'DELETE',
+    success: function (result){
+      if(result){
+        window.location='/admin';
+      }
+    }
+  })
+});
 </script>

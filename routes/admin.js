@@ -190,14 +190,15 @@ router.post('/products/:id/edit', function(req, res, next) {
   }
 })
 
-router.get('/products/:id/delete', function(req, res, next) {
+
+router.delete('/products/:id', function(req, res, next) {
     knex('items')
         .where({id: req.params.id})
         .first()
         .del()
         .then(function(info) {
           msg='Product was successfuly deleted!'
-            res.redirect('/admin');
+            res.status(200).json('success');
         })
 })
 
