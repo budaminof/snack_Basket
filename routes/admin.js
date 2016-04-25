@@ -133,7 +133,7 @@ router.post('/users/:id/edit', function(req, res, next) {
       }
       if (!req.body.last_name) {
           errorArray.push('Please enter a last name');
-      } 
+      }
 
       if (errorArray.length > 0) {
           res.redirect('/admin');
@@ -150,7 +150,7 @@ router.post('/users/:id/edit', function(req, res, next) {
       }
 })
 
-router.get('/users/:id/delete', function(req, res, next) {
+router.delete('/users/:id', function(req, res, next) {
     knex('users')
         .where({
             id: req.params.id
@@ -159,7 +159,7 @@ router.get('/users/:id/delete', function(req, res, next) {
         .del()
         .then(function(info) {
           msg='User was successfuly deleted!'
-            res.redirect('/admin');
+          res.status(200).json('success');
         })
 })
 

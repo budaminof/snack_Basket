@@ -40,7 +40,7 @@
         <td>{{email}}</td>
         <td>{{admin}}</td>
         <td><a class='edit-user' href="#">Edit User</a></td>
-        <td><a href="/admin/users/{{id}}/delete">Delete User</a></td>
+        <td><a href="#" data-user-id="{{id}}" class="deleteUser">Delete User</a></td>
       </tr>
       <tr class='hidden-edit-user'>
         <form action='/admin/users/{{id}}/edit' method='POST'>
@@ -152,3 +152,22 @@
   </div>
 </div>
 </div>
+
+<script type="text/javascript">
+$('.deleteUser').on('click', function (e){
+  e.preventDefault();
+
+  var userId = $(this).data('user-id');
+  $.ajax({
+    url: '/admin/users/'+userId,
+    type: 'DELETE',
+    success: function (result){
+      if(result){
+        window.location=('/admin');
+      }
+    }
+
+  })
+})
+
+</script>
