@@ -52,7 +52,7 @@ router.get('/cart',function(req, res,next){
   })
 })
 
-router.get('/cart/:id/delete',function(req, res, next){
+router.delete('/cart/:id',function(req, res, next){
   knex('users_cart')
   .where({
     user_id: req.session.passport.user.user_id,
@@ -61,7 +61,7 @@ router.get('/cart/:id/delete',function(req, res, next){
   .first()
   .del()
   .then(function(data){
-    res.redirect('/users/cart');
+    res.status(200).json('success');
   })
 })
 

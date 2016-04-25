@@ -57,7 +57,7 @@
         <td>{{this.name}}</td>
         <td>{{this.description}}</td>
         <td class="price" price-data={{this.price}}>${{this.price}}</td>
-        <td><a class='btn btn-danger' href="/users/cart/{{this.item_id}}/delete">Delete this item</a></td>
+        <td><a class='btn btn-danger deleteItem' data-item-id="{{this.item_id}}" href="#">Delete this item</a></td>
       </tr>
       {{/data}}
     </table>
@@ -90,3 +90,22 @@
     </script>
   </form>
 </div>
+
+
+<script type="text/javascript">
+  $('.deleteItem').on('click', function (event) {
+    event.preventDefault();
+
+    var itemId = $(this).data('item-id');
+
+    $.ajax({
+      url: '/users/cart/' + itemId,
+      type: 'DELETE',
+      success: function (result){
+        if(result){
+          window.location='/users/cart';
+        }
+      }
+    })
+  });
+</script>
